@@ -1,0 +1,9 @@
+C:\Workspace\VisualStudio\ThermoCoupleLogger\ThermoCoupleLogger\bin\Debug\ThermoCoupleLogger.exe.config
+C:\Workspace\VisualStudio\ThermoCoupleLogger\ThermoCoupleLogger\bin\Debug\ThermoCoupleLogger.exe
+C:\Workspace\VisualStudio\ThermoCoupleLogger\ThermoCoupleLogger\bin\Debug\ThermoCoupleLogger.pdb
+C:\Workspace\VisualStudio\ThermoCoupleLogger\ThermoCoupleLogger\obj\Debug\ThermoCoupleLogger.csprojResolveAssemblyReference.cache
+C:\Workspace\VisualStudio\ThermoCoupleLogger\ThermoCoupleLogger\obj\Debug\ThermoCoupleLogger.Form1.resources
+C:\Workspace\VisualStudio\ThermoCoupleLogger\ThermoCoupleLogger\obj\Debug\ThermoCoupleLogger.Properties.Resources.resources
+C:\Workspace\VisualStudio\ThermoCoupleLogger\ThermoCoupleLogger\obj\Debug\ThermoCoupleLogger.csproj.GenerateResource.Cache
+C:\Workspace\VisualStudio\ThermoCoupleLogger\ThermoCoupleLogger\obj\Debug\ThermoCoupleLogger.exe
+C:\Workspace\VisualStudio\ThermoCoupleLogger\ThermoCoupleLogger\obj\Debug\ThermoCoupleLogger.pdb
