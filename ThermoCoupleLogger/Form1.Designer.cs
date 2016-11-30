@@ -43,9 +43,9 @@
             this.label21 = new System.Windows.Forms.Label();
             this.buttonStart = new System.Windows.Forms.Button();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.button34 = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
-            this.button35 = new System.Windows.Forms.Button();
+            this.CH_A_Act = new System.Windows.Forms.Button();
+            this.CHA_Value = new System.Windows.Forms.Label();
+            this.CH_A_Max = new System.Windows.Forms.Button();
             this.button37 = new System.Windows.Forms.Button();
             this.button36 = new System.Windows.Forms.Button();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
@@ -68,51 +68,51 @@
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label11 = new System.Windows.Forms.Label();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.button30 = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
-            this.button31 = new System.Windows.Forms.Button();
+            this.groupBoxCH8 = new System.Windows.Forms.GroupBox();
+            this.CH_8_Act = new System.Windows.Forms.Button();
+            this.CH8_Value = new System.Windows.Forms.Label();
+            this.CH_8_Max = new System.Windows.Forms.Button();
             this.button33 = new System.Windows.Forms.Button();
             this.button32 = new System.Windows.Forms.Button();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.button25 = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.button26 = new System.Windows.Forms.Button();
+            this.groupBoxCH7 = new System.Windows.Forms.GroupBox();
+            this.CH_7_Act = new System.Windows.Forms.Button();
+            this.CH7_Value = new System.Windows.Forms.Label();
+            this.CH_7_Max = new System.Windows.Forms.Button();
             this.button28 = new System.Windows.Forms.Button();
             this.button27 = new System.Windows.Forms.Button();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.button21 = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.button22 = new System.Windows.Forms.Button();
+            this.groupBoxCH6 = new System.Windows.Forms.GroupBox();
+            this.CH_6_Act = new System.Windows.Forms.Button();
+            this.CH6_Value = new System.Windows.Forms.Label();
+            this.CH_6_Max = new System.Windows.Forms.Button();
             this.button24 = new System.Windows.Forms.Button();
             this.button23 = new System.Windows.Forms.Button();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.button17 = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.button18 = new System.Windows.Forms.Button();
+            this.groupBoxCH5 = new System.Windows.Forms.GroupBox();
+            this.CH_5_Act = new System.Windows.Forms.Button();
+            this.CH5_Value = new System.Windows.Forms.Label();
+            this.CH_5_Max = new System.Windows.Forms.Button();
             this.button20 = new System.Windows.Forms.Button();
             this.button19 = new System.Windows.Forms.Button();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.button13 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
+            this.groupBoxCH4 = new System.Windows.Forms.GroupBox();
+            this.CH_4_Act = new System.Windows.Forms.Button();
+            this.CH_4_Max = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button9 = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.button10 = new System.Windows.Forms.Button();
+            this.CH4_Value = new System.Windows.Forms.Label();
+            this.groupBoxCH3 = new System.Windows.Forms.GroupBox();
+            this.CH_3_Act = new System.Windows.Forms.Button();
+            this.CH3_Value = new System.Windows.Forms.Label();
+            this.CH_3_Max = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
+            this.groupBoxCH2 = new System.Windows.Forms.GroupBox();
+            this.CH_2_Act = new System.Windows.Forms.Button();
+            this.CH2_Value = new System.Windows.Forms.Label();
+            this.CH_2_Max = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button29 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.groupBoxCH1 = new System.Windows.Forms.GroupBox();
+            this.CH_1_Act = new System.Windows.Forms.Button();
+            this.CH_1_Max = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.CH1_Value = new System.Windows.Forms.Label();
@@ -124,6 +124,19 @@
             this.buttonConnect = new System.Windows.Forms.Button();
             this.comboBoxCOMs = new System.Windows.Forms.ComboBox();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.CH1_Fault = new System.Windows.Forms.Label();
+            this.CH8_Binary = new System.Windows.Forms.Label();
+            this.CH7_Binary = new System.Windows.Forms.Label();
+            this.CH6_Binary = new System.Windows.Forms.Label();
+            this.CH5_Binary = new System.Windows.Forms.Label();
+            this.CH4_Binary = new System.Windows.Forms.Label();
+            this.CH3_Binary = new System.Windows.Forms.Label();
+            this.CH2_Binary = new System.Windows.Forms.Label();
+            this.CH1_Binary = new System.Windows.Forms.Label();
+            this.textBoxCalcCheckSum = new System.Windows.Forms.TextBox();
+            this.label39 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
+            this.textBoxFrameCheckSum = new System.Windows.Forms.TextBox();
             this.label30 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
@@ -173,20 +186,48 @@
             this.Data8B = new System.Windows.Forms.TextBox();
             this.labelConnectionStatus = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.textBoxFrameCheckSum = new System.Windows.Forms.TextBox();
-            this.label38 = new System.Windows.Forms.Label();
-            this.label39 = new System.Windows.Forms.Label();
-            this.textBoxCalcCheckSum = new System.Windows.Forms.TextBox();
-            this.CH1_Binary = new System.Windows.Forms.Label();
-            this.CH2_Binary = new System.Windows.Forms.Label();
-            this.CH3_Binary = new System.Windows.Forms.Label();
-            this.CH4_Binary = new System.Windows.Forms.Label();
-            this.CH5_Binary = new System.Windows.Forms.Label();
-            this.CH6_Binary = new System.Windows.Forms.Label();
-            this.CH7_Binary = new System.Windows.Forms.Label();
-            this.CH8_Binary = new System.Windows.Forms.Label();
-            this.CH1_Fault = new System.Windows.Forms.Label();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.buttonDebugMode = new System.Windows.Forms.Button();
+            this.timerRefresh = new System.Windows.Forms.Timer(this.components);
+            this.label2 = new System.Windows.Forms.Label();
+            this.labelErrors = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBoxNameCH1 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.comboBoxColorCH1 = new System.Windows.Forms.ComboBox();
+            this.textBoxColorCH1 = new System.Windows.Forms.TextBox();
+            this.textBoxColorCH2 = new System.Windows.Forms.TextBox();
+            this.comboBoxColorCH2 = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBoxNameCH2 = new System.Windows.Forms.TextBox();
+            this.textBoxColorCH3 = new System.Windows.Forms.TextBox();
+            this.comboBoxColorCH3 = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textBoxNameCH3 = new System.Windows.Forms.TextBox();
+            this.textBoxColorCH4 = new System.Windows.Forms.TextBox();
+            this.comboBoxColorCH4 = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.textBoxNameCH4 = new System.Windows.Forms.TextBox();
+            this.textBoxColorCH5 = new System.Windows.Forms.TextBox();
+            this.comboBoxColorCH5 = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.textBoxNameCH5 = new System.Windows.Forms.TextBox();
+            this.textBoxColorCH6 = new System.Windows.Forms.TextBox();
+            this.comboBoxColorCH6 = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.textBoxNameCH6 = new System.Windows.Forms.TextBox();
+            this.textBoxColorCH7 = new System.Windows.Forms.TextBox();
+            this.comboBoxColorCH7 = new System.Windows.Forms.ComboBox();
+            this.label40 = new System.Windows.Forms.Label();
+            this.textBoxNameCH7 = new System.Windows.Forms.TextBox();
+            this.textBoxColorCH8 = new System.Windows.Forms.TextBox();
+            this.comboBoxColorCH8 = new System.Windows.Forms.ComboBox();
+            this.label41 = new System.Windows.Forms.Label();
+            this.textBoxNameCH8 = new System.Windows.Forms.TextBox();
+            this.buttonDefaultColors = new System.Windows.Forms.Button();
+            this.buttonClearNames = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox11.SuspendLayout();
@@ -196,19 +237,21 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            this.groupBox8.SuspendLayout();
-            this.groupBox7.SuspendLayout();
-            this.groupBox6.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.groupBoxCH8.SuspendLayout();
+            this.groupBoxCH7.SuspendLayout();
+            this.groupBoxCH6.SuspendLayout();
+            this.groupBoxCH5.SuspendLayout();
+            this.groupBoxCH4.SuspendLayout();
+            this.groupBoxCH3.SuspendLayout();
+            this.groupBoxCH2.SuspendLayout();
+            this.groupBoxCH1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.groupBox13.SuspendLayout();
             this.groupBox12.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -231,14 +274,14 @@
             this.tabPage1.Controls.Add(this.buttonStart);
             this.tabPage1.Controls.Add(this.groupBox10);
             this.tabPage1.Controls.Add(this.groupBox9);
-            this.tabPage1.Controls.Add(this.groupBox8);
-            this.tabPage1.Controls.Add(this.groupBox7);
-            this.tabPage1.Controls.Add(this.groupBox6);
-            this.tabPage1.Controls.Add(this.groupBox5);
-            this.tabPage1.Controls.Add(this.groupBox4);
-            this.tabPage1.Controls.Add(this.groupBox3);
-            this.tabPage1.Controls.Add(this.groupBox2);
-            this.tabPage1.Controls.Add(this.groupBox1);
+            this.tabPage1.Controls.Add(this.groupBoxCH8);
+            this.tabPage1.Controls.Add(this.groupBoxCH7);
+            this.tabPage1.Controls.Add(this.groupBoxCH6);
+            this.tabPage1.Controls.Add(this.groupBoxCH5);
+            this.tabPage1.Controls.Add(this.groupBoxCH4);
+            this.tabPage1.Controls.Add(this.groupBoxCH3);
+            this.tabPage1.Controls.Add(this.groupBoxCH2);
+            this.tabPage1.Controls.Add(this.groupBoxCH1);
             this.tabPage1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
@@ -354,9 +397,9 @@
             // 
             // groupBox10
             // 
-            this.groupBox10.Controls.Add(this.button34);
-            this.groupBox10.Controls.Add(this.label10);
-            this.groupBox10.Controls.Add(this.button35);
+            this.groupBox10.Controls.Add(this.CH_A_Act);
+            this.groupBox10.Controls.Add(this.CHA_Value);
+            this.groupBox10.Controls.Add(this.CH_A_Max);
             this.groupBox10.Controls.Add(this.button37);
             this.groupBox10.Controls.Add(this.button36);
             this.groupBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -367,36 +410,37 @@
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Ambient";
             // 
-            // button34
+            // CH_A_Act
             // 
-            this.button34.BackColor = System.Drawing.Color.Gainsboro;
-            this.button34.Location = new System.Drawing.Point(170, 17);
-            this.button34.Name = "button34";
-            this.button34.Size = new System.Drawing.Size(46, 29);
-            this.button34.TabIndex = 36;
-            this.button34.Text = "Act";
-            this.button34.UseVisualStyleBackColor = false;
+            this.CH_A_Act.BackColor = System.Drawing.Color.Gainsboro;
+            this.CH_A_Act.Location = new System.Drawing.Point(170, 17);
+            this.CH_A_Act.Name = "CH_A_Act";
+            this.CH_A_Act.Size = new System.Drawing.Size(46, 29);
+            this.CH_A_Act.TabIndex = 36;
+            this.CH_A_Act.Text = "Act";
+            this.CH_A_Act.UseVisualStyleBackColor = false;
             // 
-            // label10
+            // CHA_Value
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label10.Location = new System.Drawing.Point(22, 17);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(128, 31);
-            this.label10.TabIndex = 8;
-            this.label10.Text = "23.25 *C";
+            this.CHA_Value.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.CHA_Value.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CHA_Value.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.CHA_Value.Location = new System.Drawing.Point(-2, 17);
+            this.CHA_Value.Name = "CHA_Value";
+            this.CHA_Value.Size = new System.Drawing.Size(166, 31);
+            this.CHA_Value.TabIndex = 8;
+            this.CHA_Value.Text = " -254.25 °C";
+            this.CHA_Value.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // button35
+            // CH_A_Max
             // 
-            this.button35.BackColor = System.Drawing.Color.White;
-            this.button35.Location = new System.Drawing.Point(222, 17);
-            this.button35.Name = "button35";
-            this.button35.Size = new System.Drawing.Size(46, 29);
-            this.button35.TabIndex = 35;
-            this.button35.Text = "Max";
-            this.button35.UseVisualStyleBackColor = false;
+            this.CH_A_Max.BackColor = System.Drawing.Color.White;
+            this.CH_A_Max.Location = new System.Drawing.Point(222, 17);
+            this.CH_A_Max.Name = "CH_A_Max";
+            this.CH_A_Max.Size = new System.Drawing.Size(46, 29);
+            this.CH_A_Max.TabIndex = 35;
+            this.CH_A_Max.Text = "Max";
+            this.CH_A_Max.UseVisualStyleBackColor = false;
             // 
             // button37
             // 
@@ -442,7 +486,7 @@
             this.groupBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox9.Location = new System.Drawing.Point(413, 203);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(347, 304);
+            this.groupBox9.Size = new System.Drawing.Size(347, 242);
             this.groupBox9.TabIndex = 2;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Acquisition Settings";
@@ -608,51 +652,52 @@
             this.label11.TabIndex = 0;
             this.label11.Text = "Period:";
             // 
-            // groupBox8
+            // groupBoxCH8
             // 
-            this.groupBox8.Controls.Add(this.button30);
-            this.groupBox8.Controls.Add(this.label9);
-            this.groupBox8.Controls.Add(this.button31);
-            this.groupBox8.Controls.Add(this.button33);
-            this.groupBox8.Controls.Add(this.button32);
-            this.groupBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox8.Location = new System.Drawing.Point(17, 451);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(380, 56);
-            this.groupBox8.TabIndex = 1;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "CH8";
+            this.groupBoxCH8.Controls.Add(this.CH_8_Act);
+            this.groupBoxCH8.Controls.Add(this.CH8_Value);
+            this.groupBoxCH8.Controls.Add(this.CH_8_Max);
+            this.groupBoxCH8.Controls.Add(this.button33);
+            this.groupBoxCH8.Controls.Add(this.button32);
+            this.groupBoxCH8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxCH8.Location = new System.Drawing.Point(17, 451);
+            this.groupBoxCH8.Name = "groupBoxCH8";
+            this.groupBoxCH8.Size = new System.Drawing.Size(380, 56);
+            this.groupBoxCH8.TabIndex = 1;
+            this.groupBoxCH8.TabStop = false;
+            this.groupBoxCH8.Text = "CH8";
             // 
-            // button30
+            // CH_8_Act
             // 
-            this.button30.BackColor = System.Drawing.Color.Gainsboro;
-            this.button30.Location = new System.Drawing.Point(170, 17);
-            this.button30.Name = "button30";
-            this.button30.Size = new System.Drawing.Size(46, 29);
-            this.button30.TabIndex = 32;
-            this.button30.Text = "Act";
-            this.button30.UseVisualStyleBackColor = false;
+            this.CH_8_Act.BackColor = System.Drawing.Color.Gainsboro;
+            this.CH_8_Act.Location = new System.Drawing.Point(170, 17);
+            this.CH_8_Act.Name = "CH_8_Act";
+            this.CH_8_Act.Size = new System.Drawing.Size(46, 29);
+            this.CH_8_Act.TabIndex = 32;
+            this.CH_8_Act.Text = "Act";
+            this.CH_8_Act.UseVisualStyleBackColor = false;
             // 
-            // label9
+            // CH8_Value
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.MediumOrchid;
-            this.label9.Location = new System.Drawing.Point(6, 17);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(144, 31);
-            this.label9.TabIndex = 7;
-            this.label9.Text = "356.25 *C";
+            this.CH8_Value.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.CH8_Value.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CH8_Value.ForeColor = System.Drawing.Color.MediumOrchid;
+            this.CH8_Value.Location = new System.Drawing.Point(-2, 17);
+            this.CH8_Value.Name = "CH8_Value";
+            this.CH8_Value.Size = new System.Drawing.Size(166, 31);
+            this.CH8_Value.TabIndex = 7;
+            this.CH8_Value.Text = " -254.25 °C";
+            this.CH8_Value.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // button31
+            // CH_8_Max
             // 
-            this.button31.BackColor = System.Drawing.Color.White;
-            this.button31.Location = new System.Drawing.Point(222, 17);
-            this.button31.Name = "button31";
-            this.button31.Size = new System.Drawing.Size(46, 29);
-            this.button31.TabIndex = 31;
-            this.button31.Text = "Max";
-            this.button31.UseVisualStyleBackColor = false;
+            this.CH_8_Max.BackColor = System.Drawing.Color.White;
+            this.CH_8_Max.Location = new System.Drawing.Point(222, 17);
+            this.CH_8_Max.Name = "CH_8_Max";
+            this.CH_8_Max.Size = new System.Drawing.Size(46, 29);
+            this.CH_8_Max.TabIndex = 31;
+            this.CH_8_Max.Text = "Max";
+            this.CH_8_Max.UseVisualStyleBackColor = false;
             // 
             // button33
             // 
@@ -674,51 +719,52 @@
             this.button32.Text = "Min";
             this.button32.UseVisualStyleBackColor = false;
             // 
-            // groupBox7
+            // groupBoxCH7
             // 
-            this.groupBox7.Controls.Add(this.button25);
-            this.groupBox7.Controls.Add(this.label8);
-            this.groupBox7.Controls.Add(this.button26);
-            this.groupBox7.Controls.Add(this.button28);
-            this.groupBox7.Controls.Add(this.button27);
-            this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox7.Location = new System.Drawing.Point(17, 389);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(380, 56);
-            this.groupBox7.TabIndex = 1;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "CH7";
+            this.groupBoxCH7.Controls.Add(this.CH_7_Act);
+            this.groupBoxCH7.Controls.Add(this.CH7_Value);
+            this.groupBoxCH7.Controls.Add(this.CH_7_Max);
+            this.groupBoxCH7.Controls.Add(this.button28);
+            this.groupBoxCH7.Controls.Add(this.button27);
+            this.groupBoxCH7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxCH7.Location = new System.Drawing.Point(17, 389);
+            this.groupBoxCH7.Name = "groupBoxCH7";
+            this.groupBoxCH7.Size = new System.Drawing.Size(380, 56);
+            this.groupBoxCH7.TabIndex = 1;
+            this.groupBoxCH7.TabStop = false;
+            this.groupBoxCH7.Text = "CH7";
             // 
-            // button25
+            // CH_7_Act
             // 
-            this.button25.BackColor = System.Drawing.Color.Gainsboro;
-            this.button25.Location = new System.Drawing.Point(170, 17);
-            this.button25.Name = "button25";
-            this.button25.Size = new System.Drawing.Size(46, 29);
-            this.button25.TabIndex = 28;
-            this.button25.Text = "Act";
-            this.button25.UseVisualStyleBackColor = false;
+            this.CH_7_Act.BackColor = System.Drawing.Color.Gainsboro;
+            this.CH_7_Act.Location = new System.Drawing.Point(170, 17);
+            this.CH_7_Act.Name = "CH_7_Act";
+            this.CH_7_Act.Size = new System.Drawing.Size(46, 29);
+            this.CH_7_Act.TabIndex = 28;
+            this.CH_7_Act.Text = "Act";
+            this.CH_7_Act.UseVisualStyleBackColor = false;
             // 
-            // label8
+            // CH7_Value
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label8.Location = new System.Drawing.Point(6, 17);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(144, 31);
-            this.label8.TabIndex = 6;
-            this.label8.Text = "112.00 *C";
+            this.CH7_Value.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.CH7_Value.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CH7_Value.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.CH7_Value.Location = new System.Drawing.Point(-2, 17);
+            this.CH7_Value.Name = "CH7_Value";
+            this.CH7_Value.Size = new System.Drawing.Size(166, 31);
+            this.CH7_Value.TabIndex = 6;
+            this.CH7_Value.Text = " -254.25 °C";
+            this.CH7_Value.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // button26
+            // CH_7_Max
             // 
-            this.button26.BackColor = System.Drawing.Color.White;
-            this.button26.Location = new System.Drawing.Point(222, 17);
-            this.button26.Name = "button26";
-            this.button26.Size = new System.Drawing.Size(46, 29);
-            this.button26.TabIndex = 27;
-            this.button26.Text = "Max";
-            this.button26.UseVisualStyleBackColor = false;
+            this.CH_7_Max.BackColor = System.Drawing.Color.White;
+            this.CH_7_Max.Location = new System.Drawing.Point(222, 17);
+            this.CH_7_Max.Name = "CH_7_Max";
+            this.CH_7_Max.Size = new System.Drawing.Size(46, 29);
+            this.CH_7_Max.TabIndex = 27;
+            this.CH_7_Max.Text = "Max";
+            this.CH_7_Max.UseVisualStyleBackColor = false;
             // 
             // button28
             // 
@@ -740,51 +786,52 @@
             this.button27.Text = "Min";
             this.button27.UseVisualStyleBackColor = false;
             // 
-            // groupBox6
+            // groupBoxCH6
             // 
-            this.groupBox6.Controls.Add(this.button21);
-            this.groupBox6.Controls.Add(this.label7);
-            this.groupBox6.Controls.Add(this.button22);
-            this.groupBox6.Controls.Add(this.button24);
-            this.groupBox6.Controls.Add(this.button23);
-            this.groupBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox6.Location = new System.Drawing.Point(17, 327);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(380, 56);
-            this.groupBox6.TabIndex = 1;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "CH6";
+            this.groupBoxCH6.Controls.Add(this.CH_6_Act);
+            this.groupBoxCH6.Controls.Add(this.CH6_Value);
+            this.groupBoxCH6.Controls.Add(this.CH_6_Max);
+            this.groupBoxCH6.Controls.Add(this.button24);
+            this.groupBoxCH6.Controls.Add(this.button23);
+            this.groupBoxCH6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxCH6.Location = new System.Drawing.Point(17, 327);
+            this.groupBoxCH6.Name = "groupBoxCH6";
+            this.groupBoxCH6.Size = new System.Drawing.Size(380, 56);
+            this.groupBoxCH6.TabIndex = 1;
+            this.groupBoxCH6.TabStop = false;
+            this.groupBoxCH6.Text = "CH6";
             // 
-            // button21
+            // CH_6_Act
             // 
-            this.button21.BackColor = System.Drawing.Color.Gainsboro;
-            this.button21.Location = new System.Drawing.Point(170, 17);
-            this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(46, 29);
-            this.button21.TabIndex = 24;
-            this.button21.Text = "Act";
-            this.button21.UseVisualStyleBackColor = false;
+            this.CH_6_Act.BackColor = System.Drawing.Color.Gainsboro;
+            this.CH_6_Act.Location = new System.Drawing.Point(170, 17);
+            this.CH_6_Act.Name = "CH_6_Act";
+            this.CH_6_Act.Size = new System.Drawing.Size(46, 29);
+            this.CH_6_Act.TabIndex = 24;
+            this.CH_6_Act.Text = "Act";
+            this.CH_6_Act.UseVisualStyleBackColor = false;
             // 
-            // label7
+            // CH6_Value
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.DimGray;
-            this.label7.Location = new System.Drawing.Point(22, 17);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(128, 31);
-            this.label7.TabIndex = 5;
-            this.label7.Text = "36.25 *C";
+            this.CH6_Value.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.CH6_Value.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CH6_Value.ForeColor = System.Drawing.Color.DimGray;
+            this.CH6_Value.Location = new System.Drawing.Point(-2, 17);
+            this.CH6_Value.Name = "CH6_Value";
+            this.CH6_Value.Size = new System.Drawing.Size(166, 31);
+            this.CH6_Value.TabIndex = 5;
+            this.CH6_Value.Text = " -254.25 °C";
+            this.CH6_Value.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // button22
+            // CH_6_Max
             // 
-            this.button22.BackColor = System.Drawing.Color.White;
-            this.button22.Location = new System.Drawing.Point(222, 17);
-            this.button22.Name = "button22";
-            this.button22.Size = new System.Drawing.Size(46, 29);
-            this.button22.TabIndex = 23;
-            this.button22.Text = "Max";
-            this.button22.UseVisualStyleBackColor = false;
+            this.CH_6_Max.BackColor = System.Drawing.Color.White;
+            this.CH_6_Max.Location = new System.Drawing.Point(222, 17);
+            this.CH_6_Max.Name = "CH_6_Max";
+            this.CH_6_Max.Size = new System.Drawing.Size(46, 29);
+            this.CH_6_Max.TabIndex = 23;
+            this.CH_6_Max.Text = "Max";
+            this.CH_6_Max.UseVisualStyleBackColor = false;
             // 
             // button24
             // 
@@ -806,52 +853,52 @@
             this.button23.Text = "Min";
             this.button23.UseVisualStyleBackColor = false;
             // 
-            // groupBox5
+            // groupBoxCH5
             // 
-            this.groupBox5.Controls.Add(this.button17);
-            this.groupBox5.Controls.Add(this.label6);
-            this.groupBox5.Controls.Add(this.button18);
-            this.groupBox5.Controls.Add(this.button20);
-            this.groupBox5.Controls.Add(this.button19);
-            this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.Location = new System.Drawing.Point(17, 265);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(380, 56);
-            this.groupBox5.TabIndex = 1;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "CH5";
+            this.groupBoxCH5.Controls.Add(this.CH_5_Act);
+            this.groupBoxCH5.Controls.Add(this.CH5_Value);
+            this.groupBoxCH5.Controls.Add(this.CH_5_Max);
+            this.groupBoxCH5.Controls.Add(this.button20);
+            this.groupBoxCH5.Controls.Add(this.button19);
+            this.groupBoxCH5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxCH5.Location = new System.Drawing.Point(17, 265);
+            this.groupBoxCH5.Name = "groupBoxCH5";
+            this.groupBoxCH5.Size = new System.Drawing.Size(380, 56);
+            this.groupBoxCH5.TabIndex = 1;
+            this.groupBoxCH5.TabStop = false;
+            this.groupBoxCH5.Text = "CH5";
             // 
-            // button17
+            // CH_5_Act
             // 
-            this.button17.BackColor = System.Drawing.Color.Gainsboro;
-            this.button17.Location = new System.Drawing.Point(170, 17);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(46, 29);
-            this.button17.TabIndex = 20;
-            this.button17.Text = "Act";
-            this.button17.UseVisualStyleBackColor = false;
+            this.CH_5_Act.BackColor = System.Drawing.Color.Gainsboro;
+            this.CH_5_Act.Location = new System.Drawing.Point(170, 17);
+            this.CH_5_Act.Name = "CH_5_Act";
+            this.CH_5_Act.Size = new System.Drawing.Size(46, 29);
+            this.CH_5_Act.TabIndex = 20;
+            this.CH_5_Act.Text = "Act";
+            this.CH_5_Act.UseVisualStyleBackColor = false;
             // 
-            // label6
+            // CH5_Value
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.MediumSeaGreen;
-            this.label6.Location = new System.Drawing.Point(22, 17);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(128, 31);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "94.25 *C";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.CH5_Value.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.CH5_Value.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CH5_Value.ForeColor = System.Drawing.Color.MediumSeaGreen;
+            this.CH5_Value.Location = new System.Drawing.Point(-2, 17);
+            this.CH5_Value.Name = "CH5_Value";
+            this.CH5_Value.Size = new System.Drawing.Size(166, 31);
+            this.CH5_Value.TabIndex = 4;
+            this.CH5_Value.Text = " -254.25 °C";
+            this.CH5_Value.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // button18
+            // CH_5_Max
             // 
-            this.button18.BackColor = System.Drawing.Color.White;
-            this.button18.Location = new System.Drawing.Point(222, 17);
-            this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(46, 29);
-            this.button18.TabIndex = 19;
-            this.button18.Text = "Max";
-            this.button18.UseVisualStyleBackColor = false;
+            this.CH_5_Max.BackColor = System.Drawing.Color.White;
+            this.CH_5_Max.Location = new System.Drawing.Point(222, 17);
+            this.CH_5_Max.Name = "CH_5_Max";
+            this.CH_5_Max.Size = new System.Drawing.Size(46, 29);
+            this.CH_5_Max.TabIndex = 19;
+            this.CH_5_Max.Text = "Max";
+            this.CH_5_Max.UseVisualStyleBackColor = false;
             // 
             // button20
             // 
@@ -873,40 +920,40 @@
             this.button19.Text = "Min";
             this.button19.UseVisualStyleBackColor = false;
             // 
-            // groupBox4
+            // groupBoxCH4
             // 
-            this.groupBox4.Controls.Add(this.button13);
-            this.groupBox4.Controls.Add(this.button14);
-            this.groupBox4.Controls.Add(this.button15);
-            this.groupBox4.Controls.Add(this.button16);
-            this.groupBox4.Controls.Add(this.label5);
-            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(17, 203);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(380, 56);
-            this.groupBox4.TabIndex = 1;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "CH4";
+            this.groupBoxCH4.Controls.Add(this.CH_4_Act);
+            this.groupBoxCH4.Controls.Add(this.CH_4_Max);
+            this.groupBoxCH4.Controls.Add(this.button15);
+            this.groupBoxCH4.Controls.Add(this.button16);
+            this.groupBoxCH4.Controls.Add(this.CH4_Value);
+            this.groupBoxCH4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxCH4.Location = new System.Drawing.Point(17, 203);
+            this.groupBoxCH4.Name = "groupBoxCH4";
+            this.groupBoxCH4.Size = new System.Drawing.Size(380, 56);
+            this.groupBoxCH4.TabIndex = 1;
+            this.groupBoxCH4.TabStop = false;
+            this.groupBoxCH4.Text = "CH4";
             // 
-            // button13
+            // CH_4_Act
             // 
-            this.button13.BackColor = System.Drawing.Color.Gainsboro;
-            this.button13.Location = new System.Drawing.Point(170, 17);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(46, 29);
-            this.button13.TabIndex = 16;
-            this.button13.Text = "Act";
-            this.button13.UseVisualStyleBackColor = false;
+            this.CH_4_Act.BackColor = System.Drawing.Color.Gainsboro;
+            this.CH_4_Act.Location = new System.Drawing.Point(170, 17);
+            this.CH_4_Act.Name = "CH_4_Act";
+            this.CH_4_Act.Size = new System.Drawing.Size(46, 29);
+            this.CH_4_Act.TabIndex = 16;
+            this.CH_4_Act.Text = "Act";
+            this.CH_4_Act.UseVisualStyleBackColor = false;
             // 
-            // button14
+            // CH_4_Max
             // 
-            this.button14.BackColor = System.Drawing.Color.White;
-            this.button14.Location = new System.Drawing.Point(222, 17);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(46, 29);
-            this.button14.TabIndex = 15;
-            this.button14.Text = "Max";
-            this.button14.UseVisualStyleBackColor = false;
+            this.CH_4_Max.BackColor = System.Drawing.Color.White;
+            this.CH_4_Max.Location = new System.Drawing.Point(222, 17);
+            this.CH_4_Max.Name = "CH_4_Max";
+            this.CH_4_Max.Size = new System.Drawing.Size(46, 29);
+            this.CH_4_Max.TabIndex = 15;
+            this.CH_4_Max.Text = "Max";
+            this.CH_4_Max.UseVisualStyleBackColor = false;
             // 
             // button15
             // 
@@ -928,62 +975,64 @@
             this.button16.Text = "Avg";
             this.button16.UseVisualStyleBackColor = false;
             // 
-            // label5
+            // CH4_Value
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.DarkMagenta;
-            this.label5.Location = new System.Drawing.Point(22, 17);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(128, 31);
-            this.label5.TabIndex = 3;
-            this.label5.Text = "27.00 *C";
+            this.CH4_Value.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.CH4_Value.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CH4_Value.ForeColor = System.Drawing.Color.DarkMagenta;
+            this.CH4_Value.Location = new System.Drawing.Point(-2, 17);
+            this.CH4_Value.Name = "CH4_Value";
+            this.CH4_Value.Size = new System.Drawing.Size(166, 31);
+            this.CH4_Value.TabIndex = 3;
+            this.CH4_Value.Text = " -254.25 °C";
+            this.CH4_Value.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // groupBox3
+            // groupBoxCH3
             // 
-            this.groupBox3.Controls.Add(this.button9);
-            this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.button10);
-            this.groupBox3.Controls.Add(this.button11);
-            this.groupBox3.Controls.Add(this.button12);
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(17, 141);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(380, 56);
-            this.groupBox3.TabIndex = 1;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "CH3";
+            this.groupBoxCH3.Controls.Add(this.CH_3_Act);
+            this.groupBoxCH3.Controls.Add(this.CH3_Value);
+            this.groupBoxCH3.Controls.Add(this.CH_3_Max);
+            this.groupBoxCH3.Controls.Add(this.button11);
+            this.groupBoxCH3.Controls.Add(this.button12);
+            this.groupBoxCH3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxCH3.Location = new System.Drawing.Point(17, 141);
+            this.groupBoxCH3.Name = "groupBoxCH3";
+            this.groupBoxCH3.Size = new System.Drawing.Size(380, 56);
+            this.groupBoxCH3.TabIndex = 1;
+            this.groupBoxCH3.TabStop = false;
+            this.groupBoxCH3.Text = "CH3";
             // 
-            // button9
+            // CH_3_Act
             // 
-            this.button9.BackColor = System.Drawing.Color.Gainsboro;
-            this.button9.Location = new System.Drawing.Point(170, 17);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(46, 29);
-            this.button9.TabIndex = 20;
-            this.button9.Text = "Act";
-            this.button9.UseVisualStyleBackColor = false;
+            this.CH_3_Act.BackColor = System.Drawing.Color.Gainsboro;
+            this.CH_3_Act.Location = new System.Drawing.Point(170, 17);
+            this.CH_3_Act.Name = "CH_3_Act";
+            this.CH_3_Act.Size = new System.Drawing.Size(46, 29);
+            this.CH_3_Act.TabIndex = 20;
+            this.CH_3_Act.Text = "Act";
+            this.CH_3_Act.UseVisualStyleBackColor = false;
             // 
-            // label4
+            // CH3_Value
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label4.Location = new System.Drawing.Point(22, 17);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(128, 31);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "18.75 *C";
+            this.CH3_Value.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.CH3_Value.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CH3_Value.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.CH3_Value.Location = new System.Drawing.Point(-2, 17);
+            this.CH3_Value.Name = "CH3_Value";
+            this.CH3_Value.Size = new System.Drawing.Size(166, 31);
+            this.CH3_Value.TabIndex = 2;
+            this.CH3_Value.Text = " -254.25 °C";
+            this.CH3_Value.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // button10
+            // CH_3_Max
             // 
-            this.button10.BackColor = System.Drawing.Color.White;
-            this.button10.Location = new System.Drawing.Point(222, 17);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(46, 29);
-            this.button10.TabIndex = 19;
-            this.button10.Text = "Max";
-            this.button10.UseVisualStyleBackColor = false;
+            this.CH_3_Max.BackColor = System.Drawing.Color.White;
+            this.CH_3_Max.Location = new System.Drawing.Point(222, 17);
+            this.CH_3_Max.Name = "CH_3_Max";
+            this.CH_3_Max.Size = new System.Drawing.Size(46, 29);
+            this.CH_3_Max.TabIndex = 19;
+            this.CH_3_Max.Text = "Max";
+            this.CH_3_Max.UseVisualStyleBackColor = false;
             // 
             // button11
             // 
@@ -1005,51 +1054,52 @@
             this.button12.Text = "Avg";
             this.button12.UseVisualStyleBackColor = false;
             // 
-            // groupBox2
+            // groupBoxCH2
             // 
-            this.groupBox2.Controls.Add(this.button5);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.button6);
-            this.groupBox2.Controls.Add(this.button8);
-            this.groupBox2.Controls.Add(this.button7);
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(17, 79);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(380, 56);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "CH2";
+            this.groupBoxCH2.Controls.Add(this.CH_2_Act);
+            this.groupBoxCH2.Controls.Add(this.CH2_Value);
+            this.groupBoxCH2.Controls.Add(this.CH_2_Max);
+            this.groupBoxCH2.Controls.Add(this.button8);
+            this.groupBoxCH2.Controls.Add(this.button7);
+            this.groupBoxCH2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxCH2.Location = new System.Drawing.Point(17, 79);
+            this.groupBoxCH2.Name = "groupBoxCH2";
+            this.groupBoxCH2.Size = new System.Drawing.Size(380, 56);
+            this.groupBoxCH2.TabIndex = 1;
+            this.groupBoxCH2.TabStop = false;
+            this.groupBoxCH2.Text = "CH2";
             // 
-            // button5
+            // CH_2_Act
             // 
-            this.button5.BackColor = System.Drawing.Color.Gainsboro;
-            this.button5.Location = new System.Drawing.Point(170, 17);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(46, 29);
-            this.button5.TabIndex = 16;
-            this.button5.Text = "Act";
-            this.button5.UseVisualStyleBackColor = false;
+            this.CH_2_Act.BackColor = System.Drawing.Color.Gainsboro;
+            this.CH_2_Act.Location = new System.Drawing.Point(170, 17);
+            this.CH_2_Act.Name = "CH_2_Act";
+            this.CH_2_Act.Size = new System.Drawing.Size(46, 29);
+            this.CH_2_Act.TabIndex = 16;
+            this.CH_2_Act.Text = "Act";
+            this.CH_2_Act.UseVisualStyleBackColor = false;
             // 
-            // label3
+            // CH2_Value
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Firebrick;
-            this.label3.Location = new System.Drawing.Point(6, 17);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(144, 31);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "123.25 *C";
+            this.CH2_Value.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.CH2_Value.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CH2_Value.ForeColor = System.Drawing.Color.Firebrick;
+            this.CH2_Value.Location = new System.Drawing.Point(-2, 17);
+            this.CH2_Value.Name = "CH2_Value";
+            this.CH2_Value.Size = new System.Drawing.Size(166, 31);
+            this.CH2_Value.TabIndex = 1;
+            this.CH2_Value.Text = " -254.25 °C";
+            this.CH2_Value.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // button6
+            // CH_2_Max
             // 
-            this.button6.BackColor = System.Drawing.Color.White;
-            this.button6.Location = new System.Drawing.Point(222, 17);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(46, 29);
-            this.button6.TabIndex = 15;
-            this.button6.Text = "Max";
-            this.button6.UseVisualStyleBackColor = false;
+            this.CH_2_Max.BackColor = System.Drawing.Color.White;
+            this.CH_2_Max.Location = new System.Drawing.Point(222, 17);
+            this.CH_2_Max.Name = "CH_2_Max";
+            this.CH_2_Max.Size = new System.Drawing.Size(46, 29);
+            this.CH_2_Max.TabIndex = 15;
+            this.CH_2_Max.Text = "Max";
+            this.CH_2_Max.UseVisualStyleBackColor = false;
             // 
             // button8
             // 
@@ -1071,42 +1121,42 @@
             this.button7.Text = "Min";
             this.button7.UseVisualStyleBackColor = false;
             // 
-            // groupBox1
+            // groupBoxCH1
             // 
-            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox1.Controls.Add(this.button29);
-            this.groupBox1.Controls.Add(this.button4);
-            this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.CH1_Value);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.ForeColor = System.Drawing.Color.Black;
-            this.groupBox1.Location = new System.Drawing.Point(17, 17);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(380, 56);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "CH1 - LDO Regulator";
+            this.groupBoxCH1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBoxCH1.Controls.Add(this.CH_1_Act);
+            this.groupBoxCH1.Controls.Add(this.CH_1_Max);
+            this.groupBoxCH1.Controls.Add(this.button3);
+            this.groupBoxCH1.Controls.Add(this.button2);
+            this.groupBoxCH1.Controls.Add(this.CH1_Value);
+            this.groupBoxCH1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxCH1.ForeColor = System.Drawing.Color.Black;
+            this.groupBoxCH1.Location = new System.Drawing.Point(17, 17);
+            this.groupBoxCH1.Name = "groupBoxCH1";
+            this.groupBoxCH1.Size = new System.Drawing.Size(380, 56);
+            this.groupBoxCH1.TabIndex = 0;
+            this.groupBoxCH1.TabStop = false;
+            this.groupBoxCH1.Text = "CH1";
             // 
-            // button29
+            // CH_1_Act
             // 
-            this.button29.BackColor = System.Drawing.Color.Gainsboro;
-            this.button29.Location = new System.Drawing.Point(170, 17);
-            this.button29.Name = "button29";
-            this.button29.Size = new System.Drawing.Size(46, 29);
-            this.button29.TabIndex = 12;
-            this.button29.Text = "Act";
-            this.button29.UseVisualStyleBackColor = false;
+            this.CH_1_Act.BackColor = System.Drawing.Color.Gainsboro;
+            this.CH_1_Act.Location = new System.Drawing.Point(170, 17);
+            this.CH_1_Act.Name = "CH_1_Act";
+            this.CH_1_Act.Size = new System.Drawing.Size(46, 29);
+            this.CH_1_Act.TabIndex = 12;
+            this.CH_1_Act.Text = "Act";
+            this.CH_1_Act.UseVisualStyleBackColor = false;
             // 
-            // button4
+            // CH_1_Max
             // 
-            this.button4.BackColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(222, 17);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(46, 29);
-            this.button4.TabIndex = 11;
-            this.button4.Text = "Max";
-            this.button4.UseVisualStyleBackColor = false;
+            this.CH_1_Max.BackColor = System.Drawing.Color.White;
+            this.CH_1_Max.Location = new System.Drawing.Point(222, 17);
+            this.CH_1_Max.Name = "CH_1_Max";
+            this.CH_1_Max.Size = new System.Drawing.Size(46, 29);
+            this.CH_1_Max.TabIndex = 11;
+            this.CH_1_Max.Text = "Max";
+            this.CH_1_Max.UseVisualStyleBackColor = false;
             // 
             // button3
             // 
@@ -1161,6 +1211,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.groupBox1);
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -1171,6 +1222,7 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.buttonDebugMode);
             this.tabPage4.Controls.Add(this.groupBox13);
             this.tabPage4.Controls.Add(this.groupBox12);
             this.tabPage4.Location = new System.Drawing.Point(4, 25);
@@ -1186,16 +1238,16 @@
             // 
             this.groupBox13.Controls.Add(this.buttonConnect);
             this.groupBox13.Controls.Add(this.comboBoxCOMs);
-            this.groupBox13.Location = new System.Drawing.Point(6, 483);
+            this.groupBox13.Location = new System.Drawing.Point(6, 383);
             this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(765, 100);
+            this.groupBox13.Size = new System.Drawing.Size(366, 200);
             this.groupBox13.TabIndex = 53;
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "Connection";
             // 
             // buttonConnect
             // 
-            this.buttonConnect.Location = new System.Drawing.Point(645, 60);
+            this.buttonConnect.Location = new System.Drawing.Point(233, 60);
             this.buttonConnect.Name = "buttonConnect";
             this.buttonConnect.Size = new System.Drawing.Size(114, 34);
             this.buttonConnect.TabIndex = 3;
@@ -1206,13 +1258,15 @@
             // comboBoxCOMs
             // 
             this.comboBoxCOMs.FormattingEnabled = true;
-            this.comboBoxCOMs.Location = new System.Drawing.Point(645, 21);
+            this.comboBoxCOMs.Location = new System.Drawing.Point(233, 21);
             this.comboBoxCOMs.Name = "comboBoxCOMs";
             this.comboBoxCOMs.Size = new System.Drawing.Size(114, 24);
             this.comboBoxCOMs.TabIndex = 2;
             // 
             // groupBox12
             // 
+            this.groupBox12.Controls.Add(this.labelErrors);
+            this.groupBox12.Controls.Add(this.label2);
             this.groupBox12.Controls.Add(this.CH1_Fault);
             this.groupBox12.Controls.Add(this.CH8_Binary);
             this.groupBox12.Controls.Add(this.CH7_Binary);
@@ -1279,6 +1333,120 @@
             this.groupBox12.TabIndex = 52;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "Frame";
+            // 
+            // CH1_Fault
+            // 
+            this.CH1_Fault.AutoSize = true;
+            this.CH1_Fault.Location = new System.Drawing.Point(558, 39);
+            this.CH1_Fault.Name = "CH1_Fault";
+            this.CH1_Fault.Size = new System.Drawing.Size(31, 16);
+            this.CH1_Fault.TabIndex = 68;
+            this.CH1_Fault.Text = "N/A";
+            this.CH1_Fault.Click += new System.EventHandler(this.CH1_Fault_Click);
+            // 
+            // CH8_Binary
+            // 
+            this.CH8_Binary.AutoSize = true;
+            this.CH8_Binary.Location = new System.Drawing.Point(312, 235);
+            this.CH8_Binary.Name = "CH8_Binary";
+            this.CH8_Binary.Size = new System.Drawing.Size(57, 16);
+            this.CH8_Binary.TabIndex = 67;
+            this.CH8_Binary.Text = "ERROR";
+            // 
+            // CH7_Binary
+            // 
+            this.CH7_Binary.AutoSize = true;
+            this.CH7_Binary.Location = new System.Drawing.Point(312, 207);
+            this.CH7_Binary.Name = "CH7_Binary";
+            this.CH7_Binary.Size = new System.Drawing.Size(57, 16);
+            this.CH7_Binary.TabIndex = 66;
+            this.CH7_Binary.Text = "ERROR";
+            // 
+            // CH6_Binary
+            // 
+            this.CH6_Binary.AutoSize = true;
+            this.CH6_Binary.Location = new System.Drawing.Point(312, 179);
+            this.CH6_Binary.Name = "CH6_Binary";
+            this.CH6_Binary.Size = new System.Drawing.Size(57, 16);
+            this.CH6_Binary.TabIndex = 65;
+            this.CH6_Binary.Text = "ERROR";
+            // 
+            // CH5_Binary
+            // 
+            this.CH5_Binary.AutoSize = true;
+            this.CH5_Binary.Location = new System.Drawing.Point(312, 151);
+            this.CH5_Binary.Name = "CH5_Binary";
+            this.CH5_Binary.Size = new System.Drawing.Size(57, 16);
+            this.CH5_Binary.TabIndex = 64;
+            this.CH5_Binary.Text = "ERROR";
+            // 
+            // CH4_Binary
+            // 
+            this.CH4_Binary.AutoSize = true;
+            this.CH4_Binary.Location = new System.Drawing.Point(312, 123);
+            this.CH4_Binary.Name = "CH4_Binary";
+            this.CH4_Binary.Size = new System.Drawing.Size(57, 16);
+            this.CH4_Binary.TabIndex = 63;
+            this.CH4_Binary.Text = "ERROR";
+            // 
+            // CH3_Binary
+            // 
+            this.CH3_Binary.AutoSize = true;
+            this.CH3_Binary.Location = new System.Drawing.Point(312, 95);
+            this.CH3_Binary.Name = "CH3_Binary";
+            this.CH3_Binary.Size = new System.Drawing.Size(57, 16);
+            this.CH3_Binary.TabIndex = 62;
+            this.CH3_Binary.Text = "ERROR";
+            // 
+            // CH2_Binary
+            // 
+            this.CH2_Binary.AutoSize = true;
+            this.CH2_Binary.Location = new System.Drawing.Point(312, 67);
+            this.CH2_Binary.Name = "CH2_Binary";
+            this.CH2_Binary.Size = new System.Drawing.Size(57, 16);
+            this.CH2_Binary.TabIndex = 61;
+            this.CH2_Binary.Text = "ERROR";
+            // 
+            // CH1_Binary
+            // 
+            this.CH1_Binary.AutoSize = true;
+            this.CH1_Binary.Location = new System.Drawing.Point(312, 39);
+            this.CH1_Binary.Name = "CH1_Binary";
+            this.CH1_Binary.Size = new System.Drawing.Size(225, 16);
+            this.CH1_Binary.TabIndex = 60;
+            this.CH1_Binary.Text = "0000000000000000000000000000000";
+            // 
+            // textBoxCalcCheckSum
+            // 
+            this.textBoxCalcCheckSum.Location = new System.Drawing.Point(692, 95);
+            this.textBoxCalcCheckSum.Name = "textBoxCalcCheckSum";
+            this.textBoxCalcCheckSum.Size = new System.Drawing.Size(65, 22);
+            this.textBoxCalcCheckSum.TabIndex = 59;
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(617, 73);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(140, 16);
+            this.label39.TabIndex = 58;
+            this.label39.Text = "CalculatedCheckSum:";
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(642, 20);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(115, 16);
+            this.label38.TabIndex = 57;
+            this.label38.Text = "FrameCheckSum:";
+            // 
+            // textBoxFrameCheckSum
+            // 
+            this.textBoxFrameCheckSum.Location = new System.Drawing.Point(692, 42);
+            this.textBoxFrameCheckSum.Name = "textBoxFrameCheckSum";
+            this.textBoxFrameCheckSum.Size = new System.Drawing.Size(65, 22);
+            this.textBoxFrameCheckSum.TabIndex = 56;
             // 
             // label30
             // 
@@ -1642,136 +1810,397 @@
             // 
             // labelConnectionStatus
             // 
-            this.labelConnectionStatus.AutoSize = true;
+            this.labelConnectionStatus.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.labelConnectionStatus.ForeColor = System.Drawing.Color.Maroon;
-            this.labelConnectionStatus.Location = new System.Drawing.Point(720, 633);
+            this.labelConnectionStatus.Location = new System.Drawing.Point(724, 633);
             this.labelConnectionStatus.Name = "labelConnectionStatus";
             this.labelConnectionStatus.Size = new System.Drawing.Size(73, 13);
             this.labelConnectionStatus.TabIndex = 1;
             this.labelConnectionStatus.Text = "Disconnected";
+            this.labelConnectionStatus.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // textBoxFrameCheckSum
-            // 
-            this.textBoxFrameCheckSum.Location = new System.Drawing.Point(692, 42);
-            this.textBoxFrameCheckSum.Name = "textBoxFrameCheckSum";
-            this.textBoxFrameCheckSum.Size = new System.Drawing.Size(65, 22);
-            this.textBoxFrameCheckSum.TabIndex = 56;
-            // 
-            // label38
-            // 
-            this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(642, 20);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(115, 16);
-            this.label38.TabIndex = 57;
-            this.label38.Text = "FrameCheckSum:";
-            // 
-            // label39
-            // 
-            this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(617, 73);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(140, 16);
-            this.label39.TabIndex = 58;
-            this.label39.Text = "CalculatedCheckSum:";
-            // 
-            // textBoxCalcCheckSum
-            // 
-            this.textBoxCalcCheckSum.Location = new System.Drawing.Point(692, 95);
-            this.textBoxCalcCheckSum.Name = "textBoxCalcCheckSum";
-            this.textBoxCalcCheckSum.Size = new System.Drawing.Size(65, 22);
-            this.textBoxCalcCheckSum.TabIndex = 59;
-            // 
-            // CH1_Binary
-            // 
-            this.CH1_Binary.AutoSize = true;
-            this.CH1_Binary.Location = new System.Drawing.Point(312, 39);
-            this.CH1_Binary.Name = "CH1_Binary";
-            this.CH1_Binary.Size = new System.Drawing.Size(225, 16);
-            this.CH1_Binary.TabIndex = 60;
-            this.CH1_Binary.Text = "0000000000000000000000000000000";
-            // 
-            // CH2_Binary
-            // 
-            this.CH2_Binary.AutoSize = true;
-            this.CH2_Binary.Location = new System.Drawing.Point(312, 67);
-            this.CH2_Binary.Name = "CH2_Binary";
-            this.CH2_Binary.Size = new System.Drawing.Size(57, 16);
-            this.CH2_Binary.TabIndex = 61;
-            this.CH2_Binary.Text = "ERROR";
-            // 
-            // CH3_Binary
-            // 
-            this.CH3_Binary.AutoSize = true;
-            this.CH3_Binary.Location = new System.Drawing.Point(312, 95);
-            this.CH3_Binary.Name = "CH3_Binary";
-            this.CH3_Binary.Size = new System.Drawing.Size(57, 16);
-            this.CH3_Binary.TabIndex = 62;
-            this.CH3_Binary.Text = "ERROR";
-            // 
-            // CH4_Binary
-            // 
-            this.CH4_Binary.AutoSize = true;
-            this.CH4_Binary.Location = new System.Drawing.Point(312, 123);
-            this.CH4_Binary.Name = "CH4_Binary";
-            this.CH4_Binary.Size = new System.Drawing.Size(57, 16);
-            this.CH4_Binary.TabIndex = 63;
-            this.CH4_Binary.Text = "ERROR";
-            // 
-            // CH5_Binary
-            // 
-            this.CH5_Binary.AutoSize = true;
-            this.CH5_Binary.Location = new System.Drawing.Point(312, 151);
-            this.CH5_Binary.Name = "CH5_Binary";
-            this.CH5_Binary.Size = new System.Drawing.Size(57, 16);
-            this.CH5_Binary.TabIndex = 64;
-            this.CH5_Binary.Text = "ERROR";
-            // 
-            // CH6_Binary
-            // 
-            this.CH6_Binary.AutoSize = true;
-            this.CH6_Binary.Location = new System.Drawing.Point(312, 179);
-            this.CH6_Binary.Name = "CH6_Binary";
-            this.CH6_Binary.Size = new System.Drawing.Size(57, 16);
-            this.CH6_Binary.TabIndex = 65;
-            this.CH6_Binary.Text = "ERROR";
-            // 
-            // CH7_Binary
-            // 
-            this.CH7_Binary.AutoSize = true;
-            this.CH7_Binary.Location = new System.Drawing.Point(312, 207);
-            this.CH7_Binary.Name = "CH7_Binary";
-            this.CH7_Binary.Size = new System.Drawing.Size(57, 16);
-            this.CH7_Binary.TabIndex = 66;
-            this.CH7_Binary.Text = "ERROR";
-            // 
-            // CH8_Binary
-            // 
-            this.CH8_Binary.AutoSize = true;
-            this.CH8_Binary.Location = new System.Drawing.Point(312, 235);
-            this.CH8_Binary.Name = "CH8_Binary";
-            this.CH8_Binary.Size = new System.Drawing.Size(57, 16);
-            this.CH8_Binary.TabIndex = 67;
-            this.CH8_Binary.Text = "ERROR";
-            // 
-            // CH1_Fault
-            // 
-            this.CH1_Fault.AutoSize = true;
-            this.CH1_Fault.Location = new System.Drawing.Point(558, 39);
-            this.CH1_Fault.Name = "CH1_Fault";
-            this.CH1_Fault.Size = new System.Drawing.Size(31, 16);
-            this.CH1_Fault.TabIndex = 68;
-            this.CH1_Fault.Text = "N/A";
-            this.CH1_Fault.Click += new System.EventHandler(this.CH1_Fault_Click);
-            // 
             // timer2
             // 
             this.timer2.Interval = 50;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
+            // buttonDebugMode
+            // 
+            this.buttonDebugMode.BackColor = System.Drawing.Color.PaleGreen;
+            this.buttonDebugMode.Location = new System.Drawing.Point(625, 546);
+            this.buttonDebugMode.Name = "buttonDebugMode";
+            this.buttonDebugMode.Size = new System.Drawing.Size(146, 37);
+            this.buttonDebugMode.TabIndex = 69;
+            this.buttonDebugMode.Text = "Enable Debug";
+            this.buttonDebugMode.UseVisualStyleBackColor = false;
+            this.buttonDebugMode.Click += new System.EventHandler(this.buttonDebugMode_Click);
+            // 
+            // timerRefresh
+            // 
+            this.timerRefresh.Interval = 10;
+            this.timerRefresh.Tick += new System.EventHandler(this.timerRefresh_Tick);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(642, 129);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(47, 16);
+            this.label2.TabIndex = 69;
+            this.label2.Text = "Errors:";
+            // 
+            // labelErrors
+            // 
+            this.labelErrors.AutoSize = true;
+            this.labelErrors.Location = new System.Drawing.Point(701, 129);
+            this.labelErrors.Name = "labelErrors";
+            this.labelErrors.Size = new System.Drawing.Size(15, 16);
+            this.labelErrors.TabIndex = 70;
+            this.labelErrors.Text = "0";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.buttonClearNames);
+            this.groupBox1.Controls.Add(this.buttonDefaultColors);
+            this.groupBox1.Controls.Add(this.textBoxColorCH8);
+            this.groupBox1.Controls.Add(this.comboBoxColorCH8);
+            this.groupBox1.Controls.Add(this.label41);
+            this.groupBox1.Controls.Add(this.textBoxNameCH8);
+            this.groupBox1.Controls.Add(this.textBoxColorCH7);
+            this.groupBox1.Controls.Add(this.comboBoxColorCH7);
+            this.groupBox1.Controls.Add(this.label40);
+            this.groupBox1.Controls.Add(this.textBoxNameCH7);
+            this.groupBox1.Controls.Add(this.textBoxColorCH6);
+            this.groupBox1.Controls.Add(this.comboBoxColorCH6);
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.textBoxNameCH6);
+            this.groupBox1.Controls.Add(this.textBoxColorCH5);
+            this.groupBox1.Controls.Add(this.comboBoxColorCH5);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.textBoxNameCH5);
+            this.groupBox1.Controls.Add(this.textBoxColorCH4);
+            this.groupBox1.Controls.Add(this.comboBoxColorCH4);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.textBoxNameCH4);
+            this.groupBox1.Controls.Add(this.textBoxColorCH3);
+            this.groupBox1.Controls.Add(this.comboBoxColorCH3);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.textBoxNameCH3);
+            this.groupBox1.Controls.Add(this.textBoxColorCH2);
+            this.groupBox1.Controls.Add(this.comboBoxColorCH2);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.textBoxNameCH2);
+            this.groupBox1.Controls.Add(this.textBoxColorCH1);
+            this.groupBox1.Controls.Add(this.comboBoxColorCH1);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.textBoxNameCH1);
+            this.groupBox1.Location = new System.Drawing.Point(6, 6);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(390, 577);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Channel Configuration";
+            // 
+            // textBoxNameCH1
+            // 
+            this.textBoxNameCH1.Location = new System.Drawing.Point(64, 54);
+            this.textBoxNameCH1.Name = "textBoxNameCH1";
+            this.textBoxNameCH1.Size = new System.Drawing.Size(136, 22);
+            this.textBoxNameCH1.TabIndex = 0;
+            this.textBoxNameCH1.TextChanged += new System.EventHandler(this.textBoxNameCH1_TextChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(21, 57);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(37, 16);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "CH1:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(152, 35);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(48, 16);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Name:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(319, 35);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(43, 16);
+            this.label5.TabIndex = 3;
+            this.label5.Text = "Color:";
+            // 
+            // comboBoxColorCH1
+            // 
+            this.comboBoxColorCH1.FormattingEnabled = true;
+            this.comboBoxColorCH1.Location = new System.Drawing.Point(234, 54);
+            this.comboBoxColorCH1.Name = "comboBoxColorCH1";
+            this.comboBoxColorCH1.Size = new System.Drawing.Size(128, 24);
+            this.comboBoxColorCH1.TabIndex = 4;
+            this.comboBoxColorCH1.SelectedIndexChanged += new System.EventHandler(this.comboBoxColorCH1_SelectedIndexChanged);
+            // 
+            // textBoxColorCH1
+            // 
+            this.textBoxColorCH1.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxColorCH1.Location = new System.Drawing.Point(206, 54);
+            this.textBoxColorCH1.Name = "textBoxColorCH1";
+            this.textBoxColorCH1.Size = new System.Drawing.Size(22, 22);
+            this.textBoxColorCH1.TabIndex = 5;
+            // 
+            // textBoxColorCH2
+            // 
+            this.textBoxColorCH2.Location = new System.Drawing.Point(206, 82);
+            this.textBoxColorCH2.Name = "textBoxColorCH2";
+            this.textBoxColorCH2.Size = new System.Drawing.Size(22, 22);
+            this.textBoxColorCH2.TabIndex = 9;
+            // 
+            // comboBoxColorCH2
+            // 
+            this.comboBoxColorCH2.FormattingEnabled = true;
+            this.comboBoxColorCH2.Location = new System.Drawing.Point(234, 82);
+            this.comboBoxColorCH2.Name = "comboBoxColorCH2";
+            this.comboBoxColorCH2.Size = new System.Drawing.Size(128, 24);
+            this.comboBoxColorCH2.TabIndex = 8;
+            this.comboBoxColorCH2.SelectedIndexChanged += new System.EventHandler(this.comboBoxColorCH2_SelectedIndexChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(21, 85);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(37, 16);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "CH2:";
+            // 
+            // textBoxNameCH2
+            // 
+            this.textBoxNameCH2.Location = new System.Drawing.Point(64, 82);
+            this.textBoxNameCH2.Name = "textBoxNameCH2";
+            this.textBoxNameCH2.Size = new System.Drawing.Size(136, 22);
+            this.textBoxNameCH2.TabIndex = 6;
+            // 
+            // textBoxColorCH3
+            // 
+            this.textBoxColorCH3.Location = new System.Drawing.Point(206, 110);
+            this.textBoxColorCH3.Name = "textBoxColorCH3";
+            this.textBoxColorCH3.Size = new System.Drawing.Size(22, 22);
+            this.textBoxColorCH3.TabIndex = 13;
+            // 
+            // comboBoxColorCH3
+            // 
+            this.comboBoxColorCH3.FormattingEnabled = true;
+            this.comboBoxColorCH3.Location = new System.Drawing.Point(234, 110);
+            this.comboBoxColorCH3.Name = "comboBoxColorCH3";
+            this.comboBoxColorCH3.Size = new System.Drawing.Size(128, 24);
+            this.comboBoxColorCH3.TabIndex = 12;
+            this.comboBoxColorCH3.SelectedIndexChanged += new System.EventHandler(this.comboBoxColorCH3_SelectedIndexChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(21, 113);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(37, 16);
+            this.label7.TabIndex = 11;
+            this.label7.Text = "CH3:";
+            // 
+            // textBoxNameCH3
+            // 
+            this.textBoxNameCH3.Location = new System.Drawing.Point(64, 110);
+            this.textBoxNameCH3.Name = "textBoxNameCH3";
+            this.textBoxNameCH3.Size = new System.Drawing.Size(136, 22);
+            this.textBoxNameCH3.TabIndex = 10;
+            // 
+            // textBoxColorCH4
+            // 
+            this.textBoxColorCH4.Location = new System.Drawing.Point(206, 138);
+            this.textBoxColorCH4.Name = "textBoxColorCH4";
+            this.textBoxColorCH4.Size = new System.Drawing.Size(22, 22);
+            this.textBoxColorCH4.TabIndex = 17;
+            // 
+            // comboBoxColorCH4
+            // 
+            this.comboBoxColorCH4.FormattingEnabled = true;
+            this.comboBoxColorCH4.Location = new System.Drawing.Point(234, 138);
+            this.comboBoxColorCH4.Name = "comboBoxColorCH4";
+            this.comboBoxColorCH4.Size = new System.Drawing.Size(128, 24);
+            this.comboBoxColorCH4.TabIndex = 16;
+            this.comboBoxColorCH4.SelectedIndexChanged += new System.EventHandler(this.comboBoxColorCH4_SelectedIndexChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(21, 141);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(37, 16);
+            this.label8.TabIndex = 15;
+            this.label8.Text = "CH4:";
+            // 
+            // textBoxNameCH4
+            // 
+            this.textBoxNameCH4.Location = new System.Drawing.Point(64, 138);
+            this.textBoxNameCH4.Name = "textBoxNameCH4";
+            this.textBoxNameCH4.Size = new System.Drawing.Size(136, 22);
+            this.textBoxNameCH4.TabIndex = 14;
+            // 
+            // textBoxColorCH5
+            // 
+            this.textBoxColorCH5.Location = new System.Drawing.Point(206, 166);
+            this.textBoxColorCH5.Name = "textBoxColorCH5";
+            this.textBoxColorCH5.Size = new System.Drawing.Size(22, 22);
+            this.textBoxColorCH5.TabIndex = 21;
+            // 
+            // comboBoxColorCH5
+            // 
+            this.comboBoxColorCH5.FormattingEnabled = true;
+            this.comboBoxColorCH5.Location = new System.Drawing.Point(234, 166);
+            this.comboBoxColorCH5.Name = "comboBoxColorCH5";
+            this.comboBoxColorCH5.Size = new System.Drawing.Size(128, 24);
+            this.comboBoxColorCH5.TabIndex = 20;
+            this.comboBoxColorCH5.SelectedIndexChanged += new System.EventHandler(this.comboBoxColorCH5_SelectedIndexChanged);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(21, 169);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(37, 16);
+            this.label9.TabIndex = 19;
+            this.label9.Text = "CH5:";
+            // 
+            // textBoxNameCH5
+            // 
+            this.textBoxNameCH5.Location = new System.Drawing.Point(64, 166);
+            this.textBoxNameCH5.Name = "textBoxNameCH5";
+            this.textBoxNameCH5.Size = new System.Drawing.Size(136, 22);
+            this.textBoxNameCH5.TabIndex = 18;
+            // 
+            // textBoxColorCH6
+            // 
+            this.textBoxColorCH6.Location = new System.Drawing.Point(206, 194);
+            this.textBoxColorCH6.Name = "textBoxColorCH6";
+            this.textBoxColorCH6.Size = new System.Drawing.Size(22, 22);
+            this.textBoxColorCH6.TabIndex = 25;
+            // 
+            // comboBoxColorCH6
+            // 
+            this.comboBoxColorCH6.FormattingEnabled = true;
+            this.comboBoxColorCH6.Location = new System.Drawing.Point(234, 194);
+            this.comboBoxColorCH6.Name = "comboBoxColorCH6";
+            this.comboBoxColorCH6.Size = new System.Drawing.Size(128, 24);
+            this.comboBoxColorCH6.TabIndex = 24;
+            this.comboBoxColorCH6.SelectedIndexChanged += new System.EventHandler(this.comboBoxColorCH6_SelectedIndexChanged);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(21, 197);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(37, 16);
+            this.label10.TabIndex = 23;
+            this.label10.Text = "CH6:";
+            // 
+            // textBoxNameCH6
+            // 
+            this.textBoxNameCH6.Location = new System.Drawing.Point(64, 194);
+            this.textBoxNameCH6.Name = "textBoxNameCH6";
+            this.textBoxNameCH6.Size = new System.Drawing.Size(136, 22);
+            this.textBoxNameCH6.TabIndex = 22;
+            // 
+            // textBoxColorCH7
+            // 
+            this.textBoxColorCH7.Location = new System.Drawing.Point(206, 222);
+            this.textBoxColorCH7.Name = "textBoxColorCH7";
+            this.textBoxColorCH7.Size = new System.Drawing.Size(22, 22);
+            this.textBoxColorCH7.TabIndex = 29;
+            // 
+            // comboBoxColorCH7
+            // 
+            this.comboBoxColorCH7.FormattingEnabled = true;
+            this.comboBoxColorCH7.Location = new System.Drawing.Point(234, 222);
+            this.comboBoxColorCH7.Name = "comboBoxColorCH7";
+            this.comboBoxColorCH7.Size = new System.Drawing.Size(128, 24);
+            this.comboBoxColorCH7.TabIndex = 28;
+            this.comboBoxColorCH7.SelectedIndexChanged += new System.EventHandler(this.comboBoxColorCH7_SelectedIndexChanged);
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(21, 225);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(37, 16);
+            this.label40.TabIndex = 27;
+            this.label40.Text = "CH7:";
+            // 
+            // textBoxNameCH7
+            // 
+            this.textBoxNameCH7.Location = new System.Drawing.Point(64, 222);
+            this.textBoxNameCH7.Name = "textBoxNameCH7";
+            this.textBoxNameCH7.Size = new System.Drawing.Size(136, 22);
+            this.textBoxNameCH7.TabIndex = 26;
+            // 
+            // textBoxColorCH8
+            // 
+            this.textBoxColorCH8.Location = new System.Drawing.Point(206, 250);
+            this.textBoxColorCH8.Name = "textBoxColorCH8";
+            this.textBoxColorCH8.Size = new System.Drawing.Size(22, 22);
+            this.textBoxColorCH8.TabIndex = 33;
+            // 
+            // comboBoxColorCH8
+            // 
+            this.comboBoxColorCH8.FormattingEnabled = true;
+            this.comboBoxColorCH8.Location = new System.Drawing.Point(234, 250);
+            this.comboBoxColorCH8.Name = "comboBoxColorCH8";
+            this.comboBoxColorCH8.Size = new System.Drawing.Size(128, 24);
+            this.comboBoxColorCH8.TabIndex = 32;
+            this.comboBoxColorCH8.SelectedIndexChanged += new System.EventHandler(this.comboBoxColorCH8_SelectedIndexChanged);
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Location = new System.Drawing.Point(21, 253);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(37, 16);
+            this.label41.TabIndex = 31;
+            this.label41.Text = "CH8:";
+            // 
+            // textBoxNameCH8
+            // 
+            this.textBoxNameCH8.Location = new System.Drawing.Point(64, 250);
+            this.textBoxNameCH8.Name = "textBoxNameCH8";
+            this.textBoxNameCH8.Size = new System.Drawing.Size(136, 22);
+            this.textBoxNameCH8.TabIndex = 30;
+            // 
+            // buttonDefaultColors
+            // 
+            this.buttonDefaultColors.Location = new System.Drawing.Point(234, 280);
+            this.buttonDefaultColors.Name = "buttonDefaultColors";
+            this.buttonDefaultColors.Size = new System.Drawing.Size(128, 23);
+            this.buttonDefaultColors.TabIndex = 34;
+            this.buttonDefaultColors.Text = "Default Colors";
+            this.buttonDefaultColors.UseVisualStyleBackColor = true;
+            this.buttonDefaultColors.Click += new System.EventHandler(this.buttonDefaultColors_Click);
+            // 
+            // buttonClearNames
+            // 
+            this.buttonClearNames.Location = new System.Drawing.Point(64, 280);
+            this.buttonClearNames.Name = "buttonClearNames";
+            this.buttonClearNames.Size = new System.Drawing.Size(136, 23);
+            this.buttonClearNames.TabIndex = 35;
+            this.buttonClearNames.Text = "Clear Names";
+            this.buttonClearNames.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -1788,36 +2217,30 @@
             this.groupBox11.ResumeLayout(false);
             this.groupBox11.PerformLayout();
             this.groupBox10.ResumeLayout(false);
-            this.groupBox10.PerformLayout();
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            this.groupBox8.ResumeLayout(false);
-            this.groupBox8.PerformLayout();
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
+            this.groupBoxCH8.ResumeLayout(false);
+            this.groupBoxCH7.ResumeLayout(false);
+            this.groupBoxCH6.ResumeLayout(false);
+            this.groupBoxCH5.ResumeLayout(false);
+            this.groupBoxCH4.ResumeLayout(false);
+            this.groupBoxCH3.ResumeLayout(false);
+            this.groupBoxCH2.ResumeLayout(false);
+            this.groupBoxCH1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.tabPage3.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             this.groupBox13.ResumeLayout(false);
             this.groupBox12.ResumeLayout(false);
             this.groupBox12.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -1829,28 +2252,28 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Label labelConnectionStatus;
-        private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBoxCH8;
+        private System.Windows.Forms.GroupBox groupBoxCH7;
+        private System.Windows.Forms.GroupBox groupBoxCH6;
+        private System.Windows.Forms.GroupBox groupBoxCH5;
+        private System.Windows.Forms.GroupBox groupBoxCH4;
+        private System.Windows.Forms.GroupBox groupBoxCH3;
+        private System.Windows.Forms.GroupBox groupBoxCH2;
         private System.Windows.Forms.GroupBox groupBox10;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label CHA_Value;
         private System.Windows.Forms.GroupBox groupBox9;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label CH8_Value;
+        private System.Windows.Forms.Label CH7_Value;
+        private System.Windows.Forms.Label CH6_Value;
+        private System.Windows.Forms.Label CH5_Value;
+        private System.Windows.Forms.Label CH4_Value;
+        private System.Windows.Forms.Label CH3_Value;
+        private System.Windows.Forms.Label CH2_Value;
+        private System.Windows.Forms.GroupBox groupBoxCH1;
         private System.Windows.Forms.Label CH1_Value;
         private System.Windows.Forms.Button buttonStart;
-        private System.Windows.Forms.Button button34;
-        private System.Windows.Forms.Button button35;
+        private System.Windows.Forms.Button CH_A_Act;
+        private System.Windows.Forms.Button CH_A_Max;
         private System.Windows.Forms.Button button37;
         private System.Windows.Forms.Button button36;
         private System.Windows.Forms.CheckBox checkBox1;
@@ -1861,36 +2284,36 @@
         private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button button30;
-        private System.Windows.Forms.Button button31;
+        private System.Windows.Forms.Button CH_8_Act;
+        private System.Windows.Forms.Button CH_8_Max;
         private System.Windows.Forms.Button button33;
         private System.Windows.Forms.Button button32;
-        private System.Windows.Forms.Button button25;
-        private System.Windows.Forms.Button button26;
+        private System.Windows.Forms.Button CH_7_Act;
+        private System.Windows.Forms.Button CH_7_Max;
         private System.Windows.Forms.Button button28;
         private System.Windows.Forms.Button button27;
-        private System.Windows.Forms.Button button21;
-        private System.Windows.Forms.Button button22;
+        private System.Windows.Forms.Button CH_6_Act;
+        private System.Windows.Forms.Button CH_6_Max;
         private System.Windows.Forms.Button button24;
         private System.Windows.Forms.Button button23;
-        private System.Windows.Forms.Button button17;
-        private System.Windows.Forms.Button button18;
+        private System.Windows.Forms.Button CH_5_Act;
+        private System.Windows.Forms.Button CH_5_Max;
         private System.Windows.Forms.Button button20;
         private System.Windows.Forms.Button button19;
-        private System.Windows.Forms.Button button13;
-        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Button CH_4_Act;
+        private System.Windows.Forms.Button CH_4_Max;
         private System.Windows.Forms.Button button15;
         private System.Windows.Forms.Button button16;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button CH_3_Act;
+        private System.Windows.Forms.Button CH_3_Max;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button CH_2_Act;
+        private System.Windows.Forms.Button CH_2_Max;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button29;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button CH_1_Act;
+        private System.Windows.Forms.Button CH_1_Max;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Timer timer1;
@@ -1980,6 +2403,47 @@
         private System.Windows.Forms.Label CH2_Binary;
         private System.Windows.Forms.Label CH1_Fault;
         private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.Button buttonDebugMode;
+        private System.Windows.Forms.Timer timerRefresh;
+        private System.Windows.Forms.Label labelErrors;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox textBoxColorCH8;
+        private System.Windows.Forms.ComboBox comboBoxColorCH8;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.TextBox textBoxNameCH8;
+        private System.Windows.Forms.TextBox textBoxColorCH7;
+        private System.Windows.Forms.ComboBox comboBoxColorCH7;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.TextBox textBoxNameCH7;
+        private System.Windows.Forms.TextBox textBoxColorCH6;
+        private System.Windows.Forms.ComboBox comboBoxColorCH6;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox textBoxNameCH6;
+        private System.Windows.Forms.TextBox textBoxColorCH5;
+        private System.Windows.Forms.ComboBox comboBoxColorCH5;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox textBoxNameCH5;
+        private System.Windows.Forms.TextBox textBoxColorCH4;
+        private System.Windows.Forms.ComboBox comboBoxColorCH4;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox textBoxNameCH4;
+        private System.Windows.Forms.TextBox textBoxColorCH3;
+        private System.Windows.Forms.ComboBox comboBoxColorCH3;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox textBoxNameCH3;
+        private System.Windows.Forms.TextBox textBoxColorCH2;
+        private System.Windows.Forms.ComboBox comboBoxColorCH2;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox textBoxNameCH2;
+        private System.Windows.Forms.TextBox textBoxColorCH1;
+        private System.Windows.Forms.ComboBox comboBoxColorCH1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBoxNameCH1;
+        private System.Windows.Forms.Button buttonClearNames;
+        private System.Windows.Forms.Button buttonDefaultColors;
     }
 }
 
