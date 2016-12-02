@@ -31,6 +31,8 @@ namespace ThermoCoupleLogger
         Channel_Data Channel6 = new Channel_Data();
         Channel_Data Channel7 = new Channel_Data();
         Channel_Data Channel8 = new Channel_Data();
+        Channel_Data ChannelA = new Channel_Data();
+
 
 
         public Form1()
@@ -58,6 +60,7 @@ namespace ThermoCoupleLogger
 
 
             DefaultColors();
+
 
             getAvailablePorts();
             tryToConnect();
@@ -621,12 +624,6 @@ namespace ThermoCoupleLogger
             UpdatePreview();
         }
 
-        private void textBoxNameCH1_TextChanged(object sender, EventArgs e)
-        {
-            Channel1.Name = textBoxNameCH1.Text;
-            groupBoxCH1.Text = "CH1 - " + Channel1.Name;
-        }
-
         private void comboBoxColorCH1_SelectedIndexChanged(object sender, EventArgs e)
         {
             string n = comboBoxColorCH1.Text;
@@ -729,6 +726,446 @@ namespace ThermoCoupleLogger
         private void buttonDefaultColors_Click(object sender, EventArgs e)
         {
             DefaultColors();
+        }
+
+
+
+
+
+
+        private void CH_1_Act_Click(object sender, EventArgs e)
+        {
+            Channel1.ViewSetting = 0;
+            CH_1_Act.BackColor = System.Drawing.Color.Gainsboro;
+            CH_1_Max.BackColor = System.Drawing.Color.White;
+            CH_1_Min.BackColor = System.Drawing.Color.White;
+            CH_1_Avg.BackColor = System.Drawing.Color.White;
+        }
+
+        private void CH_1_Max_Click(object sender, EventArgs e)
+        {
+            Channel1.ViewSetting = 1;
+            CH_1_Act.BackColor = System.Drawing.Color.White;
+            CH_1_Max.BackColor = System.Drawing.Color.Gainsboro;
+            CH_1_Min.BackColor = System.Drawing.Color.White;
+            CH_1_Avg.BackColor = System.Drawing.Color.White;
+        }
+
+        private void CH_1_Min_Click(object sender, EventArgs e)
+        {
+            Channel1.ViewSetting = 2;
+            CH_1_Act.BackColor = System.Drawing.Color.White;
+            CH_1_Max.BackColor = System.Drawing.Color.White;
+            CH_1_Min.BackColor = System.Drawing.Color.Gainsboro;
+            CH_1_Avg.BackColor = System.Drawing.Color.White;
+        }
+
+        private void CH_1_Avg_Click(object sender, EventArgs e)
+        {
+            Channel1.ViewSetting = 3;
+            CH_1_Act.BackColor = System.Drawing.Color.White;
+            CH_1_Max.BackColor = System.Drawing.Color.White;
+            CH_1_Min.BackColor = System.Drawing.Color.White;
+            CH_1_Avg.BackColor = System.Drawing.Color.Gainsboro;
+        }
+
+
+
+
+
+        private void CH_2_Act_Click(object sender, EventArgs e)
+        {
+            Channel2.ViewSetting = 0;
+            CH_2_Act.BackColor = System.Drawing.Color.Gainsboro;
+            CH_2_Max.BackColor = System.Drawing.Color.White;
+            CH_2_Min.BackColor = System.Drawing.Color.White;
+            CH_2_Avg.BackColor = System.Drawing.Color.White;
+        }
+
+        private void CH_2_Max_Click(object sender, EventArgs e)
+        {
+            Channel2.ViewSetting = 1;
+            CH_2_Act.BackColor = System.Drawing.Color.White;
+            CH_2_Max.BackColor = System.Drawing.Color.Gainsboro;
+            CH_2_Min.BackColor = System.Drawing.Color.White;
+            CH_2_Avg.BackColor = System.Drawing.Color.White;
+        }
+
+        private void CH_2_Min_Click(object sender, EventArgs e)
+        {
+            Channel2.ViewSetting = 2;
+            CH_2_Act.BackColor = System.Drawing.Color.White;
+            CH_2_Max.BackColor = System.Drawing.Color.White;
+            CH_2_Min.BackColor = System.Drawing.Color.Gainsboro;
+            CH_2_Avg.BackColor = System.Drawing.Color.White;
+        }
+
+        private void CH_2_Avg_Click(object sender, EventArgs e)
+        {
+            Channel2.ViewSetting = 3;
+            CH_2_Act.BackColor = System.Drawing.Color.White;
+            CH_2_Max.BackColor = System.Drawing.Color.White;
+            CH_2_Min.BackColor = System.Drawing.Color.White;
+            CH_2_Avg.BackColor = System.Drawing.Color.Gainsboro;
+        }
+
+
+
+        private void CH_3_Act_Click(object sender, EventArgs e)
+        {
+            Channel3.ViewSetting = 0;
+            CH_3_Act.BackColor = System.Drawing.Color.Gainsboro;
+            CH_3_Max.BackColor = System.Drawing.Color.White;
+            CH_3_Min.BackColor = System.Drawing.Color.White;
+            CH_3_Avg.BackColor = System.Drawing.Color.White;
+        }
+
+        private void CH_3_Max_Click(object sender, EventArgs e)
+        {
+            Channel3.ViewSetting = 1;
+            CH_3_Act.BackColor = System.Drawing.Color.White;
+            CH_3_Max.BackColor = System.Drawing.Color.Gainsboro;
+            CH_3_Min.BackColor = System.Drawing.Color.White;
+            CH_3_Avg.BackColor = System.Drawing.Color.White;
+        }
+
+        private void CH_3_Min_Click(object sender, EventArgs e)
+        {
+            Channel3.ViewSetting = 2;
+            CH_3_Act.BackColor = System.Drawing.Color.White;
+            CH_3_Max.BackColor = System.Drawing.Color.White;
+            CH_3_Min.BackColor = System.Drawing.Color.Gainsboro;
+            CH_3_Avg.BackColor = System.Drawing.Color.White;
+        }
+
+        private void CH_3_Avg_Click(object sender, EventArgs e)
+        {
+            Channel3.ViewSetting = 3;
+            CH_3_Act.BackColor = System.Drawing.Color.White;
+            CH_3_Max.BackColor = System.Drawing.Color.White;
+            CH_3_Min.BackColor = System.Drawing.Color.White;
+            CH_3_Avg.BackColor = System.Drawing.Color.Gainsboro;
+        }
+
+
+
+        private void CH_4_Act_Click(object sender, EventArgs e)
+        {
+            Channel4.ViewSetting = 0;
+            CH_4_Act.BackColor = System.Drawing.Color.Gainsboro;
+            CH_4_Max.BackColor = System.Drawing.Color.White;
+            CH_4_Min.BackColor = System.Drawing.Color.White;
+            CH_4_Avg.BackColor = System.Drawing.Color.White;
+        }
+
+        private void CH_4_Max_Click(object sender, EventArgs e)
+        {
+            Channel4.ViewSetting = 1;
+            CH_4_Act.BackColor = System.Drawing.Color.White;
+            CH_4_Max.BackColor = System.Drawing.Color.Gainsboro;
+            CH_4_Min.BackColor = System.Drawing.Color.White;
+            CH_4_Avg.BackColor = System.Drawing.Color.White;
+        }
+
+        private void CH_4_Min_Click(object sender, EventArgs e)
+        {
+            Channel4.ViewSetting = 2;
+            CH_4_Act.BackColor = System.Drawing.Color.White;
+            CH_4_Max.BackColor = System.Drawing.Color.White;
+            CH_4_Min.BackColor = System.Drawing.Color.Gainsboro;
+            CH_4_Avg.BackColor = System.Drawing.Color.White;
+        }
+
+        private void CH_4_Avg_Click(object sender, EventArgs e)
+        {
+            Channel4.ViewSetting = 3;
+            CH_4_Act.BackColor = System.Drawing.Color.White;
+            CH_4_Max.BackColor = System.Drawing.Color.White;
+            CH_4_Min.BackColor = System.Drawing.Color.White;
+            CH_4_Avg.BackColor = System.Drawing.Color.Gainsboro;
+        }
+
+
+
+    
+        private void CH_5_Act_Click(object sender, EventArgs e)
+        {
+            Channel5.ViewSetting = 0;
+            CH_5_Act.BackColor = System.Drawing.Color.Gainsboro;
+            CH_5_Max.BackColor = System.Drawing.Color.White;
+            CH_5_Min.BackColor = System.Drawing.Color.White;
+            CH_5_Avg.BackColor = System.Drawing.Color.White;
+        }
+
+        private void CH_5_Max_Click(object sender, EventArgs e)
+        {
+            Channel5.ViewSetting = 1;
+            CH_5_Act.BackColor = System.Drawing.Color.White;
+            CH_5_Max.BackColor = System.Drawing.Color.Gainsboro;
+            CH_5_Min.BackColor = System.Drawing.Color.White;
+            CH_5_Avg.BackColor = System.Drawing.Color.White;
+        }
+
+        private void CH_5_Min_Click(object sender, EventArgs e)
+        {
+            Channel5.ViewSetting = 2;
+            CH_5_Act.BackColor = System.Drawing.Color.White;
+            CH_5_Max.BackColor = System.Drawing.Color.White;
+            CH_5_Min.BackColor = System.Drawing.Color.Gainsboro;
+            CH_5_Avg.BackColor = System.Drawing.Color.White;
+        }
+
+        private void CH_5_Avg_Click(object sender, EventArgs e)
+        {
+            Channel5.ViewSetting = 3;
+            CH_5_Act.BackColor = System.Drawing.Color.White;
+            CH_5_Max.BackColor = System.Drawing.Color.White;
+            CH_5_Min.BackColor = System.Drawing.Color.White;
+            CH_5_Avg.BackColor = System.Drawing.Color.Gainsboro;
+        }
+
+
+
+        private void CH_6_Act_Click(object sender, EventArgs e)
+        {
+            Channel6.ViewSetting = 0;
+            CH_6_Act.BackColor = System.Drawing.Color.Gainsboro;
+            CH_6_Max.BackColor = System.Drawing.Color.White;
+            CH_6_Min.BackColor = System.Drawing.Color.White;
+            CH_6_Avg.BackColor = System.Drawing.Color.White;
+        }
+
+        private void CH_6_Max_Click(object sender, EventArgs e)
+        {
+            Channel6.ViewSetting = 1;
+            CH_6_Act.BackColor = System.Drawing.Color.White;
+            CH_6_Max.BackColor = System.Drawing.Color.Gainsboro;
+            CH_6_Min.BackColor = System.Drawing.Color.White;
+            CH_6_Avg.BackColor = System.Drawing.Color.White;
+        }
+
+        private void CH_6_Min_Click(object sender, EventArgs e)
+        {
+            Channel6.ViewSetting = 2;
+            CH_6_Act.BackColor = System.Drawing.Color.White;
+            CH_6_Max.BackColor = System.Drawing.Color.White;
+            CH_6_Min.BackColor = System.Drawing.Color.Gainsboro;
+            CH_6_Avg.BackColor = System.Drawing.Color.White;
+        }
+
+        private void CH_6_Avg_Click(object sender, EventArgs e)
+        {
+            Channel6.ViewSetting = 3;
+            CH_6_Act.BackColor = System.Drawing.Color.White;
+            CH_6_Max.BackColor = System.Drawing.Color.White;
+            CH_6_Min.BackColor = System.Drawing.Color.White;
+            CH_6_Avg.BackColor = System.Drawing.Color.Gainsboro;
+        }
+
+
+
+
+        private void CH_7_Act_Click(object sender, EventArgs e)
+        {
+            Channel7.ViewSetting = 0;
+            CH_7_Act.BackColor = System.Drawing.Color.Gainsboro;
+            CH_7_Max.BackColor = System.Drawing.Color.White;
+            CH_7_Min.BackColor = System.Drawing.Color.White;
+            CH_7_Avg.BackColor = System.Drawing.Color.White;
+        }
+
+        private void CH_7_Max_Click(object sender, EventArgs e)
+        {
+            Channel7.ViewSetting = 1;
+            CH_7_Act.BackColor = System.Drawing.Color.White;
+            CH_7_Max.BackColor = System.Drawing.Color.Gainsboro;
+            CH_7_Min.BackColor = System.Drawing.Color.White;
+            CH_7_Avg.BackColor = System.Drawing.Color.White;
+        }
+
+        private void CH_7_Min_Click(object sender, EventArgs e)
+        {
+            Channel7.ViewSetting = 2;
+            CH_7_Act.BackColor = System.Drawing.Color.White;
+            CH_7_Max.BackColor = System.Drawing.Color.White;
+            CH_7_Min.BackColor = System.Drawing.Color.Gainsboro;
+            CH_7_Avg.BackColor = System.Drawing.Color.White;
+        }
+
+        private void CH_7_Avg_Click(object sender, EventArgs e)
+        {
+            Channel7.ViewSetting = 3;
+            CH_7_Act.BackColor = System.Drawing.Color.White;
+            CH_7_Max.BackColor = System.Drawing.Color.White;
+            CH_7_Min.BackColor = System.Drawing.Color.White;
+            CH_7_Avg.BackColor = System.Drawing.Color.Gainsboro;
+        }
+
+
+
+
+        private void CH_8_Act_Click(object sender, EventArgs e)
+        {
+            Channel8.ViewSetting = 0;
+            CH_8_Act.BackColor = System.Drawing.Color.Gainsboro;
+            CH_8_Max.BackColor = System.Drawing.Color.White;
+            CH_8_Min.BackColor = System.Drawing.Color.White;
+            CH_8_Avg.BackColor = System.Drawing.Color.White;
+        }
+
+        private void CH_8_Max_Click(object sender, EventArgs e)
+        {
+            Channel8.ViewSetting = 1;
+            CH_8_Act.BackColor = System.Drawing.Color.White;
+            CH_8_Max.BackColor = System.Drawing.Color.Gainsboro;
+            CH_8_Min.BackColor = System.Drawing.Color.White;
+            CH_8_Avg.BackColor = System.Drawing.Color.White;
+        }
+
+        private void CH_8_Min_Click(object sender, EventArgs e)
+        {
+            Channel8.ViewSetting = 2;
+            CH_8_Act.BackColor = System.Drawing.Color.White;
+            CH_8_Max.BackColor = System.Drawing.Color.White;
+            CH_8_Min.BackColor = System.Drawing.Color.Gainsboro;
+            CH_8_Avg.BackColor = System.Drawing.Color.White;
+        }
+
+        private void CH_8_Avg_Click(object sender, EventArgs e)
+        {
+            Channel8.ViewSetting = 3;
+            CH_8_Act.BackColor = System.Drawing.Color.White;
+            CH_8_Max.BackColor = System.Drawing.Color.White;
+            CH_8_Min.BackColor = System.Drawing.Color.White;
+            CH_8_Avg.BackColor = System.Drawing.Color.Gainsboro;
+        }
+
+
+
+
+        private void CH_A_Act_Click(object sender, EventArgs e)
+        {
+            ChannelA.ViewSetting = 0;
+            CH_A_Act.BackColor = System.Drawing.Color.Gainsboro;
+            CH_A_Max.BackColor = System.Drawing.Color.White;
+            CH_A_Min.BackColor = System.Drawing.Color.White;
+            CH_A_Avg.BackColor = System.Drawing.Color.White;
+        }
+
+        private void CH_A_Max_Click(object sender, EventArgs e)
+        {
+            ChannelA.ViewSetting = 1;
+            CH_A_Act.BackColor = System.Drawing.Color.White;
+            CH_A_Max.BackColor = System.Drawing.Color.Gainsboro;
+            CH_A_Min.BackColor = System.Drawing.Color.White;
+            CH_A_Avg.BackColor = System.Drawing.Color.White;
+        }
+
+        private void CH_A_Min_Click(object sender, EventArgs e)
+        {
+            ChannelA.ViewSetting = 2;
+            CH_A_Act.BackColor = System.Drawing.Color.White;
+            CH_A_Max.BackColor = System.Drawing.Color.White;
+            CH_A_Min.BackColor = System.Drawing.Color.Gainsboro;
+            CH_A_Avg.BackColor = System.Drawing.Color.White;
+        }
+
+        private void CH_A_Avg_Click(object sender, EventArgs e)
+        {
+            ChannelA.ViewSetting = 3;
+            CH_A_Act.BackColor = System.Drawing.Color.White;
+            CH_A_Max.BackColor = System.Drawing.Color.White;
+            CH_A_Min.BackColor = System.Drawing.Color.White;
+            CH_A_Avg.BackColor = System.Drawing.Color.Gainsboro;
+        }
+
+
+        private void textBoxNameCH1_TextChanged(object sender, EventArgs e)
+        {
+            Channel1.Name = textBoxNameCH1.Text;
+            groupBoxCH1.Text = "CH1 - " + Channel1.Name;
+        }
+
+
+        private void textBoxNameCH2_TextChanged(object sender, EventArgs e)
+        {
+            Channel2.Name = textBoxNameCH2.Text;
+            groupBoxCH2.Text = "CH2 - " + Channel2.Name;
+        }
+
+        private void textBoxNameCH3_TextChanged(object sender, EventArgs e)
+        {
+            Channel3.Name = textBoxNameCH3.Text;
+            groupBoxCH3.Text = "CH3 - " + Channel3.Name;
+
+        }
+
+        private void textBoxNameCH4_TextChanged(object sender, EventArgs e)
+        {
+            Channel4.Name = textBoxNameCH4.Text;
+            groupBoxCH4.Text = "CH4 - " + Channel4.Name;
+        }
+
+        private void textBoxNameCH5_TextChanged(object sender, EventArgs e)
+        {
+            Channel5.Name = textBoxNameCH5.Text;
+            groupBoxCH5.Text = "CH5 - " + Channel5.Name;
+        }
+
+        private void textBoxNameCH6_TextChanged(object sender, EventArgs e)
+        {
+            Channel6.Name = textBoxNameCH6.Text;
+            groupBoxCH6.Text = "CH6 - " + Channel6.Name;
+        }
+
+        private void textBoxNameCH7_TextChanged(object sender, EventArgs e)
+        {
+            Channel7.Name = textBoxNameCH7.Text;
+            groupBoxCH7.Text = "CH7 - " + Channel7.Name;
+        }
+
+        private void textBoxNameCH8_TextChanged(object sender, EventArgs e)
+        {
+            Channel8.Name = textBoxNameCH8.Text;
+            groupBoxCH8.Text = "CH8 - " + Channel8.Name;
+        }
+
+
+        void ClearChannelNames()
+        {
+
+            Channel1.Name = "";
+            Channel2.Name = "";
+            Channel3.Name = "";
+            Channel4.Name = "";
+            Channel5.Name = "";
+            Channel6.Name = "";
+            Channel7.Name = "";
+            Channel8.Name = "";
+
+            textBoxNameCH1.Text = "";
+            textBoxNameCH2.Text = "";
+            textBoxNameCH3.Text = "";
+            textBoxNameCH4.Text = "";
+            textBoxNameCH5.Text = "";
+            textBoxNameCH6.Text = "";
+            textBoxNameCH7.Text = "";
+            textBoxNameCH8.Text = "";
+
+            groupBoxCH1.Text = "CH1 - " + Channel1.Name;
+            groupBoxCH2.Text = "CH2 - " + Channel2.Name;
+            groupBoxCH3.Text = "CH3 - " + Channel3.Name;
+            groupBoxCH4.Text = "CH4 - " + Channel4.Name;
+            groupBoxCH5.Text = "CH5 - " + Channel5.Name;
+            groupBoxCH6.Text = "CH6 - " + Channel6.Name;
+            groupBoxCH7.Text = "CH7 - " + Channel7.Name;
+            groupBoxCH8.Text = "CH8 - " + Channel8.Name;
+
+        }
+
+        private void buttonClearNames_Click(object sender, EventArgs e)
+        {
+            ClearChannelNames();
         }
     }
 }

@@ -10,14 +10,16 @@ namespace ThermoCoupleLogger
 
     public class Channel_Data
     {
-        public Int32 RawData;           // Actual Raw Data 
-        public string Name;             // Channel Name
-        public uint Fault;              // Channel Actual Faults
-        public uint ViewSetting;        // Display Preview as: Act, Max, Min, Avg
-        public decimal Temperature;     // Actual Temperature
-        public decimal JunctionTemp;    // Actual Junction Temperature
+        public uint Number;                     // Position in Array
+        public string Name;                     // Channel Name
 
-        public System.Drawing.Color Color = new System.Drawing.Color();
+        public Int32 RawData;                   // Actual Raw Data 
+        public uint Fault;                      // Channel Actual Faults
+        public uint ViewSetting = 0;            // Display Preview as: 0 = Act, 1 = Max, 2 = Min, 3 = Avg
+        public decimal Temperature;             // Actual Temperature
+        public decimal JunctionTemp;            // Actual Junction Temperature
+
+        public System.Drawing.Color Color = new System.Drawing.Color();     // Channel Color
 
     }
 }
