@@ -23,6 +23,9 @@ namespace ThermoCoupleLogger
         public uint ErrorFrames = 0;
 
 
+        public UInt32 ActualSampleNumber = 0;       // Actual Sample Number
+        public List<Sample> Samples = new List<Sample>();
+
         Channel_Data Channel1 = new Channel_Data();
         Channel_Data Channel2 = new Channel_Data();
         Channel_Data Channel3 = new Channel_Data();
@@ -66,6 +69,24 @@ namespace ThermoCoupleLogger
             tryToConnect();
         }
 
+
+        public void NewSample(Decimal CH1_Value, Decimal CH2_Value, Decimal CH3_Value, Decimal CH4_Value,
+                              Decimal CH5_Value, Decimal CH6_Value, Decimal CH7_Value, Decimal CH8_Value)
+        {
+            Samples.Add(new Sample()
+            { SampleNumber = ActualSampleNumber,
+                Channel1Values = CH1_Value,
+                Channel2Values = CH2_Value,
+                Channel3Values = CH3_Value,
+                Channel4Values = CH4_Value,
+                Channel5Values = CH5_Value,
+                Channel6Values = CH6_Value,
+                Channel7Values = CH7_Value,
+                Channel8Values = CH8_Value,
+            });
+        }
+
+
         void getAvailablePorts()
         {
             String[] ports = SerialPort.GetPortNames();
@@ -91,6 +112,16 @@ namespace ThermoCoupleLogger
                 labelConnectionStatus.ForeColor = System.Drawing.Color.Maroon;
                 timer2.Enabled = false;
             }
+        }
+
+
+        void registerData()
+        {
+            NewSample(Channel1.Temperature, Channel2.Temperature, Channel3.Temperature, Channel4.Temperature,
+            Channel5.Temperature, Channel6.Temperature, Channel7.Temperature, Channel8.Temperature);
+
+            ActualSampleNumber++;
+
         }
 
 
@@ -131,12 +162,12 @@ namespace ThermoCoupleLogger
                 
 
                 Channel1.Temperature = GetThermocoupleTemp(Channel1.RawData);
-                Channel1.NewSample(Channel1.Temperature);
+                
 
-                if (Channel1.Temperature > Channel1.MaxTemperature) Channel1.MaxTemperature = Channel1.Temperature;
-                if (Channel1.Temperature < Channel1.MinTemperature) Channel1.MinTemperature = Channel1.Temperature;
+                if (Channel1.Temperature > Channel1.MaxTemperature) Channel1.MaxTemperature = Channel1.Temperature;     // do porpawy
+                if (Channel1.Temperature < Channel1.MinTemperature) Channel1.MinTemperature = Channel1.Temperature;     // do poprawy
 
-                Channel1.ActualSampleNumber++;
+                
 
                 Channel2.Temperature = GetThermocoupleTemp(Channel2.RawData);
                 Channel3.Temperature = GetThermocoupleTemp(Channel3.RawData);
@@ -638,6 +669,36 @@ namespace ThermoCoupleLogger
         private void timerRefresh_Tick(object sender, EventArgs e)
         {
             UpdatePreview();
+
+            chart1.DataSource = Samples;
+
+            if(Channel1.Fault == 0) chart1.Series["CH1"].Enabled = true;
+            else chart1.Series["CH1"].Enabled = false;
+
+            if (Channel2.Fault == 0) chart1.Series["CH2"].Enabled = true;
+            else chart1.Series["CH2"].Enabled = false;
+
+            if (Channel3.Fault == 0) chart1.Series["CH3"].Enabled = true;
+            else chart1.Series["CH3"].Enabled = false;
+
+            if (Channel4.Fault == 0) chart1.Series["CH4"].Enabled = true;
+            else chart1.Series["CH4"].Enabled = false;
+
+            if (Channel5.Fault == 0) chart1.Series["CH5"].Enabled = true;
+            else chart1.Series["CH5"].Enabled = false;
+
+            if (Channel6.Fault == 0) chart1.Series["CH6"].Enabled = true;
+            else chart1.Series["CH6"].Enabled = false;
+
+            if (Channel7.Fault == 0) chart1.Series["CH7"].Enabled = true;
+            else chart1.Series["CH7"].Enabled = false;
+
+            if (Channel8.Fault == 0) chart1.Series["CH8"].Enabled = true;
+            else chart1.Series["CH8"].Enabled = false;
+
+
+            chart1.DataBind();
+            chart1.Update();
         }
 
         private void comboBoxColorCH1_SelectedIndexChanged(object sender, EventArgs e)
@@ -1187,11 +1248,16 @@ namespace ThermoCoupleLogger
         private void buttonA_Click(object sender, EventArgs e)
         {
 
-            foreach ( Sample aSample in Channel1.Samples)
+            foreach ( Sample aSample in Samples)
             {
                 richTextBoxTests.Text = aSample.ToString();
             }
 
+        }
+
+        private void x_Click(object sender, EventArgs e)
+        {
+            registerData();
         }
     }
 }

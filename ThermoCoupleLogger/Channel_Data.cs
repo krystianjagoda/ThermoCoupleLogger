@@ -10,7 +10,7 @@ namespace ThermoCoupleLogger
 
     public class Channel_Data
     {
-        public List<Sample> Samples = new List<Sample>();
+
 
         public string Name;                     // Channel Name
 
@@ -20,7 +20,6 @@ namespace ThermoCoupleLogger
 
         public System.Drawing.Color Color = new System.Drawing.Color();     // Channel Color
 
-        public UInt32 ActualSampleNumber = 0;       // Actual Sample Number
         public decimal MaxTemperature = 0;          // Maximum Temperature
         public decimal MinTemperature = 0;          // Minimum Temperature
         public decimal AvgTemperature = 0;          // Avarage Temperature
@@ -28,10 +27,7 @@ namespace ThermoCoupleLogger
         public decimal JunctionTemp = 0;            // Actual Junction Temperature
 
 
-        public void NewSample(Decimal SampleValue)
-        {
-            Samples.Add(new Sample() { SampleNumber = ActualSampleNumber, SampleValue = SampleValue});
-        }
+
 
         
         // Dodac dynamiczna macierz z danymi
@@ -43,8 +39,18 @@ namespace ThermoCoupleLogger
     public class Sample : IEquatable<Sample>
     {
 
+        
+
         public UInt32 SampleNumber { get; set; }
-        public Decimal SampleValue { get; set; }
+        public Decimal Channel1Values { get; set; }
+        public Decimal Channel2Values { get; set; }
+        public Decimal Channel3Values { get; set; }
+        public Decimal Channel4Values { get; set; }
+        public Decimal Channel5Values { get; set; }
+        public Decimal Channel6Values { get; set; }
+        public Decimal Channel7Values { get; set; }
+        public Decimal Channel8Values { get; set; }
+
 
 
         public override bool Equals(object obj)
@@ -57,7 +63,7 @@ namespace ThermoCoupleLogger
 
         public override string ToString()
         {
-            return "Sample" + SampleNumber + " = " + SampleValue;
+            return "Sample" + SampleNumber + " = " + Channel1Values;
         }
 
         public override int GetHashCode()
