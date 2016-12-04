@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Acquisition.cs" />
     <Compile Include="Channel_Data.cs" />
     <Compile Include="DataSample.cs" />
     <Compile Include="Form1.cs">
@@ -57,6 +58,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Initialization.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -70,6 +72,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\DataSources\Sample.datasource" />
     <None Include="Properties\Settings.settings">
@@ -87,6 +90,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Iconsmind-Outline-Temperature.ico" />
+    <None Include="Resources\Close-2-icon.png" />
+    <None Include="Resources\save.png" />
+    <None Include="Resources\Start-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

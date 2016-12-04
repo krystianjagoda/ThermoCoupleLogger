@@ -18,7 +18,7 @@ namespace ThermoCoupleLogger
     public partial class Form1 : Form
     {
 
-        public bool Logging = false;
+        
         public bool DebugMode = false;
         public uint ErrorFrames = 0;
 
@@ -26,6 +26,8 @@ namespace ThermoCoupleLogger
         public UInt32 ActualSampleNumber = 0;       // Actual Sample Number
         public List<Sample> Samples = new List<Sample>();
 
+
+        Acquisition Acquisition = new Acquisition();
         Channel_Data Channel1 = new Channel_Data();
         Channel_Data Channel2 = new Channel_Data();
         Channel_Data Channel3 = new Channel_Data();
@@ -47,8 +49,7 @@ namespace ThermoCoupleLogger
             timerRefresh.Enabled = true;
 
 
-
-                foreach (System.Reflection.PropertyInfo prop in typeof(Color).GetProperties())
+            foreach (System.Reflection.PropertyInfo prop in typeof(Color).GetProperties())
                 {
                     if (prop.PropertyType.FullName == "System.Drawing.Color")
                     comboBoxColorCH1.Items.Add(prop.Name);
@@ -103,14 +104,14 @@ namespace ThermoCoupleLogger
                 labelConnectionStatus.Text = "Connected";
                 labelConnectionStatus.ForeColor = System.Drawing.Color.Green;
                 buttonStart.Enabled = true;
-                timer2.Enabled = true;
+                timerRead.Enabled = true;
             }
             catch (UnauthorizedAccessException)
             {
                 textBox2.Text = "Unauthorized Acess";
                 labelConnectionStatus.Text = "Disconnected";
                 labelConnectionStatus.ForeColor = System.Drawing.Color.Maroon;
-                timer2.Enabled = false;
+                timerRead.Enabled = false;
             }
         }
 
@@ -624,18 +625,25 @@ namespace ThermoCoupleLogger
 
         private void buttonStart_Click(object sender, EventArgs e)
         {
-            Logging = !Logging;
-            timer1.Enabled = !timer1.Enabled;
+            Acquisition.Logging =  !Acquisition.Logging;
+            timerLogg.Interval = Acquisition.Period;
+            timerLogg.Enabled = !timerLogg.Enabled;
 
-            if (Logging == true)
+            if (Acquisition.Logging == true)
             {
+                if(Acquisition.Period < 50)
+                {
+                    timerRead.Interval = (int)Acquisition.Period;
+                }
+
                 buttonStart.Text = "Stop";
                 buttonStart.BackColor = System.Drawing.Color.IndianRed;
 
             }
 
-            if (Logging == false)
+            if (Acquisition.Logging == false)
             {
+                timerRead.Interval = 50;
                 buttonStart.Text = "Start";
                 buttonStart.BackColor = System.Drawing.Color.PaleGreen;
             }
@@ -666,14 +674,13 @@ namespace ThermoCoupleLogger
 
         }
 
-        private void timerRefresh_Tick(object sender, EventArgs e)
-        {
-            UpdatePreview();
 
+        public void UpdateChart()
+        {
             chart1.DataSource = Samples;
 
-            if(Channel1.Fault == 0) chart1.Series["CH1"].Enabled = true;
-            else chart1.Series["CH1"].Enabled = false;
+            if (Channel1.Fault == 0) chart1.Series["CH1"].Enabled = true;
+            else chart1.Series["CH1"].Enabled = false;           
 
             if (Channel2.Fault == 0) chart1.Series["CH2"].Enabled = true;
             else chart1.Series["CH2"].Enabled = false;
@@ -697,8 +704,24 @@ namespace ThermoCoupleLogger
             else chart1.Series["CH8"].Enabled = false;
 
 
+            chart1.Series["CH1"].Color = Channel1.Color;
+            chart1.Series["CH2"].Color = Channel2.Color;
+            chart1.Series["CH3"].Color = Channel3.Color;
+            chart1.Series["CH4"].Color = Channel4.Color;
+            chart1.Series["CH5"].Color = Channel5.Color;
+            chart1.Series["CH6"].Color = Channel6.Color;
+            chart1.Series["CH7"].Color = Channel7.Color;
+            chart1.Series["CH8"].Color = Channel8.Color;
+
             chart1.DataBind();
             chart1.Update();
+
+        }
+
+        private void timerRefresh_Tick(object sender, EventArgs e)
+        {
+            UpdatePreview();
+            UpdateChart();
         }
 
         private void comboBoxColorCH1_SelectedIndexChanged(object sender, EventArgs e)
@@ -813,37 +836,37 @@ namespace ThermoCoupleLogger
         private void CH_1_Act_Click(object sender, EventArgs e)
         {
             Channel1.ViewSetting = 0;
-            CH_1_Act.BackColor = System.Drawing.Color.Gainsboro;
-            CH_1_Max.BackColor = System.Drawing.Color.White;
-            CH_1_Min.BackColor = System.Drawing.Color.White;
-            CH_1_Avg.BackColor = System.Drawing.Color.White;
+            CH_1_Act.BackColor = System.Drawing.Color.White;
+            CH_1_Max.BackColor = System.Drawing.Color.Gainsboro;
+            CH_1_Min.BackColor = System.Drawing.Color.Gainsboro;
+            CH_1_Avg.BackColor = System.Drawing.Color.Gainsboro;
         }
 
         private void CH_1_Max_Click(object sender, EventArgs e)
         {
             Channel1.ViewSetting = 1;
-            CH_1_Act.BackColor = System.Drawing.Color.White;
-            CH_1_Max.BackColor = System.Drawing.Color.Gainsboro;
-            CH_1_Min.BackColor = System.Drawing.Color.White;
-            CH_1_Avg.BackColor = System.Drawing.Color.White;
+            CH_1_Act.BackColor = System.Drawing.Color.Gainsboro;
+            CH_1_Max.BackColor = System.Drawing.Color.White;
+            CH_1_Min.BackColor = System.Drawing.Color.Gainsboro;
+            CH_1_Avg.BackColor = System.Drawing.Color.Gainsboro;
         }
 
         private void CH_1_Min_Click(object sender, EventArgs e)
         {
             Channel1.ViewSetting = 2;
-            CH_1_Act.BackColor = System.Drawing.Color.White;
-            CH_1_Max.BackColor = System.Drawing.Color.White;
-            CH_1_Min.BackColor = System.Drawing.Color.Gainsboro;
-            CH_1_Avg.BackColor = System.Drawing.Color.White;
+            CH_1_Act.BackColor = System.Drawing.Color.Gainsboro;
+            CH_1_Max.BackColor = System.Drawing.Color.Gainsboro;
+            CH_1_Min.BackColor = System.Drawing.Color.White;
+            CH_1_Avg.BackColor = System.Drawing.Color.Gainsboro;
         }
 
         private void CH_1_Avg_Click(object sender, EventArgs e)
         {
             Channel1.ViewSetting = 3;
-            CH_1_Act.BackColor = System.Drawing.Color.White;
-            CH_1_Max.BackColor = System.Drawing.Color.White;
-            CH_1_Min.BackColor = System.Drawing.Color.White;
-            CH_1_Avg.BackColor = System.Drawing.Color.Gainsboro;
+            CH_1_Act.BackColor = System.Drawing.Color.Gainsboro;
+            CH_1_Max.BackColor = System.Drawing.Color.Gainsboro;
+            CH_1_Min.BackColor = System.Drawing.Color.Gainsboro;
+            CH_1_Avg.BackColor = System.Drawing.Color.White;
         }
 
 
@@ -1258,6 +1281,44 @@ namespace ThermoCoupleLogger
         private void x_Click(object sender, EventArgs e)
         {
             registerData();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label25_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void periodmSec_ValueChanged(object sender, EventArgs e)
+        {
+            Acquisition.mSec = periodmSec.Value;
+            Acquisition.CalculatePeriod();
+        }
+
+        private void periodSec_ValueChanged(object sender, EventArgs e)
+        {
+            Acquisition.Sec = periodSec.Value;
+            Acquisition.CalculatePeriod();
+        }
+
+        private void periodMin_ValueChanged(object sender, EventArgs e)
+        {
+            Acquisition.Min = periodMin.Value;
+            Acquisition.CalculatePeriod();
+        }
+
+        private void timerLogg_Tick(object sender, EventArgs e)
+        {
+            registerData();
+        }
+
+        private void timerRead_Tick(object sender, EventArgs e)
+        {
+            getData();
         }
     }
 }
