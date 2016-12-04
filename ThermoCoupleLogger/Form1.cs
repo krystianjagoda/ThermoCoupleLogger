@@ -128,7 +128,16 @@ namespace ThermoCoupleLogger
                 Channel7.RawData = ((Int32)ReceivedFrame[25] << 24) + ((Int32)ReceivedFrame[26] << 16) + ((Int32)ReceivedFrame[27] << 8) + ReceivedFrame[28];
                 Channel8.RawData = ((Int32)ReceivedFrame[29] << 24) + ((Int32)ReceivedFrame[30] << 16) + ((Int32)ReceivedFrame[31] << 8) + ReceivedFrame[32];
 
+                
+
                 Channel1.Temperature = GetThermocoupleTemp(Channel1.RawData);
+                Channel1.NewSample(Channel1.Temperature);
+
+                if (Channel1.Temperature > Channel1.MaxTemperature) Channel1.MaxTemperature = Channel1.Temperature;
+                if (Channel1.Temperature < Channel1.MinTemperature) Channel1.MinTemperature = Channel1.Temperature;
+
+                Channel1.ActualSampleNumber++;
+
                 Channel2.Temperature = GetThermocoupleTemp(Channel2.RawData);
                 Channel3.Temperature = GetThermocoupleTemp(Channel3.RawData);
                 Channel4.Temperature = GetThermocoupleTemp(Channel4.RawData);
@@ -136,6 +145,8 @@ namespace ThermoCoupleLogger
                 Channel6.Temperature = GetThermocoupleTemp(Channel6.RawData);
                 Channel7.Temperature = GetThermocoupleTemp(Channel7.RawData);
                 Channel8.Temperature = GetThermocoupleTemp(Channel8.RawData);
+
+
 
                 Channel1.JunctionTemp = GetInternalTemp(Channel1.RawData);
                 Channel2.JunctionTemp = GetInternalTemp(Channel2.RawData);
@@ -231,7 +242,12 @@ namespace ThermoCoupleLogger
                     groupBoxCH1.Enabled = true;
                     CH1_Value.TextAlign = ContentAlignment.MiddleRight;
                     CH1_Value.ForeColor = Channel1.Color;
-                    CH1_Value.Text = Channel1.Temperature.ToString() + " °C";
+
+                    if(Channel1.ViewSetting == 0) CH1_Value.Text = Channel1.Temperature.ToString() + " °C";
+                    else if(Channel1.ViewSetting == 1) CH1_Value.Text = Channel1.MaxTemperature.ToString() + " °C";
+                    else if (Channel1.ViewSetting == 2) CH1_Value.Text = Channel1.MinTemperature.ToString() + " °C";
+                    else if (Channel1.ViewSetting == 3) CH1_Value.Text = Channel1.AvgTemperature.ToString() + " °C";
+                    else CH1_Value.Text = "Error";
                     break;
                 case 1:
                     groupBoxCH1.Enabled = false;
@@ -1166,6 +1182,16 @@ namespace ThermoCoupleLogger
         private void buttonClearNames_Click(object sender, EventArgs e)
         {
             ClearChannelNames();
+        }
+
+        private void buttonA_Click(object sender, EventArgs e)
+        {
+
+            foreach ( Sample aSample in Channel1.Samples)
+            {
+                richTextBoxTests.Text = aSample.ToString();
+            }
+
         }
     }
 }
