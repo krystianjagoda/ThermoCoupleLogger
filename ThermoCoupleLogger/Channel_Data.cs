@@ -17,6 +17,7 @@ namespace ThermoCoupleLogger
         public Int32 RawData;                   // Actual Raw Data 
         public uint Fault;                      // Channel Actual Faults
         public uint ViewSetting = 0;            // Display Preview as: 0 = Act, 1 = Max, 2 = Min, 3 = Avg
+        public bool ShowOnScope = false;         // Show channel on Chart   
 
         public System.Drawing.Color Color = new System.Drawing.Color();     // Channel Color
 
@@ -42,6 +43,7 @@ namespace ThermoCoupleLogger
         
 
         public UInt32 SampleNumber { get; set; }
+        public String  SampleTime { get; set; }
         public Decimal Channel1Values { get; set; }
         public Decimal Channel2Values { get; set; }
         public Decimal Channel3Values { get; set; }

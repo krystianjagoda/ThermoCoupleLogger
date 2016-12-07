@@ -29,16 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series17 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series18 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series19 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series20 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series21 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series22 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series23 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series24 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.labelConnectionStatus = new System.Windows.Forms.Label();
@@ -114,7 +113,9 @@
             this.Data8C = new System.Windows.Forms.TextBox();
             this.Data8B = new System.Windows.Forms.TextBox();
             this.tabSettings = new System.Windows.Forms.TabPage();
+            this.label25 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.button7 = new System.Windows.Forms.Button();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
             this.buttonConnect = new System.Windows.Forms.Button();
@@ -181,22 +182,12 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column_No = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_Time = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_CH1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_CH2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_CH3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_CH4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_CH5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_CH6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_CH7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_CH8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.button8 = new System.Windows.Forms.Button();
             this.label21 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
+            this.labelTimeToNext = new System.Windows.Forms.Label();
             this.buttonStart = new System.Windows.Forms.Button();
-            this.label24 = new System.Windows.Forms.Label();
+            this.labelTimeLeft = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
@@ -255,9 +246,28 @@
             this.CH1_Value = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabGraph = new System.Windows.Forms.TabPage();
+            this.checkBoxPlotCH1 = new System.Windows.Forms.CheckBox();
             this.button6 = new System.Windows.Forms.Button();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.timer100ms = new System.Windows.Forms.Timer(this.components);
+            this.checkBoxPlotCH2 = new System.Windows.Forms.CheckBox();
+            this.checkBoxPlotCH3 = new System.Windows.Forms.CheckBox();
+            this.checkBoxPlotCH4 = new System.Windows.Forms.CheckBox();
+            this.checkBoxPlotCH5 = new System.Windows.Forms.CheckBox();
+            this.checkBoxPlotCH6 = new System.Windows.Forms.CheckBox();
+            this.checkBoxPlotCH7 = new System.Windows.Forms.CheckBox();
+            this.checkBoxPlotCH8 = new System.Windows.Forms.CheckBox();
             this.sampleBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.sampleNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sampleTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.channel1ValuesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.channel2ValuesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.channel3ValuesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.channel4ValuesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.channel5ValuesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.channel6ValuesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.channel7ValuesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.channel8ValuesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabDebug.SuspendLayout();
             this.groupBox12.SuspendLayout();
             this.tabSettings.SuspendLayout();
@@ -290,9 +300,9 @@
             // 
             this.labelConnectionStatus.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.labelConnectionStatus.ForeColor = System.Drawing.Color.Maroon;
-            this.labelConnectionStatus.Location = new System.Drawing.Point(1102, 3);
+            this.labelConnectionStatus.Location = new System.Drawing.Point(1076, 3);
             this.labelConnectionStatus.Name = "labelConnectionStatus";
-            this.labelConnectionStatus.Size = new System.Drawing.Size(73, 13);
+            this.labelConnectionStatus.Size = new System.Drawing.Size(99, 13);
             this.labelConnectionStatus.TabIndex = 1;
             this.labelConnectionStatus.Text = "Disconnected";
             this.labelConnectionStatus.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -309,7 +319,7 @@
             // 
             // timerRefresh
             // 
-            this.timerRefresh.Interval = 10;
+            this.timerRefresh.Interval = 20;
             this.timerRefresh.Tick += new System.EventHandler(this.timerRefresh_Tick);
             // 
             // tabDebug
@@ -932,7 +942,9 @@
             // 
             // tabSettings
             // 
+            this.tabSettings.Controls.Add(this.label25);
             this.tabSettings.Controls.Add(this.button3);
+            this.tabSettings.Controls.Add(this.linkLabel1);
             this.tabSettings.Controls.Add(this.button7);
             this.tabSettings.Controls.Add(this.groupBox13);
             this.tabSettings.Controls.Add(this.groupBox9);
@@ -945,6 +957,15 @@
             this.tabSettings.Text = "Settings";
             this.tabSettings.UseVisualStyleBackColor = true;
             // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(6, 621);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(158, 16);
+            this.label25.TabIndex = 1;
+            this.label25.Text = "Version: 0.03 - 2016-12-04";
+            // 
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.White;
@@ -954,6 +975,16 @@
             this.button3.TabIndex = 57;
             this.button3.Text = "Save Settings";
             this.button3.UseVisualStyleBackColor = false;
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(170, 621);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(173, 16);
+            this.linkLabel1.TabIndex = 0;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "krystianjagoda@gmail.com";
             // 
             // button7
             // 
@@ -970,16 +1001,16 @@
             // 
             this.groupBox13.Controls.Add(this.buttonConnect);
             this.groupBox13.Controls.Add(this.comboBoxCOMs);
-            this.groupBox13.Location = new System.Drawing.Point(605, 254);
+            this.groupBox13.Location = new System.Drawing.Point(402, 360);
             this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(143, 200);
+            this.groupBox13.Size = new System.Drawing.Size(365, 235);
             this.groupBox13.TabIndex = 54;
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "Connection";
             // 
             // buttonConnect
             // 
-            this.buttonConnect.Location = new System.Drawing.Point(6, 60);
+            this.buttonConnect.Location = new System.Drawing.Point(228, 15);
             this.buttonConnect.Name = "buttonConnect";
             this.buttonConnect.Size = new System.Drawing.Size(129, 34);
             this.buttonConnect.TabIndex = 3;
@@ -1018,7 +1049,7 @@
             this.groupBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox9.Location = new System.Drawing.Point(402, 6);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(346, 242);
+            this.groupBox9.Size = new System.Drawing.Size(346, 348);
             this.groupBox9.TabIndex = 3;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Acquisition Settings";
@@ -1253,7 +1284,7 @@
             this.groupBox1.Controls.Add(this.textBoxNameCH1);
             this.groupBox1.Location = new System.Drawing.Point(6, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(390, 485);
+            this.groupBox1.Size = new System.Drawing.Size(390, 589);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Channel Configuration";
@@ -1621,102 +1652,36 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column_No,
-            this.Column_Time,
-            this.Column_CH1,
-            this.Column_CH2,
-            this.Column_CH3,
-            this.Column_CH4,
-            this.Column_CH5,
-            this.Column_CH6,
-            this.Column_CH7,
-            this.Column_CH8});
+            this.sampleNumberDataGridViewTextBoxColumn,
+            this.sampleTimeDataGridViewTextBoxColumn,
+            this.channel1ValuesDataGridViewTextBoxColumn,
+            this.channel2ValuesDataGridViewTextBoxColumn,
+            this.channel3ValuesDataGridViewTextBoxColumn,
+            this.channel4ValuesDataGridViewTextBoxColumn,
+            this.channel5ValuesDataGridViewTextBoxColumn,
+            this.channel6ValuesDataGridViewTextBoxColumn,
+            this.channel7ValuesDataGridViewTextBoxColumn,
+            this.channel8ValuesDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.sampleBindingSource1;
             this.dataGridView1.Location = new System.Drawing.Point(6, 6);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(761, 589);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // Column_No
-            // 
-            this.Column_No.Frozen = true;
-            this.Column_No.HeaderText = "Sample Number";
-            this.Column_No.Name = "Column_No";
-            this.Column_No.ReadOnly = true;
-            this.Column_No.Width = 70;
-            // 
-            // Column_Time
-            // 
-            this.Column_Time.Frozen = true;
-            this.Column_Time.HeaderText = "Time [HH:MM:SS]";
-            this.Column_Time.Name = "Column_Time";
-            this.Column_Time.ReadOnly = true;
-            // 
-            // Column_CH1
-            // 
-            this.Column_CH1.Frozen = true;
-            this.Column_CH1.HeaderText = "CH1 [°C]";
-            this.Column_CH1.Name = "Column_CH1";
-            this.Column_CH1.Width = 65;
-            // 
-            // Column_CH2
-            // 
-            this.Column_CH2.Frozen = true;
-            this.Column_CH2.HeaderText = "CH2 [°C]";
-            this.Column_CH2.Name = "Column_CH2";
-            this.Column_CH2.Width = 65;
-            // 
-            // Column_CH3
-            // 
-            this.Column_CH3.Frozen = true;
-            this.Column_CH3.HeaderText = "CH3 [°C]";
-            this.Column_CH3.Name = "Column_CH3";
-            this.Column_CH3.Width = 65;
-            // 
-            // Column_CH4
-            // 
-            this.Column_CH4.Frozen = true;
-            this.Column_CH4.HeaderText = "CH4 [°C]";
-            this.Column_CH4.Name = "Column_CH4";
-            this.Column_CH4.Width = 65;
-            // 
-            // Column_CH5
-            // 
-            this.Column_CH5.Frozen = true;
-            this.Column_CH5.HeaderText = "CH5 [°C]";
-            this.Column_CH5.Name = "Column_CH5";
-            this.Column_CH5.Width = 65;
-            // 
-            // Column_CH6
-            // 
-            this.Column_CH6.Frozen = true;
-            this.Column_CH6.HeaderText = "CH6 [°C]";
-            this.Column_CH6.Name = "Column_CH6";
-            this.Column_CH6.Width = 65;
-            // 
-            // Column_CH7
-            // 
-            this.Column_CH7.Frozen = true;
-            this.Column_CH7.HeaderText = "CH7 [°C]";
-            this.Column_CH7.Name = "Column_CH7";
-            this.Column_CH7.Width = 65;
-            // 
-            // Column_CH8
-            // 
-            this.Column_CH8.Frozen = true;
-            this.Column_CH8.HeaderText = "CH8 [°C]";
-            this.Column_CH8.Name = "Column_CH8";
-            this.Column_CH8.Width = 65;
             // 
             // groupBox11
             // 
             this.groupBox11.Controls.Add(this.button8);
             this.groupBox11.Controls.Add(this.label21);
-            this.groupBox11.Controls.Add(this.label26);
+            this.groupBox11.Controls.Add(this.labelTimeToNext);
             this.groupBox11.Controls.Add(this.buttonStart);
-            this.groupBox11.Controls.Add(this.label24);
+            this.groupBox11.Controls.Add(this.labelTimeLeft);
             this.groupBox11.Controls.Add(this.label23);
             this.groupBox11.Controls.Add(this.label22);
             this.groupBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1750,16 +1715,16 @@
             this.label21.TabIndex = 26;
             this.label21.Text = "Samples:";
             // 
-            // label26
+            // labelTimeToNext
             // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label26.Location = new System.Drawing.Point(192, 18);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(128, 31);
-            this.label26.TabIndex = 25;
-            this.label26.Text = "00:00:25";
+            this.labelTimeToNext.AutoSize = true;
+            this.labelTimeToNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTimeToNext.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.labelTimeToNext.Location = new System.Drawing.Point(192, 18);
+            this.labelTimeToNext.Name = "labelTimeToNext";
+            this.labelTimeToNext.Size = new System.Drawing.Size(153, 31);
+            this.labelTimeToNext.TabIndex = 25;
+            this.labelTimeToNext.Text = "00:00:25.3";
             // 
             // buttonStart
             // 
@@ -1773,16 +1738,16 @@
             this.buttonStart.UseVisualStyleBackColor = false;
             this.buttonStart.Click += new System.EventHandler(this.buttonStart_Click);
             // 
-            // label24
+            // labelTimeLeft
             // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label24.Location = new System.Drawing.Point(90, 45);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(56, 16);
-            this.label24.TabIndex = 23;
-            this.label24.Text = "00:34:25";
+            this.labelTimeLeft.AutoSize = true;
+            this.labelTimeLeft.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTimeLeft.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.labelTimeLeft.Location = new System.Drawing.Point(90, 45);
+            this.labelTimeLeft.Name = "labelTimeLeft";
+            this.labelTimeLeft.Size = new System.Drawing.Size(56, 16);
+            this.labelTimeLeft.TabIndex = 23;
+            this.labelTimeLeft.Text = "00:34:25";
             // 
             // label23
             // 
@@ -2464,6 +2429,14 @@
             // 
             // tabGraph
             // 
+            this.tabGraph.Controls.Add(this.checkBoxPlotCH8);
+            this.tabGraph.Controls.Add(this.checkBoxPlotCH7);
+            this.tabGraph.Controls.Add(this.checkBoxPlotCH6);
+            this.tabGraph.Controls.Add(this.checkBoxPlotCH5);
+            this.tabGraph.Controls.Add(this.checkBoxPlotCH4);
+            this.tabGraph.Controls.Add(this.checkBoxPlotCH3);
+            this.tabGraph.Controls.Add(this.checkBoxPlotCH2);
+            this.tabGraph.Controls.Add(this.checkBoxPlotCH1);
             this.tabGraph.Controls.Add(this.button6);
             this.tabGraph.Controls.Add(this.chart1);
             this.tabGraph.Location = new System.Drawing.Point(4, 29);
@@ -2473,6 +2446,19 @@
             this.tabGraph.TabIndex = 4;
             this.tabGraph.Text = "Graph";
             this.tabGraph.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxPlotCH1
+            // 
+            this.checkBoxPlotCH1.AutoSize = true;
+            this.checkBoxPlotCH1.Enabled = false;
+            this.checkBoxPlotCH1.ForeColor = System.Drawing.Color.DarkGoldenrod;
+            this.checkBoxPlotCH1.Location = new System.Drawing.Point(703, 16);
+            this.checkBoxPlotCH1.Name = "checkBoxPlotCH1";
+            this.checkBoxPlotCH1.Size = new System.Drawing.Size(53, 20);
+            this.checkBoxPlotCH1.TabIndex = 7;
+            this.checkBoxPlotCH1.Text = "CH1";
+            this.checkBoxPlotCH1.UseVisualStyleBackColor = true;
+            this.checkBoxPlotCH1.CheckedChanged += new System.EventHandler(this.checkBoxPlotCH1_CheckedChanged);
             // 
             // button6
             // 
@@ -2486,87 +2472,250 @@
             // 
             // chart1
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea3);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
             this.chart1.DataSource = this.sampleBindingSource1;
-            legend3.Name = "Legend1";
-            this.chart1.Legends.Add(legend3);
             this.chart1.Location = new System.Drawing.Point(6, 6);
             this.chart1.Name = "chart1";
-            series17.BorderWidth = 3;
-            series17.ChartArea = "ChartArea1";
-            series17.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series17.Color = System.Drawing.Color.DarkGoldenrod;
-            series17.Legend = "Legend1";
-            series17.Name = "CH1";
-            series17.XValueMember = "SampleNumber";
-            series17.YValueMembers = "Channel1Values";
-            series18.BorderWidth = 3;
-            series18.ChartArea = "ChartArea1";
-            series18.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series18.Color = System.Drawing.Color.Firebrick;
-            series18.Legend = "Legend1";
-            series18.Name = "CH2";
-            series18.XValueMember = "SampleNumber";
-            series18.YValueMembers = "Channel2Values";
-            series19.BorderWidth = 3;
-            series19.ChartArea = "ChartArea1";
-            series19.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series19.Color = System.Drawing.Color.RoyalBlue;
-            series19.Legend = "Legend1";
-            series19.Name = "CH3";
-            series19.XValueMember = "SampleNumber";
-            series19.YValueMembers = "Channel3Values";
-            series20.BorderWidth = 3;
-            series20.ChartArea = "ChartArea1";
-            series20.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series20.Legend = "Legend1";
-            series20.Name = "CH4";
-            series20.XValueMember = "SampleNumber";
-            series20.YValueMembers = "Channel4Values";
-            series21.BorderWidth = 3;
-            series21.ChartArea = "ChartArea1";
-            series21.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series21.Legend = "Legend1";
-            series21.Name = "CH5";
-            series21.XValueMember = "SampleNumber";
-            series21.YValueMembers = "Channel5Values";
-            series22.BorderWidth = 3;
-            series22.ChartArea = "ChartArea1";
-            series22.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series22.Legend = "Legend1";
-            series22.Name = "CH6";
-            series22.XValueMember = "SampleNumber";
-            series22.YValueMembers = "Channel6Values";
-            series23.BorderWidth = 3;
-            series23.ChartArea = "ChartArea1";
-            series23.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series23.Legend = "Legend1";
-            series23.Name = "CH7";
-            series23.XValueMember = "SampleNumber";
-            series23.YValueMembers = "Channel7Values";
-            series24.BorderWidth = 3;
-            series24.ChartArea = "ChartArea1";
-            series24.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series24.Legend = "Legend1";
-            series24.Name = "CH8";
-            series24.XValueMember = "SampleNumber";
-            series24.YValueMembers = "Channel8Values";
-            this.chart1.Series.Add(series17);
-            this.chart1.Series.Add(series18);
-            this.chart1.Series.Add(series19);
-            this.chart1.Series.Add(series20);
-            this.chart1.Series.Add(series21);
-            this.chart1.Series.Add(series22);
-            this.chart1.Series.Add(series23);
-            this.chart1.Series.Add(series24);
-            this.chart1.Size = new System.Drawing.Size(720, 563);
+            series1.BorderWidth = 3;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.Color = System.Drawing.Color.DarkGoldenrod;
+            series1.Name = "CH1";
+            series1.XValueMember = "SampleNumber";
+            series1.YValueMembers = "Channel1Values";
+            series2.BorderWidth = 3;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Color = System.Drawing.Color.Firebrick;
+            series2.Name = "CH2";
+            series2.XValueMember = "SampleNumber";
+            series2.YValueMembers = "Channel2Values";
+            series3.BorderWidth = 3;
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series3.Color = System.Drawing.Color.RoyalBlue;
+            series3.Name = "CH3";
+            series3.XValueMember = "SampleNumber";
+            series3.YValueMembers = "Channel3Values";
+            series4.BorderWidth = 3;
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series4.Name = "CH4";
+            series4.XValueMember = "SampleNumber";
+            series4.YValueMembers = "Channel4Values";
+            series5.BorderWidth = 3;
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series5.Name = "CH5";
+            series5.XValueMember = "SampleNumber";
+            series5.YValueMembers = "Channel5Values";
+            series6.BorderWidth = 3;
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series6.Name = "CH6";
+            series6.XValueMember = "SampleNumber";
+            series6.YValueMembers = "Channel6Values";
+            series7.BorderWidth = 3;
+            series7.ChartArea = "ChartArea1";
+            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series7.Name = "CH7";
+            series7.XValueMember = "SampleNumber";
+            series7.YValueMembers = "Channel7Values";
+            series8.BorderWidth = 3;
+            series8.ChartArea = "ChartArea1";
+            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series8.Name = "CH8";
+            series8.XValueMember = "SampleNumber";
+            series8.YValueMembers = "Channel8Values";
+            this.chart1.Series.Add(series1);
+            this.chart1.Series.Add(series2);
+            this.chart1.Series.Add(series3);
+            this.chart1.Series.Add(series4);
+            this.chart1.Series.Add(series5);
+            this.chart1.Series.Add(series6);
+            this.chart1.Series.Add(series7);
+            this.chart1.Series.Add(series8);
+            this.chart1.Size = new System.Drawing.Size(691, 589);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
+            // 
+            // timer100ms
+            // 
+            this.timer100ms.Tick += new System.EventHandler(this.a);
+            // 
+            // checkBoxPlotCH2
+            // 
+            this.checkBoxPlotCH2.AutoSize = true;
+            this.checkBoxPlotCH2.Enabled = false;
+            this.checkBoxPlotCH2.ForeColor = System.Drawing.Color.Firebrick;
+            this.checkBoxPlotCH2.Location = new System.Drawing.Point(703, 42);
+            this.checkBoxPlotCH2.Name = "checkBoxPlotCH2";
+            this.checkBoxPlotCH2.Size = new System.Drawing.Size(53, 20);
+            this.checkBoxPlotCH2.TabIndex = 8;
+            this.checkBoxPlotCH2.Text = "CH2";
+            this.checkBoxPlotCH2.UseVisualStyleBackColor = true;
+            this.checkBoxPlotCH2.CheckedChanged += new System.EventHandler(this.checkBoxPlotCH2_CheckedChanged);
+            // 
+            // checkBoxPlotCH3
+            // 
+            this.checkBoxPlotCH3.AutoSize = true;
+            this.checkBoxPlotCH3.Enabled = false;
+            this.checkBoxPlotCH3.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.checkBoxPlotCH3.Location = new System.Drawing.Point(703, 68);
+            this.checkBoxPlotCH3.Name = "checkBoxPlotCH3";
+            this.checkBoxPlotCH3.Size = new System.Drawing.Size(53, 20);
+            this.checkBoxPlotCH3.TabIndex = 9;
+            this.checkBoxPlotCH3.Text = "CH3";
+            this.checkBoxPlotCH3.UseVisualStyleBackColor = true;
+            this.checkBoxPlotCH3.CheckedChanged += new System.EventHandler(this.checkBoxPlotCH3_CheckedChanged);
+            // 
+            // checkBoxPlotCH4
+            // 
+            this.checkBoxPlotCH4.AutoSize = true;
+            this.checkBoxPlotCH4.Enabled = false;
+            this.checkBoxPlotCH4.ForeColor = System.Drawing.Color.DarkMagenta;
+            this.checkBoxPlotCH4.Location = new System.Drawing.Point(703, 94);
+            this.checkBoxPlotCH4.Name = "checkBoxPlotCH4";
+            this.checkBoxPlotCH4.Size = new System.Drawing.Size(53, 20);
+            this.checkBoxPlotCH4.TabIndex = 10;
+            this.checkBoxPlotCH4.Text = "CH4";
+            this.checkBoxPlotCH4.UseVisualStyleBackColor = true;
+            this.checkBoxPlotCH4.CheckedChanged += new System.EventHandler(this.checkBoxPlotCH4_CheckedChanged);
+            // 
+            // checkBoxPlotCH5
+            // 
+            this.checkBoxPlotCH5.AutoSize = true;
+            this.checkBoxPlotCH5.Enabled = false;
+            this.checkBoxPlotCH5.ForeColor = System.Drawing.Color.MediumSeaGreen;
+            this.checkBoxPlotCH5.Location = new System.Drawing.Point(703, 120);
+            this.checkBoxPlotCH5.Name = "checkBoxPlotCH5";
+            this.checkBoxPlotCH5.Size = new System.Drawing.Size(53, 20);
+            this.checkBoxPlotCH5.TabIndex = 11;
+            this.checkBoxPlotCH5.Text = "CH5";
+            this.checkBoxPlotCH5.UseVisualStyleBackColor = true;
+            this.checkBoxPlotCH5.CheckedChanged += new System.EventHandler(this.checkBoxPlotCH5_CheckedChanged);
+            // 
+            // checkBoxPlotCH6
+            // 
+            this.checkBoxPlotCH6.AutoSize = true;
+            this.checkBoxPlotCH6.Enabled = false;
+            this.checkBoxPlotCH6.ForeColor = System.Drawing.Color.DimGray;
+            this.checkBoxPlotCH6.Location = new System.Drawing.Point(703, 146);
+            this.checkBoxPlotCH6.Name = "checkBoxPlotCH6";
+            this.checkBoxPlotCH6.Size = new System.Drawing.Size(53, 20);
+            this.checkBoxPlotCH6.TabIndex = 12;
+            this.checkBoxPlotCH6.Text = "CH6";
+            this.checkBoxPlotCH6.UseVisualStyleBackColor = true;
+            this.checkBoxPlotCH6.CheckedChanged += new System.EventHandler(this.checkBoxPlotCH6_CheckedChanged);
+            // 
+            // checkBoxPlotCH7
+            // 
+            this.checkBoxPlotCH7.AutoSize = true;
+            this.checkBoxPlotCH7.Enabled = false;
+            this.checkBoxPlotCH7.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.checkBoxPlotCH7.Location = new System.Drawing.Point(703, 172);
+            this.checkBoxPlotCH7.Name = "checkBoxPlotCH7";
+            this.checkBoxPlotCH7.Size = new System.Drawing.Size(53, 20);
+            this.checkBoxPlotCH7.TabIndex = 13;
+            this.checkBoxPlotCH7.Text = "CH7";
+            this.checkBoxPlotCH7.UseVisualStyleBackColor = true;
+            this.checkBoxPlotCH7.CheckedChanged += new System.EventHandler(this.checkBoxPlotCH7_CheckedChanged);
+            // 
+            // checkBoxPlotCH8
+            // 
+            this.checkBoxPlotCH8.AutoSize = true;
+            this.checkBoxPlotCH8.Enabled = false;
+            this.checkBoxPlotCH8.ForeColor = System.Drawing.Color.MediumOrchid;
+            this.checkBoxPlotCH8.Location = new System.Drawing.Point(703, 198);
+            this.checkBoxPlotCH8.Name = "checkBoxPlotCH8";
+            this.checkBoxPlotCH8.Size = new System.Drawing.Size(53, 20);
+            this.checkBoxPlotCH8.TabIndex = 14;
+            this.checkBoxPlotCH8.Text = "CH8";
+            this.checkBoxPlotCH8.UseVisualStyleBackColor = true;
+            this.checkBoxPlotCH8.CheckedChanged += new System.EventHandler(this.checkBoxPlotCH8_CheckedChanged);
             // 
             // sampleBindingSource1
             // 
             this.sampleBindingSource1.DataSource = typeof(ThermoCoupleLogger.Sample);
+            // 
+            // sampleNumberDataGridViewTextBoxColumn
+            // 
+            this.sampleNumberDataGridViewTextBoxColumn.DataPropertyName = "SampleNumber";
+            this.sampleNumberDataGridViewTextBoxColumn.HeaderText = "Sample Number";
+            this.sampleNumberDataGridViewTextBoxColumn.Name = "sampleNumberDataGridViewTextBoxColumn";
+            this.sampleNumberDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // sampleTimeDataGridViewTextBoxColumn
+            // 
+            this.sampleTimeDataGridViewTextBoxColumn.DataPropertyName = "SampleTime";
+            this.sampleTimeDataGridViewTextBoxColumn.HeaderText = "Time [HH:MM:SS]";
+            this.sampleTimeDataGridViewTextBoxColumn.Name = "sampleTimeDataGridViewTextBoxColumn";
+            this.sampleTimeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // channel1ValuesDataGridViewTextBoxColumn
+            // 
+            this.channel1ValuesDataGridViewTextBoxColumn.DataPropertyName = "Channel1Values";
+            this.channel1ValuesDataGridViewTextBoxColumn.HeaderText = "CH1 [°C]";
+            this.channel1ValuesDataGridViewTextBoxColumn.Name = "channel1ValuesDataGridViewTextBoxColumn";
+            this.channel1ValuesDataGridViewTextBoxColumn.ReadOnly = true;
+            this.channel1ValuesDataGridViewTextBoxColumn.Width = 60;
+            // 
+            // channel2ValuesDataGridViewTextBoxColumn
+            // 
+            this.channel2ValuesDataGridViewTextBoxColumn.DataPropertyName = "Channel2Values";
+            this.channel2ValuesDataGridViewTextBoxColumn.HeaderText = "CH2 [°C]";
+            this.channel2ValuesDataGridViewTextBoxColumn.Name = "channel2ValuesDataGridViewTextBoxColumn";
+            this.channel2ValuesDataGridViewTextBoxColumn.ReadOnly = true;
+            this.channel2ValuesDataGridViewTextBoxColumn.Width = 60;
+            // 
+            // channel3ValuesDataGridViewTextBoxColumn
+            // 
+            this.channel3ValuesDataGridViewTextBoxColumn.DataPropertyName = "Channel3Values";
+            this.channel3ValuesDataGridViewTextBoxColumn.HeaderText = "CH3 [°C]";
+            this.channel3ValuesDataGridViewTextBoxColumn.Name = "channel3ValuesDataGridViewTextBoxColumn";
+            this.channel3ValuesDataGridViewTextBoxColumn.ReadOnly = true;
+            this.channel3ValuesDataGridViewTextBoxColumn.Width = 60;
+            // 
+            // channel4ValuesDataGridViewTextBoxColumn
+            // 
+            this.channel4ValuesDataGridViewTextBoxColumn.DataPropertyName = "Channel4Values";
+            this.channel4ValuesDataGridViewTextBoxColumn.HeaderText = "CH4 [°C]";
+            this.channel4ValuesDataGridViewTextBoxColumn.Name = "channel4ValuesDataGridViewTextBoxColumn";
+            this.channel4ValuesDataGridViewTextBoxColumn.ReadOnly = true;
+            this.channel4ValuesDataGridViewTextBoxColumn.Width = 60;
+            // 
+            // channel5ValuesDataGridViewTextBoxColumn
+            // 
+            this.channel5ValuesDataGridViewTextBoxColumn.DataPropertyName = "Channel5Values";
+            this.channel5ValuesDataGridViewTextBoxColumn.HeaderText = "CH5 [°C]";
+            this.channel5ValuesDataGridViewTextBoxColumn.Name = "channel5ValuesDataGridViewTextBoxColumn";
+            this.channel5ValuesDataGridViewTextBoxColumn.ReadOnly = true;
+            this.channel5ValuesDataGridViewTextBoxColumn.Width = 60;
+            // 
+            // channel6ValuesDataGridViewTextBoxColumn
+            // 
+            this.channel6ValuesDataGridViewTextBoxColumn.DataPropertyName = "Channel6Values";
+            this.channel6ValuesDataGridViewTextBoxColumn.HeaderText = "CH6 [°C]";
+            this.channel6ValuesDataGridViewTextBoxColumn.Name = "channel6ValuesDataGridViewTextBoxColumn";
+            this.channel6ValuesDataGridViewTextBoxColumn.ReadOnly = true;
+            this.channel6ValuesDataGridViewTextBoxColumn.Width = 60;
+            // 
+            // channel7ValuesDataGridViewTextBoxColumn
+            // 
+            this.channel7ValuesDataGridViewTextBoxColumn.DataPropertyName = "Channel7Values";
+            this.channel7ValuesDataGridViewTextBoxColumn.HeaderText = "CH7 [°C]";
+            this.channel7ValuesDataGridViewTextBoxColumn.Name = "channel7ValuesDataGridViewTextBoxColumn";
+            this.channel7ValuesDataGridViewTextBoxColumn.ReadOnly = true;
+            this.channel7ValuesDataGridViewTextBoxColumn.Width = 60;
+            // 
+            // channel8ValuesDataGridViewTextBoxColumn
+            // 
+            this.channel8ValuesDataGridViewTextBoxColumn.DataPropertyName = "Channel8Values";
+            this.channel8ValuesDataGridViewTextBoxColumn.HeaderText = "CH8 [°C]";
+            this.channel8ValuesDataGridViewTextBoxColumn.Name = "channel8ValuesDataGridViewTextBoxColumn";
+            this.channel8ValuesDataGridViewTextBoxColumn.ReadOnly = true;
+            this.channel8ValuesDataGridViewTextBoxColumn.Width = 60;
             // 
             // Form1
             // 
@@ -2593,6 +2742,7 @@
             this.groupBox12.ResumeLayout(false);
             this.groupBox12.PerformLayout();
             this.tabSettings.ResumeLayout(false);
+            this.tabSettings.PerformLayout();
             this.groupBox13.ResumeLayout(false);
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
@@ -2617,6 +2767,7 @@
             this.groupBoxCH1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabGraph.ResumeLayout(false);
+            this.tabGraph.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sampleBindingSource1)).EndInit();
             this.ResumeLayout(false);
@@ -2735,19 +2886,9 @@
         private System.Windows.Forms.TextBox textBoxNameCH1;
         private System.Windows.Forms.TabPage tabData;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column_No;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column_Time;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column_CH1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column_CH2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column_CH3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column_CH4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column_CH5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column_CH6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column_CH7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column_CH8;
         private System.Windows.Forms.GroupBox groupBox11;
-        private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label labelTimeToNext;
+        private System.Windows.Forms.Label labelTimeLeft;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Button buttonStart;
@@ -2843,6 +2984,27 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.CheckBox checkBoxPlotCH1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sampleNumberDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sampleTimeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn channel1ValuesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn channel2ValuesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn channel3ValuesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn channel4ValuesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn channel5ValuesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn channel6ValuesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn channel7ValuesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn channel8ValuesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Timer timer100ms;
+        private System.Windows.Forms.CheckBox checkBoxPlotCH8;
+        private System.Windows.Forms.CheckBox checkBoxPlotCH7;
+        private System.Windows.Forms.CheckBox checkBoxPlotCH6;
+        private System.Windows.Forms.CheckBox checkBoxPlotCH5;
+        private System.Windows.Forms.CheckBox checkBoxPlotCH4;
+        private System.Windows.Forms.CheckBox checkBoxPlotCH3;
+        private System.Windows.Forms.CheckBox checkBoxPlotCH2;
     }
 }
 

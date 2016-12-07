@@ -14,13 +14,16 @@ namespace ThermoCoupleLogger
         public decimal Sec;
         public decimal Min;
 
-        public int Period;   // Period in ms
+        public Int32 Period;   // Period in ms
         public UInt32 SampleLimit;
+         
+        public Int32 Countdown;
 
 
         public void CalculatePeriod()
         {
-            Period = (int)mSec + (int)Sec * 1000 + (int)Min * 60000;
+            Period = (Int32)mSec + (Int32)Sec * 1000 + (Int32)Min * 60000;
+            Countdown = Period;
         }
     }
 }
