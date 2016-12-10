@@ -18,14 +18,15 @@ namespace ThermoCoupleLogger
     public partial class Form1 : Form
     {
 
-        public bool Logging = false;
+        
         public bool DebugMode = false;
         public uint ErrorFrames = 0;
-
 
         public UInt32 ActualSampleNumber = 0;       // Actual Sample Number
         public List<Sample> Samples = new List<Sample>();
 
+
+        Acquisition Acquisition = new Acquisition();
         Channel_Data Channel1 = new Channel_Data();
         Channel_Data Channel2 = new Channel_Data();
         Channel_Data Channel3 = new Channel_Data();
@@ -47,8 +48,7 @@ namespace ThermoCoupleLogger
             timerRefresh.Enabled = true;
 
 
-
-                foreach (System.Reflection.PropertyInfo prop in typeof(Color).GetProperties())
+            foreach (System.Reflection.PropertyInfo prop in typeof(Color).GetProperties())
                 {
                     if (prop.PropertyType.FullName == "System.Drawing.Color")
                     comboBoxColorCH1.Items.Add(prop.Name);
@@ -61,20 +61,35 @@ namespace ThermoCoupleLogger
                     comboBoxColorCH8.Items.Add(prop.Name);
                 }
 
-
+            // Init Stuff
             DefaultColors();
 
 
+            Acquisition.mSec = periodmSec.Value;
+            Acquisition.Sec = periodSec.Value;
+            Acquisition.Min = periodMin.Value;
+            Acquisition.CalculatePeriod();
+
             getAvailablePorts();
             tryToConnect();
+
+            InitialThings();
+
         }
 
+
+        public void RefreshGrid(object dataSource)
+        {
+            CurrencyManager myCurrencyManager = (CurrencyManager)this.BindingContext[dataSource];
+            myCurrencyManager.Refresh();
+        }
 
         public void NewSample(Decimal CH1_Value, Decimal CH2_Value, Decimal CH3_Value, Decimal CH4_Value,
                               Decimal CH5_Value, Decimal CH6_Value, Decimal CH7_Value, Decimal CH8_Value)
         {
             Samples.Add(new Sample()
             { SampleNumber = ActualSampleNumber,
+                SampleTime = DateTime.Now.ToString("h:mm:ss tt"),
                 Channel1Values = CH1_Value,
                 Channel2Values = CH2_Value,
                 Channel3Values = CH3_Value,
@@ -84,7 +99,11 @@ namespace ThermoCoupleLogger
                 Channel7Values = CH7_Value,
                 Channel8Values = CH8_Value,
             });
-        }
+
+
+       //     RefreshGrid(sampleBindingSource1);
+
+    }
 
 
         void getAvailablePorts()
@@ -103,17 +122,16 @@ namespace ThermoCoupleLogger
                 labelConnectionStatus.Text = "Connected";
                 labelConnectionStatus.ForeColor = System.Drawing.Color.Green;
                 buttonStart.Enabled = true;
-                timer2.Enabled = true;
+                timerRead.Enabled = true;
             }
             catch (UnauthorizedAccessException)
             {
                 textBox2.Text = "Unauthorized Acess";
                 labelConnectionStatus.Text = "Disconnected";
                 labelConnectionStatus.ForeColor = System.Drawing.Color.Maroon;
-                timer2.Enabled = false;
+                timerRead.Enabled = false;
             }
         }
-
 
         void registerData()
         {
@@ -121,6 +139,23 @@ namespace ThermoCoupleLogger
             Channel5.Temperature, Channel6.Temperature, Channel7.Temperature, Channel8.Temperature);
 
             ActualSampleNumber++;
+
+        }
+
+
+        void InitialThings()
+        {
+            //  Make an initial measurement to get Max and Min
+            getData();
+            Channel1.setMaxMin();
+            Channel2.setMaxMin();
+            Channel3.setMaxMin();
+            Channel4.setMaxMin();
+            Channel5.setMaxMin();
+            Channel6.setMaxMin();
+            Channel7.setMaxMin();
+            Channel8.setMaxMin();
+            ChannelA.setMaxMin();
 
         }
 
@@ -161,14 +196,7 @@ namespace ThermoCoupleLogger
 
                 
 
-                Channel1.Temperature = GetThermocoupleTemp(Channel1.RawData);
-                
-
-                if (Channel1.Temperature > Channel1.MaxTemperature) Channel1.MaxTemperature = Channel1.Temperature;     // do porpawy
-                if (Channel1.Temperature < Channel1.MinTemperature) Channel1.MinTemperature = Channel1.Temperature;     // do poprawy
-
-                
-
+                Channel1.Temperature = GetThermocoupleTemp(Channel1.RawData);               
                 Channel2.Temperature = GetThermocoupleTemp(Channel2.RawData);
                 Channel3.Temperature = GetThermocoupleTemp(Channel3.RawData);
                 Channel4.Temperature = GetThermocoupleTemp(Channel4.RawData);
@@ -176,6 +204,36 @@ namespace ThermoCoupleLogger
                 Channel6.Temperature = GetThermocoupleTemp(Channel6.RawData);
                 Channel7.Temperature = GetThermocoupleTemp(Channel7.RawData);
                 Channel8.Temperature = GetThermocoupleTemp(Channel8.RawData);
+
+                ChannelA.Temperature = Channel1.JunctionTemp;
+
+
+                if (Channel1.Temperature > Channel1.MaxTemperature) Channel1.MaxTemperature = Channel1.Temperature;
+                if (Channel1.Temperature < Channel1.MinTemperature) Channel1.MinTemperature = Channel1.Temperature;
+
+                if (Channel2.Temperature > Channel2.MaxTemperature) Channel2.MaxTemperature = Channel2.Temperature;
+                if (Channel2.Temperature < Channel2.MinTemperature) Channel2.MinTemperature = Channel2.Temperature;
+
+                if (Channel3.Temperature > Channel3.MaxTemperature) Channel3.MaxTemperature = Channel3.Temperature;
+                if (Channel3.Temperature < Channel3.MinTemperature) Channel3.MinTemperature = Channel3.Temperature;
+
+                if (Channel4.Temperature > Channel4.MaxTemperature) Channel4.MaxTemperature = Channel4.Temperature;
+                if (Channel4.Temperature < Channel4.MinTemperature) Channel4.MinTemperature = Channel4.Temperature;
+
+                if (Channel5.Temperature > Channel5.MaxTemperature) Channel5.MaxTemperature = Channel5.Temperature;
+                if (Channel5.Temperature < Channel5.MinTemperature) Channel5.MinTemperature = Channel5.Temperature;
+
+                if (Channel6.Temperature > Channel6.MaxTemperature) Channel6.MaxTemperature = Channel6.Temperature;
+                if (Channel6.Temperature < Channel6.MinTemperature) Channel6.MinTemperature = Channel6.Temperature;
+
+                if (Channel7.Temperature > Channel7.MaxTemperature) Channel7.MaxTemperature = Channel7.Temperature;
+                if (Channel7.Temperature < Channel7.MinTemperature) Channel7.MinTemperature = Channel7.Temperature;
+
+                if (Channel8.Temperature > Channel8.MaxTemperature) Channel8.MaxTemperature = Channel8.Temperature;
+                if (Channel8.Temperature < Channel8.MinTemperature) Channel8.MinTemperature = Channel8.Temperature;
+
+                if (ChannelA.Temperature > ChannelA.MaxTemperature) ChannelA.MaxTemperature = ChannelA.Temperature;
+                if (ChannelA.Temperature < ChannelA.MaxTemperature) ChannelA.MinTemperature = ChannelA.Temperature;
 
 
 
@@ -256,7 +314,8 @@ namespace ThermoCoupleLogger
             else{
                 ErrorFrames++;
                 labelErrors.Text = ErrorFrames.ToString();
-                getData();
+                serialPort1.DiscardOutBuffer();
+                serialPort1.DiscardInBuffer();
             }
         }
 
@@ -264,7 +323,13 @@ namespace ThermoCoupleLogger
         {
 
             // Ambient
-            CHA_Value.Text = Channel1.JunctionTemp.ToString() + " °C";
+            if (ChannelA.ViewSetting == 0) CHA_Value.Text = Channel1.JunctionTemp.ToString() + " °C";
+            else if (ChannelA.ViewSetting == 1) CHA_Value.Text = ChannelA.MaxTemperature.ToString() + " °C";
+            else if (ChannelA.ViewSetting == 2) CHA_Value.Text = ChannelA.MinTemperature.ToString() + " °C";
+            else if (ChannelA.ViewSetting == 3) CHA_Value.Text = ChannelA.AvgTemperature.ToString() + " °C";
+            else CHA_Value.Text = "Error";
+
+
 
             // Channel 1
             switch (Channel1.Fault)
@@ -307,7 +372,12 @@ namespace ThermoCoupleLogger
                     groupBoxCH2.Enabled = true;
                     CH2_Value.TextAlign = ContentAlignment.MiddleRight;
                     CH2_Value.ForeColor = Channel2.Color;
-                    CH2_Value.Text = Channel2.Temperature.ToString() + " °C";
+
+                    if (Channel2.ViewSetting == 0) CH2_Value.Text = Channel2.Temperature.ToString() + " °C";
+                    else if (Channel2.ViewSetting == 1) CH2_Value.Text = Channel2.MaxTemperature.ToString() + " °C";
+                    else if (Channel2.ViewSetting == 2) CH2_Value.Text = Channel2.MinTemperature.ToString() + " °C";
+                    else if (Channel2.ViewSetting == 3) CH2_Value.Text = Channel2.AvgTemperature.ToString() + " °C";
+                    else CH2_Value.Text = "Error";
                     break;
                 case 1:
                     groupBoxCH2.Enabled = false;
@@ -336,7 +406,12 @@ namespace ThermoCoupleLogger
                     groupBoxCH3.Enabled = true;
                     CH3_Value.TextAlign = ContentAlignment.MiddleRight;
                     CH3_Value.ForeColor = Channel3.Color;
-                    CH3_Value.Text = Channel3.Temperature.ToString() + " °C";
+
+                    if (Channel3.ViewSetting == 0) CH3_Value.Text = Channel3.Temperature.ToString() + " °C";
+                    else if (Channel3.ViewSetting == 1) CH3_Value.Text = Channel3.MaxTemperature.ToString() + " °C";
+                    else if (Channel3.ViewSetting == 2) CH3_Value.Text = Channel3.MinTemperature.ToString() + " °C";
+                    else if (Channel3.ViewSetting == 3) CH3_Value.Text = Channel3.AvgTemperature.ToString() + " °C";
+                    else CH3_Value.Text = "Error";
                     break;
                 case 1:
                     groupBoxCH3.Enabled = false;
@@ -365,7 +440,12 @@ namespace ThermoCoupleLogger
                     groupBoxCH4.Enabled = true;
                     CH4_Value.TextAlign = ContentAlignment.MiddleRight;
                     CH4_Value.ForeColor = Channel4.Color;
-                    CH4_Value.Text = Channel4.Temperature.ToString() + " °C";
+
+                    if (Channel4.ViewSetting == 0) CH4_Value.Text = Channel4.Temperature.ToString() + " °C";
+                    else if (Channel4.ViewSetting == 1) CH4_Value.Text = Channel4.MaxTemperature.ToString() + " °C";
+                    else if (Channel4.ViewSetting == 2) CH4_Value.Text = Channel4.MinTemperature.ToString() + " °C";
+                    else if (Channel4.ViewSetting == 3) CH4_Value.Text = Channel4.AvgTemperature.ToString() + " °C";
+                    else CH4_Value.Text = "Error";
                     break;
                 case 1:
                     groupBoxCH4.Enabled = false;
@@ -394,7 +474,12 @@ namespace ThermoCoupleLogger
                     groupBoxCH5.Enabled = true;
                     CH5_Value.TextAlign = ContentAlignment.MiddleRight;
                     CH5_Value.ForeColor = Channel5.Color;
-                    CH5_Value.Text = Channel5.Temperature.ToString() + " °C";
+
+                    if (Channel5.ViewSetting == 0) CH5_Value.Text = Channel5.Temperature.ToString() + " °C";
+                    else if (Channel5.ViewSetting == 1) CH5_Value.Text = Channel5.MaxTemperature.ToString() + " °C";
+                    else if (Channel5.ViewSetting == 2) CH5_Value.Text = Channel5.MinTemperature.ToString() + " °C";
+                    else if (Channel5.ViewSetting == 3) CH5_Value.Text = Channel5.AvgTemperature.ToString() + " °C";
+                    else CH5_Value.Text = "Error";
                     break;
                 case 1:
                     groupBoxCH5.Enabled = false;
@@ -423,7 +508,12 @@ namespace ThermoCoupleLogger
                     groupBoxCH6.Enabled = true;
                     CH6_Value.TextAlign = ContentAlignment.MiddleRight;
                     CH6_Value.ForeColor = Channel6.Color;
-                    CH6_Value.Text = Channel6.Temperature.ToString() + " °C";
+
+                    if (Channel6.ViewSetting == 0) CH6_Value.Text = Channel6.Temperature.ToString() + " °C";
+                    else if (Channel6.ViewSetting == 1) CH6_Value.Text = Channel6.MaxTemperature.ToString() + " °C";
+                    else if (Channel6.ViewSetting == 2) CH6_Value.Text = Channel6.MinTemperature.ToString() + " °C";
+                    else if (Channel6.ViewSetting == 3) CH6_Value.Text = Channel6.AvgTemperature.ToString() + " °C";
+                    else CH6_Value.Text = "Error";
                     break;
                 case 1:
                     groupBoxCH6.Enabled = false;
@@ -452,7 +542,12 @@ namespace ThermoCoupleLogger
                     groupBoxCH7.Enabled = true;
                     CH7_Value.TextAlign = ContentAlignment.MiddleRight;
                     CH7_Value.ForeColor = Channel7.Color;
-                    CH7_Value.Text = Channel7.Temperature.ToString() + " °C";
+
+                    if (Channel7.ViewSetting == 0) CH7_Value.Text = Channel7.Temperature.ToString() + " °C";
+                    else if (Channel7.ViewSetting == 1) CH7_Value.Text = Channel7.MaxTemperature.ToString() + " °C";
+                    else if (Channel7.ViewSetting == 2) CH7_Value.Text = Channel7.MinTemperature.ToString() + " °C";
+                    else if (Channel7.ViewSetting == 3) CH7_Value.Text = Channel7.AvgTemperature.ToString() + " °C";
+                    else CH7_Value.Text = "Error";
                     break;
                 case 1:
                     groupBoxCH7.Enabled = false;
@@ -482,7 +577,12 @@ namespace ThermoCoupleLogger
                     groupBoxCH8.Enabled = true;
                     CH8_Value.TextAlign = ContentAlignment.MiddleRight;
                     CH8_Value.ForeColor = Channel8.Color;
-                    CH8_Value.Text = Channel8.Temperature.ToString() + " °C";
+
+                    if (Channel8.ViewSetting == 0) CH8_Value.Text = Channel8.Temperature.ToString() + " °C";
+                    else if (Channel8.ViewSetting == 1) CH8_Value.Text = Channel8.MaxTemperature.ToString() + " °C";
+                    else if (Channel8.ViewSetting == 2) CH8_Value.Text = Channel8.MinTemperature.ToString() + " °C";
+                    else if (Channel8.ViewSetting == 3) CH8_Value.Text = Channel8.AvgTemperature.ToString() + " °C";
+                    else CH8_Value.Text = "Error";
                     break;
                 case 1:
                     groupBoxCH8.Enabled = false;
@@ -624,18 +724,29 @@ namespace ThermoCoupleLogger
 
         private void buttonStart_Click(object sender, EventArgs e)
         {
-            Logging = !Logging;
-            timer1.Enabled = !timer1.Enabled;
 
-            if (Logging == true)
+            Acquisition.Logging =  !Acquisition.Logging;
+            timerLogg.Interval = Acquisition.Period;
+            Acquisition.Countdown = Acquisition.Period;
+            timer100ms.Enabled = !timer100ms.Enabled;
+            timerLogg.Enabled = !timerLogg.Enabled;
+
+
+            if (Acquisition.Logging == true)
             {
+                if(Acquisition.Period < 50)
+                {
+                    timerRead.Interval = (int)Acquisition.Period;
+                }
+
                 buttonStart.Text = "Stop";
-                buttonStart.BackColor = System.Drawing.Color.IndianRed;
+                buttonStart.BackColor = System.Drawing.Color.IndianRed;                
 
             }
 
-            if (Logging == false)
+            if (Acquisition.Logging == false)
             {
+                timerRead.Interval = 50;
                 buttonStart.Text = "Start";
                 buttonStart.BackColor = System.Drawing.Color.PaleGreen;
             }
@@ -666,39 +777,108 @@ namespace ThermoCoupleLogger
 
         }
 
+
+        public void UpdateChart()
+        {
+            chart1.DataSource = Samples;
+
+            if (Channel1.Fault == 0) checkBoxPlotCH1.Enabled = true;
+                else checkBoxPlotCH1.Enabled = false;
+
+            if (Channel2.Fault == 0) checkBoxPlotCH2.Enabled = true;
+                else checkBoxPlotCH2.Enabled = false;
+
+            if (Channel3.Fault == 0) checkBoxPlotCH3.Enabled = true;
+                else checkBoxPlotCH3.Enabled = false;
+
+            if (Channel4.Fault == 0) checkBoxPlotCH4.Enabled = true;
+                else checkBoxPlotCH4.Enabled = false;
+
+            if (Channel5.Fault == 0) checkBoxPlotCH5.Enabled = true;
+                else checkBoxPlotCH5.Enabled = false;
+
+            if (Channel6.Fault == 0) checkBoxPlotCH6.Enabled = true;
+                else checkBoxPlotCH6.Enabled = false;
+
+            if (Channel7.Fault == 0) checkBoxPlotCH7.Enabled = true;
+                else checkBoxPlotCH7.Enabled = false;
+
+            if (Channel8.Fault == 0) checkBoxPlotCH8.Enabled = true;
+                else checkBoxPlotCH8.Enabled = false;
+
+
+            if(Channel1.ShowOnScope) chart1.Series["CH1"].Enabled = true;
+            else chart1.Series["CH1"].Enabled = false;
+
+            if (Channel2.ShowOnScope) chart1.Series["CH2"].Enabled = true;
+            else chart1.Series["CH2"].Enabled = false;
+
+            if (Channel3.ShowOnScope) chart1.Series["CH3"].Enabled = true;
+            else chart1.Series["CH3"].Enabled = false;
+
+            if (Channel4.ShowOnScope) chart1.Series["CH4"].Enabled = true;
+            else chart1.Series["CH4"].Enabled = false;
+
+            if (Channel5.ShowOnScope) chart1.Series["CH5"].Enabled = true;
+            else chart1.Series["CH5"].Enabled = false;
+
+            if (Channel6.ShowOnScope) chart1.Series["CH6"].Enabled = true;
+            else chart1.Series["CH6"].Enabled = false;
+
+            if (Channel7.ShowOnScope) chart1.Series["CH7"].Enabled = true;
+            else chart1.Series["CH7"].Enabled = false;
+
+            if (Channel8.ShowOnScope) chart1.Series["CH8"].Enabled = true;
+            else chart1.Series["CH8"].Enabled = false;
+
+
+
+            chart1.Series["CH1"].Color = Channel1.Color;
+            chart1.Series["CH2"].Color = Channel2.Color;
+            chart1.Series["CH3"].Color = Channel3.Color;
+            chart1.Series["CH4"].Color = Channel4.Color;
+            chart1.Series["CH5"].Color = Channel5.Color;
+            chart1.Series["CH6"].Color = Channel6.Color;
+            chart1.Series["CH7"].Color = Channel7.Color;
+            chart1.Series["CH8"].Color = Channel8.Color;
+
+            chart1.DataBind();
+            chart1.Update();
+
+        }
+
+        public void UpdateGridView()
+        {
+            dataGridView1.DataSource = typeof(Sample);
+            dataGridView1.DataSource = Samples;
+            dataGridView1.Update();
+        }
+
+        public void UpdateCounters()
+        {
+
+        }
+
+
         private void timerRefresh_Tick(object sender, EventArgs e)
         {
             UpdatePreview();
 
-            chart1.DataSource = Samples;
+            labelSamples.Text = ActualSampleNumber.ToString();
 
-            if(Channel1.Fault == 0) chart1.Series["CH1"].Enabled = true;
-            else chart1.Series["CH1"].Enabled = false;
+            Int32 TimeLeft = Acquisition.Countdown/100;
+            Int32 MinLeft = (TimeLeft/600);
+            Int32 SecLeft = TimeLeft - (600 * MinLeft); 
 
-            if (Channel2.Fault == 0) chart1.Series["CH2"].Enabled = true;
-            else chart1.Series["CH2"].Enabled = false;
+            labelTimeToNext.Text = MinLeft.ToString() + ":" + (SecLeft/10).ToString() + "." +(SecLeft % 10).ToString();
+          //  labelTimeToNext.Text = TimeLeft.ToString();
 
-            if (Channel3.Fault == 0) chart1.Series["CH3"].Enabled = true;
-            else chart1.Series["CH3"].Enabled = false;
+            if (Acquisition.Logging)
+            {
 
-            if (Channel4.Fault == 0) chart1.Series["CH4"].Enabled = true;
-            else chart1.Series["CH4"].Enabled = false;
-
-            if (Channel5.Fault == 0) chart1.Series["CH5"].Enabled = true;
-            else chart1.Series["CH5"].Enabled = false;
-
-            if (Channel6.Fault == 0) chart1.Series["CH6"].Enabled = true;
-            else chart1.Series["CH6"].Enabled = false;
-
-            if (Channel7.Fault == 0) chart1.Series["CH7"].Enabled = true;
-            else chart1.Series["CH7"].Enabled = false;
-
-            if (Channel8.Fault == 0) chart1.Series["CH8"].Enabled = true;
-            else chart1.Series["CH8"].Enabled = false;
-
-
-            chart1.DataBind();
-            chart1.Update();
+                UpdateChart();
+                UpdateGridView();
+            }
         }
 
         private void comboBoxColorCH1_SelectedIndexChanged(object sender, EventArgs e)
@@ -813,37 +993,37 @@ namespace ThermoCoupleLogger
         private void CH_1_Act_Click(object sender, EventArgs e)
         {
             Channel1.ViewSetting = 0;
-            CH_1_Act.BackColor = System.Drawing.Color.Gainsboro;
-            CH_1_Max.BackColor = System.Drawing.Color.White;
-            CH_1_Min.BackColor = System.Drawing.Color.White;
-            CH_1_Avg.BackColor = System.Drawing.Color.White;
+            CH_1_Act.BackColor = System.Drawing.Color.White;
+            CH_1_Max.BackColor = System.Drawing.Color.Gainsboro;
+            CH_1_Min.BackColor = System.Drawing.Color.Gainsboro;
+            CH_1_Avg.BackColor = System.Drawing.Color.Gainsboro;
         }
 
         private void CH_1_Max_Click(object sender, EventArgs e)
         {
             Channel1.ViewSetting = 1;
-            CH_1_Act.BackColor = System.Drawing.Color.White;
-            CH_1_Max.BackColor = System.Drawing.Color.Gainsboro;
-            CH_1_Min.BackColor = System.Drawing.Color.White;
-            CH_1_Avg.BackColor = System.Drawing.Color.White;
+            CH_1_Act.BackColor = System.Drawing.Color.Gainsboro;
+            CH_1_Max.BackColor = System.Drawing.Color.White;
+            CH_1_Min.BackColor = System.Drawing.Color.Gainsboro;
+            CH_1_Avg.BackColor = System.Drawing.Color.Gainsboro;
         }
 
         private void CH_1_Min_Click(object sender, EventArgs e)
         {
             Channel1.ViewSetting = 2;
-            CH_1_Act.BackColor = System.Drawing.Color.White;
-            CH_1_Max.BackColor = System.Drawing.Color.White;
-            CH_1_Min.BackColor = System.Drawing.Color.Gainsboro;
-            CH_1_Avg.BackColor = System.Drawing.Color.White;
+            CH_1_Act.BackColor = System.Drawing.Color.Gainsboro;
+            CH_1_Max.BackColor = System.Drawing.Color.Gainsboro;
+            CH_1_Min.BackColor = System.Drawing.Color.White;
+            CH_1_Avg.BackColor = System.Drawing.Color.Gainsboro;
         }
 
         private void CH_1_Avg_Click(object sender, EventArgs e)
         {
             Channel1.ViewSetting = 3;
-            CH_1_Act.BackColor = System.Drawing.Color.White;
-            CH_1_Max.BackColor = System.Drawing.Color.White;
-            CH_1_Min.BackColor = System.Drawing.Color.White;
-            CH_1_Avg.BackColor = System.Drawing.Color.Gainsboro;
+            CH_1_Act.BackColor = System.Drawing.Color.Gainsboro;
+            CH_1_Max.BackColor = System.Drawing.Color.Gainsboro;
+            CH_1_Min.BackColor = System.Drawing.Color.Gainsboro;
+            CH_1_Avg.BackColor = System.Drawing.Color.White;
         }
 
 
@@ -853,37 +1033,37 @@ namespace ThermoCoupleLogger
         private void CH_2_Act_Click(object sender, EventArgs e)
         {
             Channel2.ViewSetting = 0;
-            CH_2_Act.BackColor = System.Drawing.Color.Gainsboro;
-            CH_2_Max.BackColor = System.Drawing.Color.White;
-            CH_2_Min.BackColor = System.Drawing.Color.White;
-            CH_2_Avg.BackColor = System.Drawing.Color.White;
+            CH_2_Act.BackColor = System.Drawing.Color.White;
+            CH_2_Max.BackColor = System.Drawing.Color.Gainsboro;
+            CH_2_Min.BackColor = System.Drawing.Color.Gainsboro;
+            CH_2_Avg.BackColor = System.Drawing.Color.Gainsboro;
         }
 
         private void CH_2_Max_Click(object sender, EventArgs e)
         {
             Channel2.ViewSetting = 1;
-            CH_2_Act.BackColor = System.Drawing.Color.White;
-            CH_2_Max.BackColor = System.Drawing.Color.Gainsboro;
-            CH_2_Min.BackColor = System.Drawing.Color.White;
-            CH_2_Avg.BackColor = System.Drawing.Color.White;
+            CH_2_Act.BackColor = System.Drawing.Color.Gainsboro;
+            CH_2_Max.BackColor = System.Drawing.Color.White;
+            CH_2_Min.BackColor = System.Drawing.Color.Gainsboro;
+            CH_2_Avg.BackColor = System.Drawing.Color.Gainsboro;
         }
 
         private void CH_2_Min_Click(object sender, EventArgs e)
         {
             Channel2.ViewSetting = 2;
-            CH_2_Act.BackColor = System.Drawing.Color.White;
-            CH_2_Max.BackColor = System.Drawing.Color.White;
-            CH_2_Min.BackColor = System.Drawing.Color.Gainsboro;
-            CH_2_Avg.BackColor = System.Drawing.Color.White;
+            CH_2_Act.BackColor = System.Drawing.Color.Gainsboro;
+            CH_2_Max.BackColor = System.Drawing.Color.Gainsboro;
+            CH_2_Min.BackColor = System.Drawing.Color.White;
+            CH_2_Avg.BackColor = System.Drawing.Color.Gainsboro;
         }
 
         private void CH_2_Avg_Click(object sender, EventArgs e)
         {
             Channel2.ViewSetting = 3;
-            CH_2_Act.BackColor = System.Drawing.Color.White;
-            CH_2_Max.BackColor = System.Drawing.Color.White;
-            CH_2_Min.BackColor = System.Drawing.Color.White;
-            CH_2_Avg.BackColor = System.Drawing.Color.Gainsboro;
+            CH_2_Act.BackColor = System.Drawing.Color.Gainsboro;
+            CH_2_Max.BackColor = System.Drawing.Color.Gainsboro;
+            CH_2_Min.BackColor = System.Drawing.Color.Gainsboro;
+            CH_2_Avg.BackColor = System.Drawing.Color.White;
         }
 
 
@@ -891,37 +1071,37 @@ namespace ThermoCoupleLogger
         private void CH_3_Act_Click(object sender, EventArgs e)
         {
             Channel3.ViewSetting = 0;
-            CH_3_Act.BackColor = System.Drawing.Color.Gainsboro;
-            CH_3_Max.BackColor = System.Drawing.Color.White;
-            CH_3_Min.BackColor = System.Drawing.Color.White;
-            CH_3_Avg.BackColor = System.Drawing.Color.White;
+            CH_3_Act.BackColor = System.Drawing.Color.White;
+            CH_3_Max.BackColor = System.Drawing.Color.Gainsboro;
+            CH_3_Min.BackColor = System.Drawing.Color.Gainsboro;
+            CH_3_Avg.BackColor = System.Drawing.Color.Gainsboro;
         }
 
         private void CH_3_Max_Click(object sender, EventArgs e)
         {
             Channel3.ViewSetting = 1;
-            CH_3_Act.BackColor = System.Drawing.Color.White;
-            CH_3_Max.BackColor = System.Drawing.Color.Gainsboro;
-            CH_3_Min.BackColor = System.Drawing.Color.White;
-            CH_3_Avg.BackColor = System.Drawing.Color.White;
+            CH_3_Act.BackColor = System.Drawing.Color.Gainsboro;
+            CH_3_Max.BackColor = System.Drawing.Color.White;
+            CH_3_Min.BackColor = System.Drawing.Color.Gainsboro;
+            CH_3_Avg.BackColor = System.Drawing.Color.Gainsboro;
         }
 
         private void CH_3_Min_Click(object sender, EventArgs e)
         {
             Channel3.ViewSetting = 2;
-            CH_3_Act.BackColor = System.Drawing.Color.White;
-            CH_3_Max.BackColor = System.Drawing.Color.White;
-            CH_3_Min.BackColor = System.Drawing.Color.Gainsboro;
-            CH_3_Avg.BackColor = System.Drawing.Color.White;
+            CH_3_Act.BackColor = System.Drawing.Color.Gainsboro;
+            CH_3_Max.BackColor = System.Drawing.Color.Gainsboro;
+            CH_3_Min.BackColor = System.Drawing.Color.White;
+            CH_3_Avg.BackColor = System.Drawing.Color.Gainsboro;
         }
 
         private void CH_3_Avg_Click(object sender, EventArgs e)
         {
             Channel3.ViewSetting = 3;
-            CH_3_Act.BackColor = System.Drawing.Color.White;
-            CH_3_Max.BackColor = System.Drawing.Color.White;
-            CH_3_Min.BackColor = System.Drawing.Color.White;
-            CH_3_Avg.BackColor = System.Drawing.Color.Gainsboro;
+            CH_3_Act.BackColor = System.Drawing.Color.Gainsboro;
+            CH_3_Max.BackColor = System.Drawing.Color.Gainsboro;
+            CH_3_Min.BackColor = System.Drawing.Color.Gainsboro;
+            CH_3_Avg.BackColor = System.Drawing.Color.White;
         }
 
 
@@ -929,37 +1109,37 @@ namespace ThermoCoupleLogger
         private void CH_4_Act_Click(object sender, EventArgs e)
         {
             Channel4.ViewSetting = 0;
-            CH_4_Act.BackColor = System.Drawing.Color.Gainsboro;
-            CH_4_Max.BackColor = System.Drawing.Color.White;
-            CH_4_Min.BackColor = System.Drawing.Color.White;
-            CH_4_Avg.BackColor = System.Drawing.Color.White;
+            CH_4_Act.BackColor = System.Drawing.Color.White;
+            CH_4_Max.BackColor = System.Drawing.Color.Gainsboro;
+            CH_4_Min.BackColor = System.Drawing.Color.Gainsboro;
+            CH_4_Avg.BackColor = System.Drawing.Color.Gainsboro;
         }
 
         private void CH_4_Max_Click(object sender, EventArgs e)
         {
             Channel4.ViewSetting = 1;
-            CH_4_Act.BackColor = System.Drawing.Color.White;
-            CH_4_Max.BackColor = System.Drawing.Color.Gainsboro;
-            CH_4_Min.BackColor = System.Drawing.Color.White;
-            CH_4_Avg.BackColor = System.Drawing.Color.White;
+            CH_4_Act.BackColor = System.Drawing.Color.Gainsboro;
+            CH_4_Max.BackColor = System.Drawing.Color.White;
+            CH_4_Min.BackColor = System.Drawing.Color.Gainsboro;
+            CH_4_Avg.BackColor = System.Drawing.Color.Gainsboro;
         }
 
         private void CH_4_Min_Click(object sender, EventArgs e)
         {
             Channel4.ViewSetting = 2;
-            CH_4_Act.BackColor = System.Drawing.Color.White;
-            CH_4_Max.BackColor = System.Drawing.Color.White;
-            CH_4_Min.BackColor = System.Drawing.Color.Gainsboro;
-            CH_4_Avg.BackColor = System.Drawing.Color.White;
+            CH_4_Act.BackColor = System.Drawing.Color.Gainsboro;
+            CH_4_Max.BackColor = System.Drawing.Color.Gainsboro;
+            CH_4_Min.BackColor = System.Drawing.Color.White;
+            CH_4_Avg.BackColor = System.Drawing.Color.Gainsboro;
         }
 
         private void CH_4_Avg_Click(object sender, EventArgs e)
         {
             Channel4.ViewSetting = 3;
-            CH_4_Act.BackColor = System.Drawing.Color.White;
-            CH_4_Max.BackColor = System.Drawing.Color.White;
-            CH_4_Min.BackColor = System.Drawing.Color.White;
-            CH_4_Avg.BackColor = System.Drawing.Color.Gainsboro;
+            CH_4_Act.BackColor = System.Drawing.Color.Gainsboro;
+            CH_4_Max.BackColor = System.Drawing.Color.Gainsboro;
+            CH_4_Min.BackColor = System.Drawing.Color.Gainsboro;
+            CH_4_Avg.BackColor = System.Drawing.Color.White;
         }
 
 
@@ -968,37 +1148,37 @@ namespace ThermoCoupleLogger
         private void CH_5_Act_Click(object sender, EventArgs e)
         {
             Channel5.ViewSetting = 0;
-            CH_5_Act.BackColor = System.Drawing.Color.Gainsboro;
-            CH_5_Max.BackColor = System.Drawing.Color.White;
-            CH_5_Min.BackColor = System.Drawing.Color.White;
-            CH_5_Avg.BackColor = System.Drawing.Color.White;
+            CH_5_Act.BackColor = System.Drawing.Color.White;
+            CH_5_Max.BackColor = System.Drawing.Color.Gainsboro;
+            CH_5_Min.BackColor = System.Drawing.Color.Gainsboro;
+            CH_5_Avg.BackColor = System.Drawing.Color.Gainsboro;
         }
 
         private void CH_5_Max_Click(object sender, EventArgs e)
         {
             Channel5.ViewSetting = 1;
-            CH_5_Act.BackColor = System.Drawing.Color.White;
-            CH_5_Max.BackColor = System.Drawing.Color.Gainsboro;
-            CH_5_Min.BackColor = System.Drawing.Color.White;
-            CH_5_Avg.BackColor = System.Drawing.Color.White;
+            CH_5_Act.BackColor = System.Drawing.Color.Gainsboro;
+            CH_5_Max.BackColor = System.Drawing.Color.White;
+            CH_5_Min.BackColor = System.Drawing.Color.Gainsboro;
+            CH_5_Avg.BackColor = System.Drawing.Color.Gainsboro;
         }
 
         private void CH_5_Min_Click(object sender, EventArgs e)
         {
             Channel5.ViewSetting = 2;
-            CH_5_Act.BackColor = System.Drawing.Color.White;
-            CH_5_Max.BackColor = System.Drawing.Color.White;
-            CH_5_Min.BackColor = System.Drawing.Color.Gainsboro;
-            CH_5_Avg.BackColor = System.Drawing.Color.White;
+            CH_5_Act.BackColor = System.Drawing.Color.Gainsboro;
+            CH_5_Max.BackColor = System.Drawing.Color.Gainsboro;
+            CH_5_Min.BackColor = System.Drawing.Color.White;
+            CH_5_Avg.BackColor = System.Drawing.Color.Gainsboro;
         }
 
         private void CH_5_Avg_Click(object sender, EventArgs e)
         {
             Channel5.ViewSetting = 3;
-            CH_5_Act.BackColor = System.Drawing.Color.White;
-            CH_5_Max.BackColor = System.Drawing.Color.White;
-            CH_5_Min.BackColor = System.Drawing.Color.White;
-            CH_5_Avg.BackColor = System.Drawing.Color.Gainsboro;
+            CH_5_Act.BackColor = System.Drawing.Color.Gainsboro;
+            CH_5_Max.BackColor = System.Drawing.Color.Gainsboro;
+            CH_5_Min.BackColor = System.Drawing.Color.Gainsboro;
+            CH_5_Avg.BackColor = System.Drawing.Color.White;
         }
 
 
@@ -1006,37 +1186,37 @@ namespace ThermoCoupleLogger
         private void CH_6_Act_Click(object sender, EventArgs e)
         {
             Channel6.ViewSetting = 0;
-            CH_6_Act.BackColor = System.Drawing.Color.Gainsboro;
-            CH_6_Max.BackColor = System.Drawing.Color.White;
-            CH_6_Min.BackColor = System.Drawing.Color.White;
-            CH_6_Avg.BackColor = System.Drawing.Color.White;
+            CH_6_Act.BackColor = System.Drawing.Color.White;
+            CH_6_Max.BackColor = System.Drawing.Color.Gainsboro;
+            CH_6_Min.BackColor = System.Drawing.Color.Gainsboro;
+            CH_6_Avg.BackColor = System.Drawing.Color.Gainsboro;
         }
 
         private void CH_6_Max_Click(object sender, EventArgs e)
         {
             Channel6.ViewSetting = 1;
-            CH_6_Act.BackColor = System.Drawing.Color.White;
-            CH_6_Max.BackColor = System.Drawing.Color.Gainsboro;
-            CH_6_Min.BackColor = System.Drawing.Color.White;
-            CH_6_Avg.BackColor = System.Drawing.Color.White;
+            CH_6_Act.BackColor = System.Drawing.Color.Gainsboro;
+            CH_6_Max.BackColor = System.Drawing.Color.White;
+            CH_6_Min.BackColor = System.Drawing.Color.Gainsboro;
+            CH_6_Avg.BackColor = System.Drawing.Color.Gainsboro;
         }
 
         private void CH_6_Min_Click(object sender, EventArgs e)
         {
             Channel6.ViewSetting = 2;
-            CH_6_Act.BackColor = System.Drawing.Color.White;
-            CH_6_Max.BackColor = System.Drawing.Color.White;
-            CH_6_Min.BackColor = System.Drawing.Color.Gainsboro;
-            CH_6_Avg.BackColor = System.Drawing.Color.White;
+            CH_6_Act.BackColor = System.Drawing.Color.Gainsboro;
+            CH_6_Max.BackColor = System.Drawing.Color.Gainsboro;
+            CH_6_Min.BackColor = System.Drawing.Color.White;
+            CH_6_Avg.BackColor = System.Drawing.Color.Gainsboro;
         }
 
         private void CH_6_Avg_Click(object sender, EventArgs e)
         {
             Channel6.ViewSetting = 3;
-            CH_6_Act.BackColor = System.Drawing.Color.White;
-            CH_6_Max.BackColor = System.Drawing.Color.White;
-            CH_6_Min.BackColor = System.Drawing.Color.White;
-            CH_6_Avg.BackColor = System.Drawing.Color.Gainsboro;
+            CH_6_Act.BackColor = System.Drawing.Color.Gainsboro;
+            CH_6_Max.BackColor = System.Drawing.Color.Gainsboro;
+            CH_6_Min.BackColor = System.Drawing.Color.Gainsboro;
+            CH_6_Avg.BackColor = System.Drawing.Color.White;
         }
 
 
@@ -1045,37 +1225,37 @@ namespace ThermoCoupleLogger
         private void CH_7_Act_Click(object sender, EventArgs e)
         {
             Channel7.ViewSetting = 0;
-            CH_7_Act.BackColor = System.Drawing.Color.Gainsboro;
-            CH_7_Max.BackColor = System.Drawing.Color.White;
-            CH_7_Min.BackColor = System.Drawing.Color.White;
-            CH_7_Avg.BackColor = System.Drawing.Color.White;
+            CH_7_Act.BackColor = System.Drawing.Color.White;
+            CH_7_Max.BackColor = System.Drawing.Color.Gainsboro;
+            CH_7_Min.BackColor = System.Drawing.Color.Gainsboro;
+            CH_7_Avg.BackColor = System.Drawing.Color.Gainsboro;
         }
 
         private void CH_7_Max_Click(object sender, EventArgs e)
         {
             Channel7.ViewSetting = 1;
-            CH_7_Act.BackColor = System.Drawing.Color.White;
-            CH_7_Max.BackColor = System.Drawing.Color.Gainsboro;
-            CH_7_Min.BackColor = System.Drawing.Color.White;
-            CH_7_Avg.BackColor = System.Drawing.Color.White;
+            CH_7_Act.BackColor = System.Drawing.Color.Gainsboro;
+            CH_7_Max.BackColor = System.Drawing.Color.White;
+            CH_7_Min.BackColor = System.Drawing.Color.Gainsboro;
+            CH_7_Avg.BackColor = System.Drawing.Color.Gainsboro;
         }
 
         private void CH_7_Min_Click(object sender, EventArgs e)
         {
             Channel7.ViewSetting = 2;
-            CH_7_Act.BackColor = System.Drawing.Color.White;
-            CH_7_Max.BackColor = System.Drawing.Color.White;
-            CH_7_Min.BackColor = System.Drawing.Color.Gainsboro;
-            CH_7_Avg.BackColor = System.Drawing.Color.White;
+            CH_7_Act.BackColor = System.Drawing.Color.Gainsboro;
+            CH_7_Max.BackColor = System.Drawing.Color.Gainsboro;
+            CH_7_Min.BackColor = System.Drawing.Color.White;
+            CH_7_Avg.BackColor = System.Drawing.Color.Gainsboro;
         }
 
         private void CH_7_Avg_Click(object sender, EventArgs e)
         {
             Channel7.ViewSetting = 3;
-            CH_7_Act.BackColor = System.Drawing.Color.White;
-            CH_7_Max.BackColor = System.Drawing.Color.White;
-            CH_7_Min.BackColor = System.Drawing.Color.White;
-            CH_7_Avg.BackColor = System.Drawing.Color.Gainsboro;
+            CH_7_Act.BackColor = System.Drawing.Color.Gainsboro;
+            CH_7_Max.BackColor = System.Drawing.Color.Gainsboro;
+            CH_7_Min.BackColor = System.Drawing.Color.Gainsboro;
+            CH_7_Avg.BackColor = System.Drawing.Color.White;
         }
 
 
@@ -1084,37 +1264,37 @@ namespace ThermoCoupleLogger
         private void CH_8_Act_Click(object sender, EventArgs e)
         {
             Channel8.ViewSetting = 0;
-            CH_8_Act.BackColor = System.Drawing.Color.Gainsboro;
-            CH_8_Max.BackColor = System.Drawing.Color.White;
-            CH_8_Min.BackColor = System.Drawing.Color.White;
-            CH_8_Avg.BackColor = System.Drawing.Color.White;
+            CH_8_Act.BackColor = System.Drawing.Color.White;
+            CH_8_Max.BackColor = System.Drawing.Color.Gainsboro;
+            CH_8_Min.BackColor = System.Drawing.Color.Gainsboro;
+            CH_8_Avg.BackColor = System.Drawing.Color.Gainsboro;
         }
 
         private void CH_8_Max_Click(object sender, EventArgs e)
         {
             Channel8.ViewSetting = 1;
-            CH_8_Act.BackColor = System.Drawing.Color.White;
-            CH_8_Max.BackColor = System.Drawing.Color.Gainsboro;
-            CH_8_Min.BackColor = System.Drawing.Color.White;
-            CH_8_Avg.BackColor = System.Drawing.Color.White;
+            CH_8_Act.BackColor = System.Drawing.Color.Gainsboro;
+            CH_8_Max.BackColor = System.Drawing.Color.White;
+            CH_8_Min.BackColor = System.Drawing.Color.Gainsboro;
+            CH_8_Avg.BackColor = System.Drawing.Color.Gainsboro;
         }
 
         private void CH_8_Min_Click(object sender, EventArgs e)
         {
             Channel8.ViewSetting = 2;
-            CH_8_Act.BackColor = System.Drawing.Color.White;
-            CH_8_Max.BackColor = System.Drawing.Color.White;
-            CH_8_Min.BackColor = System.Drawing.Color.Gainsboro;
-            CH_8_Avg.BackColor = System.Drawing.Color.White;
+            CH_8_Act.BackColor = System.Drawing.Color.Gainsboro;
+            CH_8_Max.BackColor = System.Drawing.Color.Gainsboro;
+            CH_8_Min.BackColor = System.Drawing.Color.White;
+            CH_8_Avg.BackColor = System.Drawing.Color.Gainsboro;
         }
 
         private void CH_8_Avg_Click(object sender, EventArgs e)
         {
             Channel8.ViewSetting = 3;
-            CH_8_Act.BackColor = System.Drawing.Color.White;
-            CH_8_Max.BackColor = System.Drawing.Color.White;
-            CH_8_Min.BackColor = System.Drawing.Color.White;
-            CH_8_Avg.BackColor = System.Drawing.Color.Gainsboro;
+            CH_8_Act.BackColor = System.Drawing.Color.Gainsboro;
+            CH_8_Max.BackColor = System.Drawing.Color.Gainsboro;
+            CH_8_Min.BackColor = System.Drawing.Color.Gainsboro;
+            CH_8_Avg.BackColor = System.Drawing.Color.White;
         }
 
 
@@ -1123,37 +1303,37 @@ namespace ThermoCoupleLogger
         private void CH_A_Act_Click(object sender, EventArgs e)
         {
             ChannelA.ViewSetting = 0;
-            CH_A_Act.BackColor = System.Drawing.Color.Gainsboro;
-            CH_A_Max.BackColor = System.Drawing.Color.White;
-            CH_A_Min.BackColor = System.Drawing.Color.White;
-            CH_A_Avg.BackColor = System.Drawing.Color.White;
+            CH_A_Act.BackColor = System.Drawing.Color.White;
+            CH_A_Max.BackColor = System.Drawing.Color.Gainsboro;
+            CH_A_Min.BackColor = System.Drawing.Color.Gainsboro;
+            CH_A_Avg.BackColor = System.Drawing.Color.Gainsboro;
         }
 
         private void CH_A_Max_Click(object sender, EventArgs e)
         {
             ChannelA.ViewSetting = 1;
-            CH_A_Act.BackColor = System.Drawing.Color.White;
-            CH_A_Max.BackColor = System.Drawing.Color.Gainsboro;
-            CH_A_Min.BackColor = System.Drawing.Color.White;
-            CH_A_Avg.BackColor = System.Drawing.Color.White;
+            CH_A_Act.BackColor = System.Drawing.Color.Gainsboro;
+            CH_A_Max.BackColor = System.Drawing.Color.White;
+            CH_A_Min.BackColor = System.Drawing.Color.Gainsboro;
+            CH_A_Avg.BackColor = System.Drawing.Color.Gainsboro;
         }
 
         private void CH_A_Min_Click(object sender, EventArgs e)
         {
             ChannelA.ViewSetting = 2;
-            CH_A_Act.BackColor = System.Drawing.Color.White;
-            CH_A_Max.BackColor = System.Drawing.Color.White;
-            CH_A_Min.BackColor = System.Drawing.Color.Gainsboro;
-            CH_A_Avg.BackColor = System.Drawing.Color.White;
+            CH_A_Act.BackColor = System.Drawing.Color.Gainsboro;
+            CH_A_Max.BackColor = System.Drawing.Color.Gainsboro;
+            CH_A_Min.BackColor = System.Drawing.Color.White;
+            CH_A_Avg.BackColor = System.Drawing.Color.Gainsboro;
         }
 
         private void CH_A_Avg_Click(object sender, EventArgs e)
         {
             ChannelA.ViewSetting = 3;
-            CH_A_Act.BackColor = System.Drawing.Color.White;
-            CH_A_Max.BackColor = System.Drawing.Color.White;
-            CH_A_Min.BackColor = System.Drawing.Color.White;
-            CH_A_Avg.BackColor = System.Drawing.Color.Gainsboro;
+            CH_A_Act.BackColor = System.Drawing.Color.Gainsboro;
+            CH_A_Max.BackColor = System.Drawing.Color.Gainsboro;
+            CH_A_Min.BackColor = System.Drawing.Color.Gainsboro;
+            CH_A_Avg.BackColor = System.Drawing.Color.White;
         }
 
 
@@ -1258,6 +1438,114 @@ namespace ThermoCoupleLogger
         private void x_Click(object sender, EventArgs e)
         {
             registerData();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label25_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void periodmSec_ValueChanged(object sender, EventArgs e)
+        {
+            Acquisition.mSec = periodmSec.Value;
+            Acquisition.CalculatePeriod();
+
+        }
+
+        private void periodSec_ValueChanged(object sender, EventArgs e)
+        {
+            Acquisition.Sec = periodSec.Value;
+            Acquisition.CalculatePeriod();
+        }
+
+        private void periodMin_ValueChanged(object sender, EventArgs e)
+        {
+            Acquisition.Min = periodMin.Value;
+            Acquisition.CalculatePeriod();
+
+        }
+
+        private void timerLogg_Tick(object sender, EventArgs e)
+        {
+            registerData();
+            Acquisition.Countdown = Acquisition.Period;
+
+        }
+
+        private void timerRead_Tick(object sender, EventArgs e)
+        {
+            getData();
+        }
+
+        private void a(object sender, EventArgs e)
+        {
+            Acquisition.Countdown = Acquisition.Countdown - 100;
+        }
+
+        private void checkBoxPlotCH1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxPlotCH1.Checked && checkBoxPlotCH1.Enabled) Channel1.ShowOnScope = true;
+            else Channel1.ShowOnScope = false;
+        }
+
+        private void checkBoxPlotCH2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxPlotCH2.Checked && checkBoxPlotCH2.Enabled) Channel2.ShowOnScope = true;
+            else Channel2.ShowOnScope = false;
+        }
+
+        private void checkBoxPlotCH3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxPlotCH3.Checked && checkBoxPlotCH3.Enabled) Channel3.ShowOnScope = true;
+            else Channel3.ShowOnScope = false;
+        }
+
+        private void checkBoxPlotCH4_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxPlotCH4.Checked && checkBoxPlotCH4.Enabled) Channel4.ShowOnScope = true;
+            else Channel4.ShowOnScope = false;
+        }
+
+        private void checkBoxPlotCH5_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxPlotCH5.Checked && checkBoxPlotCH5.Enabled) Channel5.ShowOnScope = true;
+            else Channel5.ShowOnScope = false;
+        }
+
+        private void checkBoxPlotCH6_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxPlotCH6.Checked && checkBoxPlotCH6.Enabled) Channel6.ShowOnScope = true;
+            else Channel6.ShowOnScope = false;
+        }
+
+        private void checkBoxPlotCH7_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxPlotCH7.Checked && checkBoxPlotCH7.Enabled) Channel7.ShowOnScope = true;
+            else Channel7.ShowOnScope = false;
+        }
+
+        private void checkBoxPlotCH8_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxPlotCH8.Checked && checkBoxPlotCH8.Enabled) Channel8.ShowOnScope = true;
+            else Channel8.ShowOnScope = false;
+        }
+
+        private void buttonAuto_Click(object sender, EventArgs e)
+        {
+            chart1.ChartAreas[0].AxisY.Maximum = (double)Channel1.MaxTemperature + 1;
+            chart1.ChartAreas[0].AxisY.Minimum = (double)Channel1.MinTemperature - 1;
+        }
+
+        private void buttonClearData_Click(object sender, EventArgs e)
+        {
+            DialogResult result1 = MessageBox.Show("Save the data before clearing it?", "", 
+            MessageBoxButtons.YesNoCancel);
+
         }
     }
 }
