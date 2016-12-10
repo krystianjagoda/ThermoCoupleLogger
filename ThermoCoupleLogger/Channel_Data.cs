@@ -31,11 +31,20 @@ namespace ThermoCoupleLogger
 
 
         
-        // Dodac dynamiczna macierz z danymi
+        public void setMaxMin()
+        {
+            MaxTemperature = Temperature;
+            MinTemperature = Temperature;
+        }
 
 
 
     }
+
+
+
+
+
 
     public class Sample : IEquatable<Sample>
     {

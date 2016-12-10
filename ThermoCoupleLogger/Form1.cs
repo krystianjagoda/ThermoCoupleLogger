@@ -72,8 +72,17 @@ namespace ThermoCoupleLogger
 
             getAvailablePorts();
             tryToConnect();
+
+            InitialThings();
+
         }
 
+
+        public void RefreshGrid(object dataSource)
+        {
+            CurrencyManager myCurrencyManager = (CurrencyManager)this.BindingContext[dataSource];
+            myCurrencyManager.Refresh();
+        }
 
         public void NewSample(Decimal CH1_Value, Decimal CH2_Value, Decimal CH3_Value, Decimal CH4_Value,
                               Decimal CH5_Value, Decimal CH6_Value, Decimal CH7_Value, Decimal CH8_Value)
@@ -90,7 +99,11 @@ namespace ThermoCoupleLogger
                 Channel7Values = CH7_Value,
                 Channel8Values = CH8_Value,
             });
-        }
+
+
+       //     RefreshGrid(sampleBindingSource1);
+
+    }
 
 
         void getAvailablePorts()
@@ -126,6 +139,23 @@ namespace ThermoCoupleLogger
             Channel5.Temperature, Channel6.Temperature, Channel7.Temperature, Channel8.Temperature);
 
             ActualSampleNumber++;
+
+        }
+
+
+        void InitialThings()
+        {
+            //  Make an initial measurement to get Max and Min
+            getData();
+            Channel1.setMaxMin();
+            Channel2.setMaxMin();
+            Channel3.setMaxMin();
+            Channel4.setMaxMin();
+            Channel5.setMaxMin();
+            Channel6.setMaxMin();
+            Channel7.setMaxMin();
+            Channel8.setMaxMin();
+            ChannelA.setMaxMin();
 
         }
 
@@ -166,14 +196,7 @@ namespace ThermoCoupleLogger
 
                 
 
-                Channel1.Temperature = GetThermocoupleTemp(Channel1.RawData);
-                
-
-                if (Channel1.Temperature > Channel1.MaxTemperature) Channel1.MaxTemperature = Channel1.Temperature;     // do porpawy
-                if (Channel1.Temperature < Channel1.MinTemperature) Channel1.MinTemperature = Channel1.Temperature;     // do poprawy
-
-                
-
+                Channel1.Temperature = GetThermocoupleTemp(Channel1.RawData);               
                 Channel2.Temperature = GetThermocoupleTemp(Channel2.RawData);
                 Channel3.Temperature = GetThermocoupleTemp(Channel3.RawData);
                 Channel4.Temperature = GetThermocoupleTemp(Channel4.RawData);
@@ -181,6 +204,36 @@ namespace ThermoCoupleLogger
                 Channel6.Temperature = GetThermocoupleTemp(Channel6.RawData);
                 Channel7.Temperature = GetThermocoupleTemp(Channel7.RawData);
                 Channel8.Temperature = GetThermocoupleTemp(Channel8.RawData);
+
+                ChannelA.Temperature = Channel1.JunctionTemp;
+
+
+                if (Channel1.Temperature > Channel1.MaxTemperature) Channel1.MaxTemperature = Channel1.Temperature;
+                if (Channel1.Temperature < Channel1.MinTemperature) Channel1.MinTemperature = Channel1.Temperature;
+
+                if (Channel2.Temperature > Channel2.MaxTemperature) Channel2.MaxTemperature = Channel2.Temperature;
+                if (Channel2.Temperature < Channel2.MinTemperature) Channel2.MinTemperature = Channel2.Temperature;
+
+                if (Channel3.Temperature > Channel3.MaxTemperature) Channel3.MaxTemperature = Channel3.Temperature;
+                if (Channel3.Temperature < Channel3.MinTemperature) Channel3.MinTemperature = Channel3.Temperature;
+
+                if (Channel4.Temperature > Channel4.MaxTemperature) Channel4.MaxTemperature = Channel4.Temperature;
+                if (Channel4.Temperature < Channel4.MinTemperature) Channel4.MinTemperature = Channel4.Temperature;
+
+                if (Channel5.Temperature > Channel5.MaxTemperature) Channel5.MaxTemperature = Channel5.Temperature;
+                if (Channel5.Temperature < Channel5.MinTemperature) Channel5.MinTemperature = Channel5.Temperature;
+
+                if (Channel6.Temperature > Channel6.MaxTemperature) Channel6.MaxTemperature = Channel6.Temperature;
+                if (Channel6.Temperature < Channel6.MinTemperature) Channel6.MinTemperature = Channel6.Temperature;
+
+                if (Channel7.Temperature > Channel7.MaxTemperature) Channel7.MaxTemperature = Channel7.Temperature;
+                if (Channel7.Temperature < Channel7.MinTemperature) Channel7.MinTemperature = Channel7.Temperature;
+
+                if (Channel8.Temperature > Channel8.MaxTemperature) Channel8.MaxTemperature = Channel8.Temperature;
+                if (Channel8.Temperature < Channel8.MinTemperature) Channel8.MinTemperature = Channel8.Temperature;
+
+                if (ChannelA.Temperature > ChannelA.MaxTemperature) ChannelA.MaxTemperature = ChannelA.Temperature;
+                if (ChannelA.Temperature < ChannelA.MaxTemperature) ChannelA.MinTemperature = ChannelA.Temperature;
 
 
 
@@ -270,7 +323,13 @@ namespace ThermoCoupleLogger
         {
 
             // Ambient
-            CHA_Value.Text = Channel1.JunctionTemp.ToString() + " °C";
+            if (ChannelA.ViewSetting == 0) CHA_Value.Text = Channel1.JunctionTemp.ToString() + " °C";
+            else if (ChannelA.ViewSetting == 1) CHA_Value.Text = ChannelA.MaxTemperature.ToString() + " °C";
+            else if (ChannelA.ViewSetting == 2) CHA_Value.Text = ChannelA.MinTemperature.ToString() + " °C";
+            else if (ChannelA.ViewSetting == 3) CHA_Value.Text = ChannelA.AvgTemperature.ToString() + " °C";
+            else CHA_Value.Text = "Error";
+
+
 
             // Channel 1
             switch (Channel1.Fault)
@@ -313,7 +372,12 @@ namespace ThermoCoupleLogger
                     groupBoxCH2.Enabled = true;
                     CH2_Value.TextAlign = ContentAlignment.MiddleRight;
                     CH2_Value.ForeColor = Channel2.Color;
-                    CH2_Value.Text = Channel2.Temperature.ToString() + " °C";
+
+                    if (Channel2.ViewSetting == 0) CH2_Value.Text = Channel2.Temperature.ToString() + " °C";
+                    else if (Channel2.ViewSetting == 1) CH2_Value.Text = Channel2.MaxTemperature.ToString() + " °C";
+                    else if (Channel2.ViewSetting == 2) CH2_Value.Text = Channel2.MinTemperature.ToString() + " °C";
+                    else if (Channel2.ViewSetting == 3) CH2_Value.Text = Channel2.AvgTemperature.ToString() + " °C";
+                    else CH2_Value.Text = "Error";
                     break;
                 case 1:
                     groupBoxCH2.Enabled = false;
@@ -342,7 +406,12 @@ namespace ThermoCoupleLogger
                     groupBoxCH3.Enabled = true;
                     CH3_Value.TextAlign = ContentAlignment.MiddleRight;
                     CH3_Value.ForeColor = Channel3.Color;
-                    CH3_Value.Text = Channel3.Temperature.ToString() + " °C";
+
+                    if (Channel3.ViewSetting == 0) CH3_Value.Text = Channel3.Temperature.ToString() + " °C";
+                    else if (Channel3.ViewSetting == 1) CH3_Value.Text = Channel3.MaxTemperature.ToString() + " °C";
+                    else if (Channel3.ViewSetting == 2) CH3_Value.Text = Channel3.MinTemperature.ToString() + " °C";
+                    else if (Channel3.ViewSetting == 3) CH3_Value.Text = Channel3.AvgTemperature.ToString() + " °C";
+                    else CH3_Value.Text = "Error";
                     break;
                 case 1:
                     groupBoxCH3.Enabled = false;
@@ -371,7 +440,12 @@ namespace ThermoCoupleLogger
                     groupBoxCH4.Enabled = true;
                     CH4_Value.TextAlign = ContentAlignment.MiddleRight;
                     CH4_Value.ForeColor = Channel4.Color;
-                    CH4_Value.Text = Channel4.Temperature.ToString() + " °C";
+
+                    if (Channel4.ViewSetting == 0) CH4_Value.Text = Channel4.Temperature.ToString() + " °C";
+                    else if (Channel4.ViewSetting == 1) CH4_Value.Text = Channel4.MaxTemperature.ToString() + " °C";
+                    else if (Channel4.ViewSetting == 2) CH4_Value.Text = Channel4.MinTemperature.ToString() + " °C";
+                    else if (Channel4.ViewSetting == 3) CH4_Value.Text = Channel4.AvgTemperature.ToString() + " °C";
+                    else CH4_Value.Text = "Error";
                     break;
                 case 1:
                     groupBoxCH4.Enabled = false;
@@ -400,7 +474,12 @@ namespace ThermoCoupleLogger
                     groupBoxCH5.Enabled = true;
                     CH5_Value.TextAlign = ContentAlignment.MiddleRight;
                     CH5_Value.ForeColor = Channel5.Color;
-                    CH5_Value.Text = Channel5.Temperature.ToString() + " °C";
+
+                    if (Channel5.ViewSetting == 0) CH5_Value.Text = Channel5.Temperature.ToString() + " °C";
+                    else if (Channel5.ViewSetting == 1) CH5_Value.Text = Channel5.MaxTemperature.ToString() + " °C";
+                    else if (Channel5.ViewSetting == 2) CH5_Value.Text = Channel5.MinTemperature.ToString() + " °C";
+                    else if (Channel5.ViewSetting == 3) CH5_Value.Text = Channel5.AvgTemperature.ToString() + " °C";
+                    else CH5_Value.Text = "Error";
                     break;
                 case 1:
                     groupBoxCH5.Enabled = false;
@@ -429,7 +508,12 @@ namespace ThermoCoupleLogger
                     groupBoxCH6.Enabled = true;
                     CH6_Value.TextAlign = ContentAlignment.MiddleRight;
                     CH6_Value.ForeColor = Channel6.Color;
-                    CH6_Value.Text = Channel6.Temperature.ToString() + " °C";
+
+                    if (Channel6.ViewSetting == 0) CH6_Value.Text = Channel6.Temperature.ToString() + " °C";
+                    else if (Channel6.ViewSetting == 1) CH6_Value.Text = Channel6.MaxTemperature.ToString() + " °C";
+                    else if (Channel6.ViewSetting == 2) CH6_Value.Text = Channel6.MinTemperature.ToString() + " °C";
+                    else if (Channel6.ViewSetting == 3) CH6_Value.Text = Channel6.AvgTemperature.ToString() + " °C";
+                    else CH6_Value.Text = "Error";
                     break;
                 case 1:
                     groupBoxCH6.Enabled = false;
@@ -458,7 +542,12 @@ namespace ThermoCoupleLogger
                     groupBoxCH7.Enabled = true;
                     CH7_Value.TextAlign = ContentAlignment.MiddleRight;
                     CH7_Value.ForeColor = Channel7.Color;
-                    CH7_Value.Text = Channel7.Temperature.ToString() + " °C";
+
+                    if (Channel7.ViewSetting == 0) CH7_Value.Text = Channel7.Temperature.ToString() + " °C";
+                    else if (Channel7.ViewSetting == 1) CH7_Value.Text = Channel7.MaxTemperature.ToString() + " °C";
+                    else if (Channel7.ViewSetting == 2) CH7_Value.Text = Channel7.MinTemperature.ToString() + " °C";
+                    else if (Channel7.ViewSetting == 3) CH7_Value.Text = Channel7.AvgTemperature.ToString() + " °C";
+                    else CH7_Value.Text = "Error";
                     break;
                 case 1:
                     groupBoxCH7.Enabled = false;
@@ -488,7 +577,12 @@ namespace ThermoCoupleLogger
                     groupBoxCH8.Enabled = true;
                     CH8_Value.TextAlign = ContentAlignment.MiddleRight;
                     CH8_Value.ForeColor = Channel8.Color;
-                    CH8_Value.Text = Channel8.Temperature.ToString() + " °C";
+
+                    if (Channel8.ViewSetting == 0) CH8_Value.Text = Channel8.Temperature.ToString() + " °C";
+                    else if (Channel8.ViewSetting == 1) CH8_Value.Text = Channel8.MaxTemperature.ToString() + " °C";
+                    else if (Channel8.ViewSetting == 2) CH8_Value.Text = Channel8.MinTemperature.ToString() + " °C";
+                    else if (Channel8.ViewSetting == 3) CH8_Value.Text = Channel8.AvgTemperature.ToString() + " °C";
+                    else CH8_Value.Text = "Error";
                     break;
                 case 1:
                     groupBoxCH8.Enabled = false;
@@ -769,6 +863,8 @@ namespace ThermoCoupleLogger
         private void timerRefresh_Tick(object sender, EventArgs e)
         {
             UpdatePreview();
+
+            labelSamples.Text = ActualSampleNumber.ToString();
 
             Int32 TimeLeft = Acquisition.Countdown/100;
             Int32 MinLeft = (TimeLeft/600);
@@ -1437,6 +1533,19 @@ namespace ThermoCoupleLogger
         {
             if (checkBoxPlotCH8.Checked && checkBoxPlotCH8.Enabled) Channel8.ShowOnScope = true;
             else Channel8.ShowOnScope = false;
+        }
+
+        private void buttonAuto_Click(object sender, EventArgs e)
+        {
+            chart1.ChartAreas[0].AxisY.Maximum = (double)Channel1.MaxTemperature + 1;
+            chart1.ChartAreas[0].AxisY.Minimum = (double)Channel1.MinTemperature - 1;
+        }
+
+        private void buttonClearData_Click(object sender, EventArgs e)
+        {
+            DialogResult result1 = MessageBox.Show("Save the data before clearing it?", "", 
+            MessageBoxButtons.YesNoCancel);
+
         }
     }
 }

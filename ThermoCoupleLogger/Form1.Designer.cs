@@ -183,13 +183,13 @@
             this.button2 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.button8 = new System.Windows.Forms.Button();
+            this.buttonClearData = new System.Windows.Forms.Button();
             this.label21 = new System.Windows.Forms.Label();
             this.labelTimeToNext = new System.Windows.Forms.Label();
             this.buttonStart = new System.Windows.Forms.Button();
             this.labelTimeLeft = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
+            this.labelSamples = new System.Windows.Forms.Label();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.CH_A_Act = new System.Windows.Forms.Button();
             this.CHA_Value = new System.Windows.Forms.Label();
@@ -246,17 +246,18 @@
             this.CH1_Value = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabGraph = new System.Windows.Forms.TabPage();
+            this.buttonAuto = new System.Windows.Forms.Button();
+            this.checkBoxPlotCH8 = new System.Windows.Forms.CheckBox();
+            this.checkBoxPlotCH7 = new System.Windows.Forms.CheckBox();
+            this.checkBoxPlotCH6 = new System.Windows.Forms.CheckBox();
+            this.checkBoxPlotCH5 = new System.Windows.Forms.CheckBox();
+            this.checkBoxPlotCH4 = new System.Windows.Forms.CheckBox();
+            this.checkBoxPlotCH3 = new System.Windows.Forms.CheckBox();
+            this.checkBoxPlotCH2 = new System.Windows.Forms.CheckBox();
             this.checkBoxPlotCH1 = new System.Windows.Forms.CheckBox();
             this.button6 = new System.Windows.Forms.Button();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.timer100ms = new System.Windows.Forms.Timer(this.components);
-            this.checkBoxPlotCH2 = new System.Windows.Forms.CheckBox();
-            this.checkBoxPlotCH3 = new System.Windows.Forms.CheckBox();
-            this.checkBoxPlotCH4 = new System.Windows.Forms.CheckBox();
-            this.checkBoxPlotCH5 = new System.Windows.Forms.CheckBox();
-            this.checkBoxPlotCH6 = new System.Windows.Forms.CheckBox();
-            this.checkBoxPlotCH7 = new System.Windows.Forms.CheckBox();
-            this.checkBoxPlotCH8 = new System.Windows.Forms.CheckBox();
             this.sampleBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.sampleNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sampleTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -1216,7 +1217,7 @@
             this.periodSec.Size = new System.Drawing.Size(65, 22);
             this.periodSec.TabIndex = 2;
             this.periodSec.Value = new decimal(new int[] {
-            20,
+            1,
             0,
             0,
             0});
@@ -1677,13 +1678,13 @@
             // 
             // groupBox11
             // 
-            this.groupBox11.Controls.Add(this.button8);
+            this.groupBox11.Controls.Add(this.buttonClearData);
             this.groupBox11.Controls.Add(this.label21);
             this.groupBox11.Controls.Add(this.labelTimeToNext);
             this.groupBox11.Controls.Add(this.buttonStart);
             this.groupBox11.Controls.Add(this.labelTimeLeft);
             this.groupBox11.Controls.Add(this.label23);
-            this.groupBox11.Controls.Add(this.label22);
+            this.groupBox11.Controls.Add(this.labelSamples);
             this.groupBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox11.Location = new System.Drawing.Point(8, 572);
             this.groupBox11.Name = "groupBox11";
@@ -1692,17 +1693,17 @@
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Acquisition";
             // 
-            // button8
+            // buttonClearData
             // 
-            this.button8.BackColor = System.Drawing.Color.White;
-            this.button8.Enabled = false;
-            this.button8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button8.Location = new System.Drawing.Point(123, 77);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(106, 36);
-            this.button8.TabIndex = 27;
-            this.button8.Text = "Pause";
-            this.button8.UseVisualStyleBackColor = false;
+            this.buttonClearData.BackColor = System.Drawing.Color.White;
+            this.buttonClearData.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonClearData.Location = new System.Drawing.Point(123, 77);
+            this.buttonClearData.Name = "buttonClearData";
+            this.buttonClearData.Size = new System.Drawing.Size(106, 36);
+            this.buttonClearData.TabIndex = 27;
+            this.buttonClearData.Text = "Clear Data";
+            this.buttonClearData.UseVisualStyleBackColor = false;
+            this.buttonClearData.Click += new System.EventHandler(this.buttonClearData_Click);
             // 
             // label21
             // 
@@ -1760,16 +1761,16 @@
             this.label23.TabIndex = 22;
             this.label23.Text = "Time Left:";
             // 
-            // label22
+            // labelSamples
             // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label22.Location = new System.Drawing.Point(90, 26);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(29, 16);
-            this.label22.TabIndex = 21;
-            this.label22.Text = "458";
+            this.labelSamples.AutoSize = true;
+            this.labelSamples.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSamples.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.labelSamples.Location = new System.Drawing.Point(90, 26);
+            this.labelSamples.Name = "labelSamples";
+            this.labelSamples.Size = new System.Drawing.Size(15, 16);
+            this.labelSamples.TabIndex = 21;
+            this.labelSamples.Text = "0";
             // 
             // groupBox10
             // 
@@ -2429,6 +2430,7 @@
             // 
             // tabGraph
             // 
+            this.tabGraph.Controls.Add(this.buttonAuto);
             this.tabGraph.Controls.Add(this.checkBoxPlotCH8);
             this.tabGraph.Controls.Add(this.checkBoxPlotCH7);
             this.tabGraph.Controls.Add(this.checkBoxPlotCH6);
@@ -2446,6 +2448,107 @@
             this.tabGraph.TabIndex = 4;
             this.tabGraph.Text = "Graph";
             this.tabGraph.UseVisualStyleBackColor = true;
+            // 
+            // buttonAuto
+            // 
+            this.buttonAuto.Location = new System.Drawing.Point(681, 229);
+            this.buttonAuto.Name = "buttonAuto";
+            this.buttonAuto.Size = new System.Drawing.Size(75, 29);
+            this.buttonAuto.TabIndex = 15;
+            this.buttonAuto.Text = "Auto";
+            this.buttonAuto.UseVisualStyleBackColor = true;
+            this.buttonAuto.Click += new System.EventHandler(this.buttonAuto_Click);
+            // 
+            // checkBoxPlotCH8
+            // 
+            this.checkBoxPlotCH8.AutoSize = true;
+            this.checkBoxPlotCH8.Enabled = false;
+            this.checkBoxPlotCH8.ForeColor = System.Drawing.Color.MediumOrchid;
+            this.checkBoxPlotCH8.Location = new System.Drawing.Point(703, 198);
+            this.checkBoxPlotCH8.Name = "checkBoxPlotCH8";
+            this.checkBoxPlotCH8.Size = new System.Drawing.Size(53, 20);
+            this.checkBoxPlotCH8.TabIndex = 14;
+            this.checkBoxPlotCH8.Text = "CH8";
+            this.checkBoxPlotCH8.UseVisualStyleBackColor = true;
+            this.checkBoxPlotCH8.CheckedChanged += new System.EventHandler(this.checkBoxPlotCH8_CheckedChanged);
+            // 
+            // checkBoxPlotCH7
+            // 
+            this.checkBoxPlotCH7.AutoSize = true;
+            this.checkBoxPlotCH7.Enabled = false;
+            this.checkBoxPlotCH7.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.checkBoxPlotCH7.Location = new System.Drawing.Point(703, 172);
+            this.checkBoxPlotCH7.Name = "checkBoxPlotCH7";
+            this.checkBoxPlotCH7.Size = new System.Drawing.Size(53, 20);
+            this.checkBoxPlotCH7.TabIndex = 13;
+            this.checkBoxPlotCH7.Text = "CH7";
+            this.checkBoxPlotCH7.UseVisualStyleBackColor = true;
+            this.checkBoxPlotCH7.CheckedChanged += new System.EventHandler(this.checkBoxPlotCH7_CheckedChanged);
+            // 
+            // checkBoxPlotCH6
+            // 
+            this.checkBoxPlotCH6.AutoSize = true;
+            this.checkBoxPlotCH6.Enabled = false;
+            this.checkBoxPlotCH6.ForeColor = System.Drawing.Color.DimGray;
+            this.checkBoxPlotCH6.Location = new System.Drawing.Point(703, 146);
+            this.checkBoxPlotCH6.Name = "checkBoxPlotCH6";
+            this.checkBoxPlotCH6.Size = new System.Drawing.Size(53, 20);
+            this.checkBoxPlotCH6.TabIndex = 12;
+            this.checkBoxPlotCH6.Text = "CH6";
+            this.checkBoxPlotCH6.UseVisualStyleBackColor = true;
+            this.checkBoxPlotCH6.CheckedChanged += new System.EventHandler(this.checkBoxPlotCH6_CheckedChanged);
+            // 
+            // checkBoxPlotCH5
+            // 
+            this.checkBoxPlotCH5.AutoSize = true;
+            this.checkBoxPlotCH5.Enabled = false;
+            this.checkBoxPlotCH5.ForeColor = System.Drawing.Color.MediumSeaGreen;
+            this.checkBoxPlotCH5.Location = new System.Drawing.Point(703, 120);
+            this.checkBoxPlotCH5.Name = "checkBoxPlotCH5";
+            this.checkBoxPlotCH5.Size = new System.Drawing.Size(53, 20);
+            this.checkBoxPlotCH5.TabIndex = 11;
+            this.checkBoxPlotCH5.Text = "CH5";
+            this.checkBoxPlotCH5.UseVisualStyleBackColor = true;
+            this.checkBoxPlotCH5.CheckedChanged += new System.EventHandler(this.checkBoxPlotCH5_CheckedChanged);
+            // 
+            // checkBoxPlotCH4
+            // 
+            this.checkBoxPlotCH4.AutoSize = true;
+            this.checkBoxPlotCH4.Enabled = false;
+            this.checkBoxPlotCH4.ForeColor = System.Drawing.Color.DarkMagenta;
+            this.checkBoxPlotCH4.Location = new System.Drawing.Point(703, 94);
+            this.checkBoxPlotCH4.Name = "checkBoxPlotCH4";
+            this.checkBoxPlotCH4.Size = new System.Drawing.Size(53, 20);
+            this.checkBoxPlotCH4.TabIndex = 10;
+            this.checkBoxPlotCH4.Text = "CH4";
+            this.checkBoxPlotCH4.UseVisualStyleBackColor = true;
+            this.checkBoxPlotCH4.CheckedChanged += new System.EventHandler(this.checkBoxPlotCH4_CheckedChanged);
+            // 
+            // checkBoxPlotCH3
+            // 
+            this.checkBoxPlotCH3.AutoSize = true;
+            this.checkBoxPlotCH3.Enabled = false;
+            this.checkBoxPlotCH3.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.checkBoxPlotCH3.Location = new System.Drawing.Point(703, 68);
+            this.checkBoxPlotCH3.Name = "checkBoxPlotCH3";
+            this.checkBoxPlotCH3.Size = new System.Drawing.Size(53, 20);
+            this.checkBoxPlotCH3.TabIndex = 9;
+            this.checkBoxPlotCH3.Text = "CH3";
+            this.checkBoxPlotCH3.UseVisualStyleBackColor = true;
+            this.checkBoxPlotCH3.CheckedChanged += new System.EventHandler(this.checkBoxPlotCH3_CheckedChanged);
+            // 
+            // checkBoxPlotCH2
+            // 
+            this.checkBoxPlotCH2.AutoSize = true;
+            this.checkBoxPlotCH2.Enabled = false;
+            this.checkBoxPlotCH2.ForeColor = System.Drawing.Color.Firebrick;
+            this.checkBoxPlotCH2.Location = new System.Drawing.Point(703, 42);
+            this.checkBoxPlotCH2.Name = "checkBoxPlotCH2";
+            this.checkBoxPlotCH2.Size = new System.Drawing.Size(53, 20);
+            this.checkBoxPlotCH2.TabIndex = 8;
+            this.checkBoxPlotCH2.Text = "CH2";
+            this.checkBoxPlotCH2.UseVisualStyleBackColor = true;
+            this.checkBoxPlotCH2.CheckedChanged += new System.EventHandler(this.checkBoxPlotCH2_CheckedChanged);
             // 
             // checkBoxPlotCH1
             // 
@@ -2467,11 +2570,13 @@
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(106, 36);
             this.button6.TabIndex = 6;
-            this.button6.Text = "Clear Data";
+            this.button6.Text = "Clear Graph";
             this.button6.UseVisualStyleBackColor = false;
             // 
             // chart1
             // 
+            chartArea1.AxisY.Maximum = 3000D;
+            chartArea1.AxisY.Minimum = -3000D;
             chartArea1.Name = "ChartArea1";
             this.chart1.ChartAreas.Add(chartArea1);
             this.chart1.DataSource = this.sampleBindingSource1;
@@ -2543,97 +2648,6 @@
             // timer100ms
             // 
             this.timer100ms.Tick += new System.EventHandler(this.a);
-            // 
-            // checkBoxPlotCH2
-            // 
-            this.checkBoxPlotCH2.AutoSize = true;
-            this.checkBoxPlotCH2.Enabled = false;
-            this.checkBoxPlotCH2.ForeColor = System.Drawing.Color.Firebrick;
-            this.checkBoxPlotCH2.Location = new System.Drawing.Point(703, 42);
-            this.checkBoxPlotCH2.Name = "checkBoxPlotCH2";
-            this.checkBoxPlotCH2.Size = new System.Drawing.Size(53, 20);
-            this.checkBoxPlotCH2.TabIndex = 8;
-            this.checkBoxPlotCH2.Text = "CH2";
-            this.checkBoxPlotCH2.UseVisualStyleBackColor = true;
-            this.checkBoxPlotCH2.CheckedChanged += new System.EventHandler(this.checkBoxPlotCH2_CheckedChanged);
-            // 
-            // checkBoxPlotCH3
-            // 
-            this.checkBoxPlotCH3.AutoSize = true;
-            this.checkBoxPlotCH3.Enabled = false;
-            this.checkBoxPlotCH3.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.checkBoxPlotCH3.Location = new System.Drawing.Point(703, 68);
-            this.checkBoxPlotCH3.Name = "checkBoxPlotCH3";
-            this.checkBoxPlotCH3.Size = new System.Drawing.Size(53, 20);
-            this.checkBoxPlotCH3.TabIndex = 9;
-            this.checkBoxPlotCH3.Text = "CH3";
-            this.checkBoxPlotCH3.UseVisualStyleBackColor = true;
-            this.checkBoxPlotCH3.CheckedChanged += new System.EventHandler(this.checkBoxPlotCH3_CheckedChanged);
-            // 
-            // checkBoxPlotCH4
-            // 
-            this.checkBoxPlotCH4.AutoSize = true;
-            this.checkBoxPlotCH4.Enabled = false;
-            this.checkBoxPlotCH4.ForeColor = System.Drawing.Color.DarkMagenta;
-            this.checkBoxPlotCH4.Location = new System.Drawing.Point(703, 94);
-            this.checkBoxPlotCH4.Name = "checkBoxPlotCH4";
-            this.checkBoxPlotCH4.Size = new System.Drawing.Size(53, 20);
-            this.checkBoxPlotCH4.TabIndex = 10;
-            this.checkBoxPlotCH4.Text = "CH4";
-            this.checkBoxPlotCH4.UseVisualStyleBackColor = true;
-            this.checkBoxPlotCH4.CheckedChanged += new System.EventHandler(this.checkBoxPlotCH4_CheckedChanged);
-            // 
-            // checkBoxPlotCH5
-            // 
-            this.checkBoxPlotCH5.AutoSize = true;
-            this.checkBoxPlotCH5.Enabled = false;
-            this.checkBoxPlotCH5.ForeColor = System.Drawing.Color.MediumSeaGreen;
-            this.checkBoxPlotCH5.Location = new System.Drawing.Point(703, 120);
-            this.checkBoxPlotCH5.Name = "checkBoxPlotCH5";
-            this.checkBoxPlotCH5.Size = new System.Drawing.Size(53, 20);
-            this.checkBoxPlotCH5.TabIndex = 11;
-            this.checkBoxPlotCH5.Text = "CH5";
-            this.checkBoxPlotCH5.UseVisualStyleBackColor = true;
-            this.checkBoxPlotCH5.CheckedChanged += new System.EventHandler(this.checkBoxPlotCH5_CheckedChanged);
-            // 
-            // checkBoxPlotCH6
-            // 
-            this.checkBoxPlotCH6.AutoSize = true;
-            this.checkBoxPlotCH6.Enabled = false;
-            this.checkBoxPlotCH6.ForeColor = System.Drawing.Color.DimGray;
-            this.checkBoxPlotCH6.Location = new System.Drawing.Point(703, 146);
-            this.checkBoxPlotCH6.Name = "checkBoxPlotCH6";
-            this.checkBoxPlotCH6.Size = new System.Drawing.Size(53, 20);
-            this.checkBoxPlotCH6.TabIndex = 12;
-            this.checkBoxPlotCH6.Text = "CH6";
-            this.checkBoxPlotCH6.UseVisualStyleBackColor = true;
-            this.checkBoxPlotCH6.CheckedChanged += new System.EventHandler(this.checkBoxPlotCH6_CheckedChanged);
-            // 
-            // checkBoxPlotCH7
-            // 
-            this.checkBoxPlotCH7.AutoSize = true;
-            this.checkBoxPlotCH7.Enabled = false;
-            this.checkBoxPlotCH7.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.checkBoxPlotCH7.Location = new System.Drawing.Point(703, 172);
-            this.checkBoxPlotCH7.Name = "checkBoxPlotCH7";
-            this.checkBoxPlotCH7.Size = new System.Drawing.Size(53, 20);
-            this.checkBoxPlotCH7.TabIndex = 13;
-            this.checkBoxPlotCH7.Text = "CH7";
-            this.checkBoxPlotCH7.UseVisualStyleBackColor = true;
-            this.checkBoxPlotCH7.CheckedChanged += new System.EventHandler(this.checkBoxPlotCH7_CheckedChanged);
-            // 
-            // checkBoxPlotCH8
-            // 
-            this.checkBoxPlotCH8.AutoSize = true;
-            this.checkBoxPlotCH8.Enabled = false;
-            this.checkBoxPlotCH8.ForeColor = System.Drawing.Color.MediumOrchid;
-            this.checkBoxPlotCH8.Location = new System.Drawing.Point(703, 198);
-            this.checkBoxPlotCH8.Name = "checkBoxPlotCH8";
-            this.checkBoxPlotCH8.Size = new System.Drawing.Size(53, 20);
-            this.checkBoxPlotCH8.TabIndex = 14;
-            this.checkBoxPlotCH8.Text = "CH8";
-            this.checkBoxPlotCH8.UseVisualStyleBackColor = true;
-            this.checkBoxPlotCH8.CheckedChanged += new System.EventHandler(this.checkBoxPlotCH8_CheckedChanged);
             // 
             // sampleBindingSource1
             // 
@@ -2890,7 +2904,7 @@
         private System.Windows.Forms.Label labelTimeToNext;
         private System.Windows.Forms.Label labelTimeLeft;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label labelSamples;
         private System.Windows.Forms.Button buttonStart;
         private System.Windows.Forms.GroupBox groupBox10;
         private System.Windows.Forms.Button CH_A_Act;
@@ -2983,7 +2997,7 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button buttonClearData;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.CheckBox checkBoxPlotCH1;
@@ -3005,6 +3019,7 @@
         private System.Windows.Forms.CheckBox checkBoxPlotCH4;
         private System.Windows.Forms.CheckBox checkBoxPlotCH3;
         private System.Windows.Forms.CheckBox checkBoxPlotCH2;
+        private System.Windows.Forms.Button buttonAuto;
     }
 }
 
