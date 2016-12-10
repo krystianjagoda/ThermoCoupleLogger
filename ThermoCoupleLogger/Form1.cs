@@ -18,7 +18,8 @@ namespace ThermoCoupleLogger
     public partial class Form1 : Form
     {
 
-        
+        public string ReleaseInfo = "Version: 0.05 2016-12-10";
+
         public bool DebugMode = false;
         public uint ErrorFrames = 0;
 
