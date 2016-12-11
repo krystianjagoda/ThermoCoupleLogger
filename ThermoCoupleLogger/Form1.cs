@@ -18,7 +18,8 @@ namespace ThermoCoupleLogger
     public partial class Form1 : Form
     {
 
-        public string ReleaseInfo = "Version: 0.05   2016-12-10";
+
+        public string ReleaseInfo = "Version: 0.07   2016-12-11";
 
         public bool DebugMode = false;
         public uint ErrorFrames = 0;
@@ -67,10 +68,10 @@ namespace ThermoCoupleLogger
             DefaultColors();
 
 
-            Acquisition.mSec = periodmSec.Value;
-            Acquisition.Sec = periodSec.Value;
-            Acquisition.Min = periodMin.Value;
-            Acquisition.CalculatePeriod();
+            Acquisition.CalculatedTime.mSec = periodmSec.Value;
+            Acquisition.CalculatedTime.Sec = periodSec.Value;
+            Acquisition.CalculatedTime.Min = periodMin.Value;
+            Acquisition.CalculatedTime.CalculatePeriod();
 
             getAvailablePorts();
             tryToConnect();
@@ -728,25 +729,28 @@ namespace ThermoCoupleLogger
         {
 
             Acquisition.Logging =  !Acquisition.Logging;
-            timerLogg.Interval = Acquisition.Period;
-            Acquisition.Countdown = Acquisition.Period;
-            timer100ms.Enabled = !timer100ms.Enabled;
+            timerLogg.Interval = (Int32)Acquisition.CalculatedTime.Period;
+            Acquisition.CalculatedTime.Countdown = Acquisition.CalculatedTime.Period;
             timerLogg.Enabled = !timerLogg.Enabled;
-
-
+            Acquisition.startTime = DateTime.Now;
+            
+            
 
             if (Acquisition.Logging == true)
             {
-                if(Acquisition.Period < 50)
+                if(Acquisition.CalculatedTime.Period < 50)
                 {
-                    timerRead.Interval = (int)Acquisition.Period;
+                    timerRead.Interval = (int)Acquisition.CalculatedTime.Period;
                 }
 
                 buttonStart.Text = "Stop";
                 buttonStart.BackColor = System.Drawing.Color.IndianRed;
                 buttonClearData.Enabled = false;
 
-            }
+                Acquisition.TimeLeft.SampleLimit = Acquisition.CalculatedTime.SampleLimit;
+                Acquisition.TimeLeft.Period = Acquisition.CalculatedTime.Period;
+                Acquisition.TimeLeft.CalculateTotalTime(Acquisition.TimeLeft.SampleLimit);
+        }
 
             if (Acquisition.Logging == false)
             {                
@@ -868,24 +872,53 @@ namespace ThermoCoupleLogger
 
         private void timerRefresh_Tick(object sender, EventArgs e)
         {
+            Acquisition.TimeLeft.CalculatePeriod();
+
+            labelTimeToNext.Text = Acquisition.TimeToNextSample();
+
+            labelDebugge.Text = Acquisition.TimeLeft.Period.ToString();
+
             UpdatePreview();
 
-
-            if(Acquisition.LimitSet == true)
+            if (Acquisition.LimitSet == true)
             {
-                labelSamples.Text = ActualSampleNumber.ToString() + " / " + Acquisition.SampleLimit.ToString();
+                labelSamples.Text = ActualSampleNumber.ToString() + " / " + Acquisition.CalculatedTime.SampleLimit.ToString();
+
+                if (Acquisition.Logging == true)
+                {
+
+                    Acquisition.TimeLeft.Period = Acquisition.CalculatedTime.Period;
+                    labelTimeLeft.Text = Acquisition.TimeLeft.TotalDays.ToString() + "."
+                        + Acquisition.TimeLeft.TotalHours.ToString() + ":"
+                        + Acquisition.TimeLeft.TotalMinutes.ToString() + ":"
+                        + Acquisition.TimeLeft.TotalSeconds.ToString();
+                }
+                else if(Acquisition.Logging == false)
+                {
+                    labelTimeLeft.Text = Acquisition.CalculatedTime.TotalDays.ToString() + "."
+                        + Acquisition.CalculatedTime.TotalHours.ToString() + ":"
+                        + Acquisition.CalculatedTime.TotalMinutes.ToString() + ":"
+                        + Acquisition.CalculatedTime.TotalSeconds.ToString();
+                }
+
+
+                labelDaysTotal.Text = Acquisition.CalculatedTime.TotalDays.ToString();
+                labelHoursTotal.Text = Acquisition.CalculatedTime.TotalHours.ToString();
+                labelMinutesTotal.Text = Acquisition.CalculatedTime.TotalMinutes.ToString();
+                labelSecondsTotal.Text = Acquisition.CalculatedTime.TotalSeconds.ToString();
+
             }
-            else labelSamples.Text = ActualSampleNumber.ToString();
+            else
+            {
+                labelSamples.Text = ActualSampleNumber.ToString();
+                labelTimeLeft.Text = "∞";
+                labelDaysTotal.Text = "-";
+                labelHoursTotal.Text = "-";
+                labelMinutesTotal.Text = "-";
+                labelSecondsTotal.Text = "-";
+            }
 
 
-            labelCounter.Text = Acquisition.Countdown.ToString();
-
-            Int32 TimeLeft = Acquisition.Countdown/100;
-            Int32 MinLeft = (TimeLeft/600);
-            Int32 SecLeft = TimeLeft - (600 * MinLeft); 
-
-            labelTimeToNext.Text = "00:" + MinLeft.ToString() + ":" + (SecLeft/10).ToString() + "." +(SecLeft % 10).ToString();
-            //  labelTimeToNext.Text = TimeLeft.ToString();
 
             // if (Acquisition.Logging)
             if(ActualSampleNumber > 0)
@@ -1467,31 +1500,46 @@ namespace ThermoCoupleLogger
 
         private void periodmSec_ValueChanged(object sender, EventArgs e)
         {
-            Acquisition.mSec = periodmSec.Value;
-            Acquisition.CalculatePeriod();
+            Acquisition.CalculatedTime.mSec = periodmSec.Value;
+            Acquisition.CalculatedTime.CalculatePeriod();
+            Acquisition.CalculatedTime.CalculateTotalTime(Acquisition.CalculatedTime.SampleLimit);
 
         }
 
         private void periodSec_ValueChanged(object sender, EventArgs e)
         {
-            Acquisition.Sec = periodSec.Value;
-            Acquisition.CalculatePeriod();
+            Acquisition.CalculatedTime.Sec = periodSec.Value;
+            Acquisition.CalculatedTime.CalculatePeriod();
+            Acquisition.CalculatedTime.CalculateTotalTime(Acquisition.CalculatedTime.SampleLimit);
         }
 
         private void periodMin_ValueChanged(object sender, EventArgs e)
         {
-            Acquisition.Min = periodMin.Value;
-            Acquisition.CalculatePeriod();
-
+            Acquisition.CalculatedTime.Min = periodMin.Value;
+            Acquisition.CalculatedTime.CalculatePeriod();
+            Acquisition.CalculatedTime.CalculateTotalTime(Acquisition.CalculatedTime.SampleLimit);
         }
+
+        private void numericUpDownLimit_ValueChanged(object sender, EventArgs e)
+        {
+            Acquisition.CalculatedTime.SampleLimit = (UInt32)numericUpDownLimit.Value;
+            Acquisition.CalculatedTime.CalculatePeriod();
+            Acquisition.CalculatedTime.CalculateTotalTime(Acquisition.CalculatedTime.SampleLimit);
+        }
+
 
         private void timerLogg_Tick(object sender, EventArgs e)
         {
-            Acquisition.Countdown = Acquisition.Period;
-            timer100ms.Start();
+            Acquisition.startTime = DateTime.Now;
+
+            Acquisition.CalculatedTime.Countdown = Acquisition.CalculatedTime.Period;
+
+
+            Acquisition.TimeLeft.CalculateTotalTime(--Acquisition.TimeLeft.SampleLimit);
+
             registerData();
 
-            if(ActualSampleNumber == Acquisition.SampleLimit)
+            if(ActualSampleNumber == Acquisition.CalculatedTime.SampleLimit)
             {
                 StopLogging();
             }
@@ -1502,7 +1550,6 @@ namespace ThermoCoupleLogger
         {
             Acquisition.Logging = false;
             timerLogg.Enabled = false;
-            timer100ms.Enabled = false;
 
             timerRead.Interval = 50;
             buttonStart.Text = "Start";
@@ -1521,7 +1568,7 @@ namespace ThermoCoupleLogger
 
         private void a(object sender, EventArgs e)
         {
-            Acquisition.Countdown = Acquisition.Countdown - 100;
+
         }
 
         private void checkBoxPlotCH1_CheckedChanged(object sender, EventArgs e)
@@ -1665,19 +1712,37 @@ namespace ThermoCoupleLogger
             {
                 Acquisition.LimitSet = true;
                 numericUpDownLimit.Enabled = true;
+                labelSamplestext.Enabled = true;
+                labelDaystext.Enabled = true;
+                labelHourstext.Enabled = true;
+                labelMinutestext.Enabled = true;
+                labelSecondstext.Enabled = true;
+                labelTotaltimetext.Enabled = true;
+                labelDaysTotal.Enabled = true;
+                labelHoursTotal.Enabled = true;
+                labelMinutesTotal.Enabled = true;
+                labelSecondsTotal.Enabled = true;
+                Acquisition.CalculatedTime.CalculateTotalTime(Acquisition.CalculatedTime.SampleLimit);
             }
 
             else
             {
                 Acquisition.LimitSet = false;
                 numericUpDownLimit.Enabled = false;
+                labelSamplestext.Enabled = false;
+                labelDaystext.Enabled = false;
+                labelHourstext.Enabled = false;
+                labelMinutestext.Enabled = false;
+                labelSecondstext.Enabled = false;
+                labelTotaltimetext.Enabled = false;
+                labelDaysTotal.Enabled = false;
+                labelHoursTotal.Enabled = false;
+                labelMinutesTotal.Enabled = false;
+                labelSecondsTotal.Enabled = false;
             }
         }
 
-        private void numericUpDownLimit_ValueChanged(object sender, EventArgs e)
-        {
-            Acquisition.SampleLimit = (UInt32)numericUpDownLimit.Value;
-        }
+
 
         private void button4_Click(object sender, EventArgs e)
         {           

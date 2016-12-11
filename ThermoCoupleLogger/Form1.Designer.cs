@@ -45,6 +45,10 @@
             this.timerRead = new System.Windows.Forms.Timer(this.components);
             this.timerRefresh = new System.Windows.Forms.Timer(this.components);
             this.tabDebug = new System.Windows.Forms.TabPage();
+            this.label24 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.labelTicks = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
             this.x = new System.Windows.Forms.Button();
             this.richTextBoxTests = new System.Windows.Forms.RichTextBox();
             this.buttonA = new System.Windows.Forms.Button();
@@ -121,17 +125,17 @@
             this.buttonConnect = new System.Windows.Forms.Button();
             this.comboBoxCOMs = new System.Windows.Forms.ComboBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.labelSecondsTotal = new System.Windows.Forms.Label();
+            this.labelDaysTotal = new System.Windows.Forms.Label();
+            this.labelHoursTotal = new System.Windows.Forms.Label();
+            this.labelMinutesTotal = new System.Windows.Forms.Label();
+            this.labelSecondstext = new System.Windows.Forms.Label();
+            this.labelMinutestext = new System.Windows.Forms.Label();
+            this.labelHourstext = new System.Windows.Forms.Label();
+            this.labelDaystext = new System.Windows.Forms.Label();
+            this.labelTotaltimetext = new System.Windows.Forms.Label();
             this.numericUpDownLimit = new System.Windows.Forms.NumericUpDown();
-            this.label15 = new System.Windows.Forms.Label();
+            this.labelSamplestext = new System.Windows.Forms.Label();
             this.checkBoxLimit = new System.Windows.Forms.CheckBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -247,6 +251,7 @@
             this.CH1_Value = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabGraph = new System.Windows.Forms.TabPage();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.button15 = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
@@ -266,10 +271,6 @@
             this.checkBoxPlotCH1 = new System.Windows.Forms.CheckBox();
             this.button6 = new System.Windows.Forms.Button();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.timer100ms = new System.Windows.Forms.Timer(this.components);
-            this.labelCounter = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.sampleBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.sampleNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sampleTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -281,6 +282,7 @@
             this.channel6ValuesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.channel7ValuesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.channel8ValuesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.labelDebugge = new System.Windows.Forms.Label();
             this.tabDebug.SuspendLayout();
             this.groupBox12.SuspendLayout();
             this.tabSettings.SuspendLayout();
@@ -339,7 +341,9 @@
             // tabDebug
             // 
             this.tabDebug.Controls.Add(this.label24);
-            this.tabDebug.Controls.Add(this.labelCounter);
+            this.tabDebug.Controls.Add(this.textBox2);
+            this.tabDebug.Controls.Add(this.labelTicks);
+            this.tabDebug.Controls.Add(this.label25);
             this.tabDebug.Controls.Add(this.x);
             this.tabDebug.Controls.Add(this.richTextBoxTests);
             this.tabDebug.Controls.Add(this.buttonA);
@@ -353,6 +357,40 @@
             this.tabDebug.Text = "Debug";
             this.tabDebug.UseVisualStyleBackColor = true;
             this.tabDebug.Click += new System.EventHandler(this.tabPage4_Click);
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(374, 500);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(47, 16);
+            this.label24.TabIndex = 77;
+            this.label24.Text = "Errors:";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(265, 518);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(156, 22);
+            this.textBox2.TabIndex = 76;
+            // 
+            // labelTicks
+            // 
+            this.labelTicks.AutoSize = true;
+            this.labelTicks.Location = new System.Drawing.Point(365, 376);
+            this.labelTicks.Name = "labelTicks";
+            this.labelTicks.Size = new System.Drawing.Size(15, 16);
+            this.labelTicks.TabIndex = 75;
+            this.labelTicks.Text = "0";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(272, 376);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(75, 16);
+            this.label25.TabIndex = 74;
+            this.label25.Text = "TimeTicks:";
             // 
             // x
             // 
@@ -385,7 +423,7 @@
             // buttonDebugMode
             // 
             this.buttonDebugMode.BackColor = System.Drawing.Color.PaleGreen;
-            this.buttonDebugMode.Location = new System.Drawing.Point(621, 600);
+            this.buttonDebugMode.Location = new System.Drawing.Point(657, 600);
             this.buttonDebugMode.Name = "buttonDebugMode";
             this.buttonDebugMode.Size = new System.Drawing.Size(146, 37);
             this.buttonDebugMode.TabIndex = 69;
@@ -459,7 +497,7 @@
             this.groupBox12.Controls.Add(this.Data8B);
             this.groupBox12.Location = new System.Drawing.Point(3, 6);
             this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(765, 318);
+            this.groupBox12.Size = new System.Drawing.Size(800, 318);
             this.groupBox12.TabIndex = 52;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "Frame";
@@ -467,7 +505,7 @@
             // labelErrors
             // 
             this.labelErrors.AutoSize = true;
-            this.labelErrors.Location = new System.Drawing.Point(701, 129);
+            this.labelErrors.Location = new System.Drawing.Point(738, 132);
             this.labelErrors.Name = "labelErrors";
             this.labelErrors.Size = new System.Drawing.Size(15, 16);
             this.labelErrors.TabIndex = 70;
@@ -476,7 +514,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(642, 129);
+            this.label2.Location = new System.Drawing.Point(679, 132);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 16);
             this.label2.TabIndex = 69;
@@ -566,7 +604,7 @@
             // 
             // textBoxCalcCheckSum
             // 
-            this.textBoxCalcCheckSum.Location = new System.Drawing.Point(692, 95);
+            this.textBoxCalcCheckSum.Location = new System.Drawing.Point(729, 98);
             this.textBoxCalcCheckSum.Name = "textBoxCalcCheckSum";
             this.textBoxCalcCheckSum.Size = new System.Drawing.Size(65, 22);
             this.textBoxCalcCheckSum.TabIndex = 59;
@@ -574,7 +612,7 @@
             // label39
             // 
             this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(617, 73);
+            this.label39.Location = new System.Drawing.Point(654, 76);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(140, 16);
             this.label39.TabIndex = 58;
@@ -583,7 +621,7 @@
             // label38
             // 
             this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(642, 20);
+            this.label38.Location = new System.Drawing.Point(679, 23);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(115, 16);
             this.label38.TabIndex = 57;
@@ -591,7 +629,7 @@
             // 
             // textBoxFrameCheckSum
             // 
-            this.textBoxFrameCheckSum.Location = new System.Drawing.Point(692, 42);
+            this.textBoxFrameCheckSum.Location = new System.Drawing.Point(729, 45);
             this.textBoxFrameCheckSum.Name = "textBoxFrameCheckSum";
             this.textBoxFrameCheckSum.Size = new System.Drawing.Size(65, 22);
             this.textBoxFrameCheckSum.TabIndex = 56;
@@ -634,7 +672,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(645, 273);
+            this.button1.Location = new System.Drawing.Point(680, 273);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(114, 34);
             this.button1.TabIndex = 6;
@@ -1044,17 +1082,18 @@
             // 
             // groupBox9
             // 
-            this.groupBox9.Controls.Add(this.label20);
-            this.groupBox9.Controls.Add(this.label19);
-            this.groupBox9.Controls.Add(this.label18);
-            this.groupBox9.Controls.Add(this.label17);
-            this.groupBox9.Controls.Add(this.textBox4);
-            this.groupBox9.Controls.Add(this.label16);
-            this.groupBox9.Controls.Add(this.textBox3);
-            this.groupBox9.Controls.Add(this.textBox2);
-            this.groupBox9.Controls.Add(this.textBox1);
+            this.groupBox9.Controls.Add(this.labelDebugge);
+            this.groupBox9.Controls.Add(this.labelSecondsTotal);
+            this.groupBox9.Controls.Add(this.labelDaysTotal);
+            this.groupBox9.Controls.Add(this.labelHoursTotal);
+            this.groupBox9.Controls.Add(this.labelMinutesTotal);
+            this.groupBox9.Controls.Add(this.labelSecondstext);
+            this.groupBox9.Controls.Add(this.labelMinutestext);
+            this.groupBox9.Controls.Add(this.labelHourstext);
+            this.groupBox9.Controls.Add(this.labelDaystext);
+            this.groupBox9.Controls.Add(this.labelTotaltimetext);
             this.groupBox9.Controls.Add(this.numericUpDownLimit);
-            this.groupBox9.Controls.Add(this.label15);
+            this.groupBox9.Controls.Add(this.labelSamplestext);
             this.groupBox9.Controls.Add(this.checkBoxLimit);
             this.groupBox9.Controls.Add(this.label12);
             this.groupBox9.Controls.Add(this.label14);
@@ -1071,87 +1110,99 @@
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Acquisition Settings";
             // 
-            // label20
+            // labelSecondsTotal
             // 
-            this.label20.AutoSize = true;
-            this.label20.Enabled = false;
-            this.label20.Location = new System.Drawing.Point(280, 139);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(35, 16);
-            this.label20.TabIndex = 19;
-            this.label20.Text = "Sec:";
+            this.labelSecondsTotal.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelSecondsTotal.Enabled = false;
+            this.labelSecondsTotal.Location = new System.Drawing.Point(258, 166);
+            this.labelSecondsTotal.Name = "labelSecondsTotal";
+            this.labelSecondsTotal.Size = new System.Drawing.Size(46, 16);
+            this.labelSecondsTotal.TabIndex = 25;
+            this.labelSecondsTotal.Text = "0";
+            this.labelSecondsTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label19
+            // labelDaysTotal
             // 
-            this.label19.AutoSize = true;
-            this.label19.Enabled = false;
-            this.label19.Location = new System.Drawing.Point(225, 139);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(32, 16);
-            this.label19.TabIndex = 18;
-            this.label19.Text = "Min:";
+            this.labelDaysTotal.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelDaysTotal.Enabled = false;
+            this.labelDaysTotal.Location = new System.Drawing.Point(84, 166);
+            this.labelDaysTotal.Name = "labelDaysTotal";
+            this.labelDaysTotal.Size = new System.Drawing.Size(46, 16);
+            this.labelDaysTotal.TabIndex = 24;
+            this.labelDaysTotal.Text = "0";
+            this.labelDaysTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label18
+            // labelHoursTotal
             // 
-            this.label18.AutoSize = true;
-            this.label18.Enabled = false;
-            this.label18.Location = new System.Drawing.Point(167, 139);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(32, 16);
-            this.label18.TabIndex = 17;
-            this.label18.Text = "Hrs:";
+            this.labelHoursTotal.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelHoursTotal.Enabled = false;
+            this.labelHoursTotal.Location = new System.Drawing.Point(142, 166);
+            this.labelHoursTotal.Name = "labelHoursTotal";
+            this.labelHoursTotal.Size = new System.Drawing.Size(46, 16);
+            this.labelHoursTotal.TabIndex = 23;
+            this.labelHoursTotal.Text = "0";
+            this.labelHoursTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label17
+            // labelMinutesTotal
             // 
-            this.label17.AutoSize = true;
-            this.label17.Enabled = false;
-            this.label17.Location = new System.Drawing.Point(98, 139);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(43, 16);
-            this.label17.TabIndex = 16;
-            this.label17.Text = "Days:";
+            this.labelMinutesTotal.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelMinutesTotal.Enabled = false;
+            this.labelMinutesTotal.Location = new System.Drawing.Point(200, 166);
+            this.labelMinutesTotal.Name = "labelMinutesTotal";
+            this.labelMinutesTotal.Size = new System.Drawing.Size(46, 16);
+            this.labelMinutesTotal.TabIndex = 22;
+            this.labelMinutesTotal.Text = "0";
+            this.labelMinutesTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // textBox4
+            // labelSecondstext
             // 
-            this.textBox4.Enabled = false;
-            this.textBox4.Location = new System.Drawing.Point(263, 158);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(52, 22);
-            this.textBox4.TabIndex = 15;
+            this.labelSecondstext.AutoSize = true;
+            this.labelSecondstext.Enabled = false;
+            this.labelSecondstext.Location = new System.Drawing.Point(269, 144);
+            this.labelSecondstext.Name = "labelSecondstext";
+            this.labelSecondstext.Size = new System.Drawing.Size(35, 16);
+            this.labelSecondstext.TabIndex = 19;
+            this.labelSecondstext.Text = "Sec:";
             // 
-            // label16
+            // labelMinutestext
             // 
-            this.label16.AutoSize = true;
-            this.label16.Enabled = false;
-            this.label16.Location = new System.Drawing.Point(7, 161);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(76, 16);
-            this.label16.TabIndex = 14;
-            this.label16.Text = "Total Time:";
+            this.labelMinutestext.AutoSize = true;
+            this.labelMinutestext.Enabled = false;
+            this.labelMinutestext.Location = new System.Drawing.Point(214, 144);
+            this.labelMinutestext.Name = "labelMinutestext";
+            this.labelMinutestext.Size = new System.Drawing.Size(32, 16);
+            this.labelMinutestext.TabIndex = 18;
+            this.labelMinutestext.Text = "Min:";
             // 
-            // textBox3
+            // labelHourstext
             // 
-            this.textBox3.Enabled = false;
-            this.textBox3.Location = new System.Drawing.Point(89, 158);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(52, 22);
-            this.textBox3.TabIndex = 13;
+            this.labelHourstext.AutoSize = true;
+            this.labelHourstext.Enabled = false;
+            this.labelHourstext.Location = new System.Drawing.Point(156, 144);
+            this.labelHourstext.Name = "labelHourstext";
+            this.labelHourstext.Size = new System.Drawing.Size(32, 16);
+            this.labelHourstext.TabIndex = 17;
+            this.labelHourstext.Text = "Hrs:";
             // 
-            // textBox2
+            // labelDaystext
             // 
-            this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(147, 158);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(52, 22);
-            this.textBox2.TabIndex = 12;
+            this.labelDaystext.AutoSize = true;
+            this.labelDaystext.Enabled = false;
+            this.labelDaystext.Location = new System.Drawing.Point(87, 144);
+            this.labelDaystext.Name = "labelDaystext";
+            this.labelDaystext.Size = new System.Drawing.Size(43, 16);
+            this.labelDaystext.TabIndex = 16;
+            this.labelDaystext.Text = "Days:";
             // 
-            // textBox1
+            // labelTotaltimetext
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(205, 158);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(52, 22);
-            this.textBox1.TabIndex = 11;
+            this.labelTotaltimetext.AutoSize = true;
+            this.labelTotaltimetext.Enabled = false;
+            this.labelTotaltimetext.Location = new System.Drawing.Point(7, 166);
+            this.labelTotaltimetext.Name = "labelTotaltimetext";
+            this.labelTotaltimetext.Size = new System.Drawing.Size(76, 16);
+            this.labelTotaltimetext.TabIndex = 14;
+            this.labelTotaltimetext.Text = "Total Time:";
             // 
             // numericUpDownLimit
             // 
@@ -1177,15 +1228,15 @@
             0});
             this.numericUpDownLimit.ValueChanged += new System.EventHandler(this.numericUpDownLimit_ValueChanged);
             // 
-            // label15
+            // labelSamplestext
             // 
-            this.label15.AutoSize = true;
-            this.label15.Enabled = false;
-            this.label15.Location = new System.Drawing.Point(18, 102);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(65, 16);
-            this.label15.TabIndex = 9;
-            this.label15.Text = "Samples:";
+            this.labelSamplestext.AutoSize = true;
+            this.labelSamplestext.Enabled = false;
+            this.labelSamplestext.Location = new System.Drawing.Point(18, 102);
+            this.labelSamplestext.Name = "labelSamplestext";
+            this.labelSamplestext.Size = new System.Drawing.Size(65, 16);
+            this.labelSamplestext.TabIndex = 9;
+            this.labelSamplestext.Text = "Samples:";
             // 
             // checkBoxLimit
             // 
@@ -2550,6 +2601,18 @@
             this.tabGraph.Text = "Graph";
             this.tabGraph.UseVisualStyleBackColor = true;
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Enabled = false;
+            this.checkBox1.ForeColor = System.Drawing.Color.Black;
+            this.checkBox1.Location = new System.Drawing.Point(684, 229);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(42, 20);
+            this.checkBox1.TabIndex = 24;
+            this.checkBox1.Text = "All";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // button15
             // 
             this.button15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2839,40 +2902,6 @@
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
             // 
-            // timer100ms
-            // 
-            this.timer100ms.Tick += new System.EventHandler(this.a);
-            // 
-            // labelCounter
-            // 
-            this.labelCounter.AutoSize = true;
-            this.labelCounter.Location = new System.Drawing.Point(338, 336);
-            this.labelCounter.Name = "labelCounter";
-            this.labelCounter.Size = new System.Drawing.Size(15, 16);
-            this.labelCounter.TabIndex = 71;
-            this.labelCounter.Text = "0";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(272, 336);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(60, 16);
-            this.label24.TabIndex = 73;
-            this.label24.Text = "Counter: ";
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Enabled = false;
-            this.checkBox1.ForeColor = System.Drawing.Color.Black;
-            this.checkBox1.Location = new System.Drawing.Point(684, 229);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(42, 20);
-            this.checkBox1.TabIndex = 24;
-            this.checkBox1.Text = "All";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
             // sampleBindingSource1
             // 
             this.sampleBindingSource1.DataSource = typeof(ThermoCoupleLogger.Sample);
@@ -2954,6 +2983,15 @@
             this.channel8ValuesDataGridViewTextBoxColumn.Name = "channel8ValuesDataGridViewTextBoxColumn";
             this.channel8ValuesDataGridViewTextBoxColumn.ReadOnly = true;
             this.channel8ValuesDataGridViewTextBoxColumn.Width = 60;
+            // 
+            // labelDebugge
+            // 
+            this.labelDebugge.AutoSize = true;
+            this.labelDebugge.Location = new System.Drawing.Point(87, 248);
+            this.labelDebugge.Name = "labelDebugge";
+            this.labelDebugge.Size = new System.Drawing.Size(52, 16);
+            this.labelDebugge.TabIndex = 26;
+            this.labelDebugge.Text = "label15";
             // 
             // Form1
             // 
@@ -3192,17 +3230,13 @@
         private System.Windows.Forms.Button buttonA;
         private System.Windows.Forms.BindingSource sampleBindingSource1;
         private System.Windows.Forms.GroupBox groupBox9;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label labelSecondstext;
+        private System.Windows.Forms.Label labelMinutestext;
+        private System.Windows.Forms.Label labelHourstext;
+        private System.Windows.Forms.Label labelDaystext;
+        private System.Windows.Forms.Label labelTotaltimetext;
         private System.Windows.Forms.NumericUpDown numericUpDownLimit;
-        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label labelSamplestext;
         private System.Windows.Forms.CheckBox checkBoxLimit;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label14;
@@ -3234,7 +3268,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn channel6ValuesDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn channel7ValuesDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn channel8ValuesDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Timer timer100ms;
         private System.Windows.Forms.CheckBox checkBoxPlotCH8;
         private System.Windows.Forms.CheckBox checkBoxPlotCH7;
         private System.Windows.Forms.CheckBox checkBoxPlotCH6;
@@ -3253,10 +3286,17 @@
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button buttonScan;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label labelCounter;
         public System.Windows.Forms.Button buttonStart;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label labelTicks;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label labelSecondsTotal;
+        private System.Windows.Forms.Label labelDaysTotal;
+        private System.Windows.Forms.Label labelHoursTotal;
+        private System.Windows.Forms.Label labelMinutesTotal;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label labelDebugge;
     }
 }
 
