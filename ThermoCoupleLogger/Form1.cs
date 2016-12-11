@@ -18,7 +18,7 @@ namespace ThermoCoupleLogger
     public partial class Form1 : Form
     {
 
-        public string ReleaseInfo = "Version: 0.05 2016-12-10";
+        public string ReleaseInfo = "Version: 0.05   2016-12-10";
 
         public bool DebugMode = false;
         public uint ErrorFrames = 0;
@@ -63,6 +63,7 @@ namespace ThermoCoupleLogger
                 }
 
             // Init Stuff
+            labelVersion.Text = ReleaseInfo.ToString();
             DefaultColors();
 
 
@@ -733,6 +734,7 @@ namespace ThermoCoupleLogger
             timerLogg.Enabled = !timerLogg.Enabled;
 
 
+
             if (Acquisition.Logging == true)
             {
                 if(Acquisition.Period < 50)
@@ -741,15 +743,18 @@ namespace ThermoCoupleLogger
                 }
 
                 buttonStart.Text = "Stop";
-                buttonStart.BackColor = System.Drawing.Color.IndianRed;                
+                buttonStart.BackColor = System.Drawing.Color.IndianRed;
+                buttonClearData.Enabled = false;
 
             }
 
             if (Acquisition.Logging == false)
-            {
+            {                
                 timerRead.Interval = 50;
                 buttonStart.Text = "Start";
                 buttonStart.BackColor = System.Drawing.Color.PaleGreen;
+                UpdateGridView();
+                buttonClearData.Enabled = true;
             }
 
         }
@@ -865,20 +870,29 @@ namespace ThermoCoupleLogger
         {
             UpdatePreview();
 
-            labelSamples.Text = ActualSampleNumber.ToString();
+
+            if(Acquisition.LimitSet == true)
+            {
+                labelSamples.Text = ActualSampleNumber.ToString() + " / " + Acquisition.SampleLimit.ToString();
+            }
+            else labelSamples.Text = ActualSampleNumber.ToString();
+
+
+            labelCounter.Text = Acquisition.Countdown.ToString();
 
             Int32 TimeLeft = Acquisition.Countdown/100;
             Int32 MinLeft = (TimeLeft/600);
             Int32 SecLeft = TimeLeft - (600 * MinLeft); 
 
-            labelTimeToNext.Text = MinLeft.ToString() + ":" + (SecLeft/10).ToString() + "." +(SecLeft % 10).ToString();
-          //  labelTimeToNext.Text = TimeLeft.ToString();
+            labelTimeToNext.Text = "00:" + MinLeft.ToString() + ":" + (SecLeft/10).ToString() + "." +(SecLeft % 10).ToString();
+            //  labelTimeToNext.Text = TimeLeft.ToString();
 
-            if (Acquisition.Logging)
+            // if (Acquisition.Logging)
+            if(ActualSampleNumber > 0)
             {
 
                 UpdateChart();
-                UpdateGridView();
+            //    UpdateGridView();
             }
         }
 
@@ -1473,10 +1487,32 @@ namespace ThermoCoupleLogger
 
         private void timerLogg_Tick(object sender, EventArgs e)
         {
-            registerData();
             Acquisition.Countdown = Acquisition.Period;
+            timer100ms.Start();
+            registerData();
 
+            if(ActualSampleNumber == Acquisition.SampleLimit)
+            {
+                StopLogging();
+            }
         }
+
+
+        public void StopLogging()
+        {
+            Acquisition.Logging = false;
+            timerLogg.Enabled = false;
+            timer100ms.Enabled = false;
+
+            timerRead.Interval = 50;
+            buttonStart.Text = "Start";
+            buttonStart.BackColor = System.Drawing.Color.PaleGreen;
+            UpdateGridView();
+            buttonClearData.Enabled = true;
+        }
+
+
+
 
         private void timerRead_Tick(object sender, EventArgs e)
         {
@@ -1547,6 +1583,112 @@ namespace ThermoCoupleLogger
             DialogResult result1 = MessageBox.Show("Save the data before clearing it?", "", 
             MessageBoxButtons.YesNoCancel);
 
+            if (result1 == DialogResult.Yes)
+            {
+                Samples.RemoveRange(0, (int)ActualSampleNumber);
+                ActualSampleNumber = 0;
+                UpdateGridView();
+            }
+            else if (result1 == DialogResult.No)
+            {
+                Samples.RemoveRange(0, (int)ActualSampleNumber);
+                ActualSampleNumber = 0;
+                UpdateGridView();
+            }
+            else
+            {
+
+            }
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("mailto:krystianjagoda@gmail.com");
+        }
+
+        private void buttonScan_Click(object sender, EventArgs e)
+        {
+            registerData();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            chart1.ChartAreas[0].AxisY.Maximum = (double)Channel1.MaxTemperature + 1;
+            chart1.ChartAreas[0].AxisY.Minimum = (double)Channel1.MinTemperature - 1;
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            chart1.ChartAreas[0].AxisY.Maximum = (double)Channel2.MaxTemperature + 1;
+            chart1.ChartAreas[0].AxisY.Minimum = (double)Channel2.MinTemperature - 1;
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            chart1.ChartAreas[0].AxisY.Maximum = (double)Channel3.MaxTemperature + 1;
+            chart1.ChartAreas[0].AxisY.Minimum = (double)Channel3.MinTemperature - 1;
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            chart1.ChartAreas[0].AxisY.Maximum = (double)Channel4.MaxTemperature + 1;
+            chart1.ChartAreas[0].AxisY.Minimum = (double)Channel4.MinTemperature - 1;
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            chart1.ChartAreas[0].AxisY.Maximum = (double)Channel5.MaxTemperature + 1;
+            chart1.ChartAreas[0].AxisY.Minimum = (double)Channel5.MinTemperature - 1;
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            chart1.ChartAreas[0].AxisY.Maximum = (double)Channel6.MaxTemperature + 1;
+            chart1.ChartAreas[0].AxisY.Minimum = (double)Channel6.MinTemperature - 1;
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            chart1.ChartAreas[0].AxisY.Maximum = (double)Channel7.MaxTemperature + 1;
+            chart1.ChartAreas[0].AxisY.Minimum = (double)Channel7.MinTemperature - 1;
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            chart1.ChartAreas[0].AxisY.Maximum = (double)Channel8.MaxTemperature + 1;
+            chart1.ChartAreas[0].AxisY.Minimum = (double)Channel8.MinTemperature - 1;
+        }
+
+        private void checkBoxLimit_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxLimit.Checked == true)
+            {
+                Acquisition.LimitSet = true;
+                numericUpDownLimit.Enabled = true;
+            }
+
+            else
+            {
+                Acquisition.LimitSet = false;
+                numericUpDownLimit.Enabled = false;
+            }
+        }
+
+        private void numericUpDownLimit_ValueChanged(object sender, EventArgs e)
+        {
+            Acquisition.SampleLimit = (UInt32)numericUpDownLimit.Value;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {           
+            Samples.RemoveRange(0, (int)ActualSampleNumber);
+            ActualSampleNumber = 0;
+            UpdateGridView();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            UpdateGridView();
         }
     }
 }

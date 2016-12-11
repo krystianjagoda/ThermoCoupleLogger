@@ -27,29 +27,16 @@ namespace ThermoCoupleLogger
         public decimal Temperature = 0;             // Actual Temperature
         public decimal JunctionTemp = 0;            // Actual Junction Temperature
 
-
-
-
-        
         public void setMaxMin()
         {
             MaxTemperature = Temperature;
             MinTemperature = Temperature;
         }
-
-
-
     }
-
-
-
-
 
 
     public class Sample : IEquatable<Sample>
     {
-
-        
 
         public UInt32 SampleNumber { get; set; }
         public String  SampleTime { get; set; }
@@ -61,8 +48,6 @@ namespace ThermoCoupleLogger
         public Decimal Channel6Values { get; set; }
         public Decimal Channel7Values { get; set; }
         public Decimal Channel8Values { get; set; }
-
-
 
         public override bool Equals(object obj)
         {
@@ -89,6 +74,12 @@ namespace ThermoCoupleLogger
             return (this.SampleNumber.Equals(other.SampleNumber));
         }
         // Should also override == and != operators.
+
+
+        public void ClearData()
+        {
+            Channel1Values = 0;
+        }
 
     }
 

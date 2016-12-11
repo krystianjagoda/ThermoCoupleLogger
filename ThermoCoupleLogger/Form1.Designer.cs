@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
@@ -38,7 +39,6 @@
             System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.labelConnectionStatus = new System.Windows.Forms.Label();
             this.timerLogg = new System.Windows.Forms.Timer(this.components);
@@ -113,7 +113,7 @@
             this.Data8C = new System.Windows.Forms.TextBox();
             this.Data8B = new System.Windows.Forms.TextBox();
             this.tabSettings = new System.Windows.Forms.TabPage();
-            this.label25 = new System.Windows.Forms.Label();
+            this.labelVersion = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.button7 = new System.Windows.Forms.Button();
@@ -130,9 +130,9 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownLimit = new System.Windows.Forms.NumericUpDown();
             this.label15 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBoxLimit = new System.Windows.Forms.CheckBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -179,13 +179,14 @@
             this.textBoxNameCH1 = new System.Windows.Forms.TextBox();
             this.tabData = new System.Windows.Forms.TabPage();
             this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.buttonScan = new System.Windows.Forms.Button();
+            this.label22 = new System.Windows.Forms.Label();
+            this.labelTimeToNext = new System.Windows.Forms.Label();
             this.buttonClearData = new System.Windows.Forms.Button();
             this.label21 = new System.Windows.Forms.Label();
-            this.labelTimeToNext = new System.Windows.Forms.Label();
             this.buttonStart = new System.Windows.Forms.Button();
             this.labelTimeLeft = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
@@ -246,6 +247,14 @@
             this.CH1_Value = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabGraph = new System.Windows.Forms.TabPage();
+            this.button15 = new System.Windows.Forms.Button();
+            this.button14 = new System.Windows.Forms.Button();
+            this.button13 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
             this.buttonAuto = new System.Windows.Forms.Button();
             this.checkBoxPlotCH8 = new System.Windows.Forms.CheckBox();
             this.checkBoxPlotCH7 = new System.Windows.Forms.CheckBox();
@@ -258,6 +267,9 @@
             this.button6 = new System.Windows.Forms.Button();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.timer100ms = new System.Windows.Forms.Timer(this.components);
+            this.labelCounter = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.sampleBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.sampleNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sampleTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -274,7 +286,7 @@
             this.tabSettings.SuspendLayout();
             this.groupBox13.SuspendLayout();
             this.groupBox9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLimit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.periodmSec)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.periodSec)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.periodMin)).BeginInit();
@@ -301,7 +313,7 @@
             // 
             this.labelConnectionStatus.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.labelConnectionStatus.ForeColor = System.Drawing.Color.Maroon;
-            this.labelConnectionStatus.Location = new System.Drawing.Point(1076, 3);
+            this.labelConnectionStatus.Location = new System.Drawing.Point(1087, 3);
             this.labelConnectionStatus.Name = "labelConnectionStatus";
             this.labelConnectionStatus.Size = new System.Drawing.Size(99, 13);
             this.labelConnectionStatus.TabIndex = 1;
@@ -310,6 +322,7 @@
             // 
             // timerLogg
             // 
+            this.timerLogg.Interval = 10000;
             this.timerLogg.Tick += new System.EventHandler(this.timerLogg_Tick);
             // 
             // timerRead
@@ -325,6 +338,8 @@
             // 
             // tabDebug
             // 
+            this.tabDebug.Controls.Add(this.label24);
+            this.tabDebug.Controls.Add(this.labelCounter);
             this.tabDebug.Controls.Add(this.x);
             this.tabDebug.Controls.Add(this.richTextBoxTests);
             this.tabDebug.Controls.Add(this.buttonA);
@@ -333,7 +348,7 @@
             this.tabDebug.Location = new System.Drawing.Point(4, 29);
             this.tabDebug.Name = "tabDebug";
             this.tabDebug.Padding = new System.Windows.Forms.Padding(3);
-            this.tabDebug.Size = new System.Drawing.Size(773, 643);
+            this.tabDebug.Size = new System.Drawing.Size(809, 643);
             this.tabDebug.TabIndex = 3;
             this.tabDebug.Text = "Debug";
             this.tabDebug.UseVisualStyleBackColor = true;
@@ -943,7 +958,7 @@
             // 
             // tabSettings
             // 
-            this.tabSettings.Controls.Add(this.label25);
+            this.tabSettings.Controls.Add(this.labelVersion);
             this.tabSettings.Controls.Add(this.button3);
             this.tabSettings.Controls.Add(this.linkLabel1);
             this.tabSettings.Controls.Add(this.button7);
@@ -953,24 +968,24 @@
             this.tabSettings.Location = new System.Drawing.Point(4, 29);
             this.tabSettings.Name = "tabSettings";
             this.tabSettings.Padding = new System.Windows.Forms.Padding(3);
-            this.tabSettings.Size = new System.Drawing.Size(773, 643);
+            this.tabSettings.Size = new System.Drawing.Size(809, 643);
             this.tabSettings.TabIndex = 2;
             this.tabSettings.Text = "Settings";
             this.tabSettings.UseVisualStyleBackColor = true;
             // 
-            // label25
+            // labelVersion
             // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(6, 621);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(158, 16);
-            this.label25.TabIndex = 1;
-            this.label25.Text = "Version: 0.03 - 2016-12-04";
+            this.labelVersion.AutoSize = true;
+            this.labelVersion.Location = new System.Drawing.Point(6, 621);
+            this.labelVersion.Name = "labelVersion";
+            this.labelVersion.Size = new System.Drawing.Size(158, 16);
+            this.labelVersion.TabIndex = 1;
+            this.labelVersion.Text = "Version: 0.03 - 2016-12-04";
             // 
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(661, 601);
+            this.button3.Location = new System.Drawing.Point(697, 601);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(106, 36);
             this.button3.TabIndex = 57;
@@ -986,11 +1001,12 @@
             this.linkLabel1.TabIndex = 0;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "krystianjagoda@gmail.com";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // button7
             // 
             this.button7.BackColor = System.Drawing.Color.White;
-            this.button7.Location = new System.Drawing.Point(549, 601);
+            this.button7.Location = new System.Drawing.Point(585, 601);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(106, 36);
             this.button7.TabIndex = 56;
@@ -1002,16 +1018,16 @@
             // 
             this.groupBox13.Controls.Add(this.buttonConnect);
             this.groupBox13.Controls.Add(this.comboBoxCOMs);
-            this.groupBox13.Location = new System.Drawing.Point(402, 360);
+            this.groupBox13.Location = new System.Drawing.Point(468, 360);
             this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(365, 235);
+            this.groupBox13.Size = new System.Drawing.Size(335, 235);
             this.groupBox13.TabIndex = 54;
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "Connection";
             // 
             // buttonConnect
             // 
-            this.buttonConnect.Location = new System.Drawing.Point(228, 15);
+            this.buttonConnect.Location = new System.Drawing.Point(200, 15);
             this.buttonConnect.Name = "buttonConnect";
             this.buttonConnect.Size = new System.Drawing.Size(129, 34);
             this.buttonConnect.TabIndex = 3;
@@ -1037,9 +1053,9 @@
             this.groupBox9.Controls.Add(this.textBox3);
             this.groupBox9.Controls.Add(this.textBox2);
             this.groupBox9.Controls.Add(this.textBox1);
-            this.groupBox9.Controls.Add(this.numericUpDown4);
+            this.groupBox9.Controls.Add(this.numericUpDownLimit);
             this.groupBox9.Controls.Add(this.label15);
-            this.groupBox9.Controls.Add(this.checkBox1);
+            this.groupBox9.Controls.Add(this.checkBoxLimit);
             this.groupBox9.Controls.Add(this.label12);
             this.groupBox9.Controls.Add(this.label14);
             this.groupBox9.Controls.Add(this.label13);
@@ -1048,9 +1064,9 @@
             this.groupBox9.Controls.Add(this.periodMin);
             this.groupBox9.Controls.Add(this.label11);
             this.groupBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox9.Location = new System.Drawing.Point(402, 6);
+            this.groupBox9.Location = new System.Drawing.Point(468, 6);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(346, 348);
+            this.groupBox9.Size = new System.Drawing.Size(335, 348);
             this.groupBox9.TabIndex = 3;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Acquisition Settings";
@@ -1058,6 +1074,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
+            this.label20.Enabled = false;
             this.label20.Location = new System.Drawing.Point(280, 139);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(35, 16);
@@ -1067,6 +1084,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
+            this.label19.Enabled = false;
             this.label19.Location = new System.Drawing.Point(225, 139);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(32, 16);
@@ -1076,6 +1094,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
+            this.label18.Enabled = false;
             this.label18.Location = new System.Drawing.Point(167, 139);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(32, 16);
@@ -1085,6 +1104,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
+            this.label17.Enabled = false;
             this.label17.Location = new System.Drawing.Point(98, 139);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(43, 16);
@@ -1102,6 +1122,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
+            this.label16.Enabled = false;
             this.label16.Location = new System.Drawing.Point(7, 161);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(76, 16);
@@ -1132,33 +1153,51 @@
             this.textBox1.Size = new System.Drawing.Size(52, 22);
             this.textBox1.TabIndex = 11;
             // 
-            // numericUpDown4
+            // numericUpDownLimit
             // 
-            this.numericUpDown4.Enabled = false;
-            this.numericUpDown4.Location = new System.Drawing.Point(89, 100);
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(105, 22);
-            this.numericUpDown4.TabIndex = 10;
+            this.numericUpDownLimit.Enabled = false;
+            this.numericUpDownLimit.Location = new System.Drawing.Point(89, 100);
+            this.numericUpDownLimit.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.numericUpDownLimit.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownLimit.Name = "numericUpDownLimit";
+            this.numericUpDownLimit.Size = new System.Drawing.Size(105, 22);
+            this.numericUpDownLimit.TabIndex = 10;
+            this.numericUpDownLimit.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.numericUpDownLimit.ValueChanged += new System.EventHandler(this.numericUpDownLimit_ValueChanged);
             // 
             // label15
             // 
             this.label15.AutoSize = true;
+            this.label15.Enabled = false;
             this.label15.Location = new System.Drawing.Point(18, 102);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(65, 16);
             this.label15.TabIndex = 9;
             this.label15.Text = "Samples:";
             // 
-            // checkBox1
+            // checkBoxLimit
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(200, 100);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.checkBox1.Size = new System.Drawing.Size(104, 20);
-            this.checkBox1.TabIndex = 8;
-            this.checkBox1.Text = "Sample Limit";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBoxLimit.AutoSize = true;
+            this.checkBoxLimit.Location = new System.Drawing.Point(200, 100);
+            this.checkBoxLimit.Name = "checkBoxLimit";
+            this.checkBoxLimit.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.checkBoxLimit.Size = new System.Drawing.Size(104, 20);
+            this.checkBoxLimit.TabIndex = 8;
+            this.checkBoxLimit.Text = "Sample Limit";
+            this.checkBoxLimit.UseVisualStyleBackColor = true;
+            this.checkBoxLimit.CheckedChanged += new System.EventHandler(this.checkBoxLimit_CheckedChanged);
             // 
             // label12
             // 
@@ -1285,7 +1324,7 @@
             this.groupBox1.Controls.Add(this.textBoxNameCH1);
             this.groupBox1.Location = new System.Drawing.Point(6, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(390, 589);
+            this.groupBox1.Size = new System.Drawing.Size(456, 589);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Channel Configuration";
@@ -1605,45 +1644,35 @@
             // 
             this.tabData.BackColor = System.Drawing.Color.White;
             this.tabData.Controls.Add(this.button5);
-            this.tabData.Controls.Add(this.button4);
             this.tabData.Controls.Add(this.button2);
             this.tabData.Controls.Add(this.dataGridView1);
             this.tabData.Location = new System.Drawing.Point(4, 29);
             this.tabData.Name = "tabData";
             this.tabData.Padding = new System.Windows.Forms.Padding(3);
-            this.tabData.Size = new System.Drawing.Size(773, 643);
+            this.tabData.Size = new System.Drawing.Size(809, 643);
             this.tabData.TabIndex = 1;
             this.tabData.Text = "Data";
             // 
             // button5
             // 
             this.button5.BackColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(661, 601);
+            this.button5.Image = global::ThermoCoupleLogger.Properties.Resources.ref1;
+            this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button5.Location = new System.Drawing.Point(586, 601);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(106, 36);
             this.button5.TabIndex = 6;
             this.button5.Text = "Load Data";
+            this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button5.UseVisualStyleBackColor = false;
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.White;
-            this.button4.Image = global::ThermoCoupleLogger.Properties.Resources.Close_2_icon;
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(438, 601);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(106, 36);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "Clear Data";
-            this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button4.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.White;
-            this.button2.Image = global::ThermoCoupleLogger.Properties.Resources.save;
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(550, 601);
+            this.button2.Location = new System.Drawing.Point(698, 601);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(105, 36);
             this.button2.TabIndex = 4;
@@ -1673,14 +1702,16 @@
             this.dataGridView1.Location = new System.Drawing.Point(6, 6);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(761, 589);
+            this.dataGridView1.Size = new System.Drawing.Size(797, 589);
             this.dataGridView1.TabIndex = 0;
             // 
             // groupBox11
             // 
+            this.groupBox11.Controls.Add(this.buttonScan);
+            this.groupBox11.Controls.Add(this.label22);
+            this.groupBox11.Controls.Add(this.labelTimeToNext);
             this.groupBox11.Controls.Add(this.buttonClearData);
             this.groupBox11.Controls.Add(this.label21);
-            this.groupBox11.Controls.Add(this.labelTimeToNext);
             this.groupBox11.Controls.Add(this.buttonStart);
             this.groupBox11.Controls.Add(this.labelTimeLeft);
             this.groupBox11.Controls.Add(this.label23);
@@ -1688,16 +1719,52 @@
             this.groupBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox11.Location = new System.Drawing.Point(8, 572);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(380, 123);
+            this.groupBox11.Size = new System.Drawing.Size(355, 123);
             this.groupBox11.TabIndex = 3;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Acquisition";
             // 
+            // buttonScan
+            // 
+            this.buttonScan.BackColor = System.Drawing.Color.White;
+            this.buttonScan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonScan.Location = new System.Drawing.Point(237, 77);
+            this.buttonScan.Name = "buttonScan";
+            this.buttonScan.Size = new System.Drawing.Size(106, 36);
+            this.buttonScan.TabIndex = 29;
+            this.buttonScan.Text = "Scan";
+            this.buttonScan.UseVisualStyleBackColor = false;
+            this.buttonScan.Click += new System.EventHandler(this.buttonScan_Click);
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label22.Location = new System.Drawing.Point(271, 16);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(72, 16);
+            this.label22.TabIndex = 28;
+            this.label22.Text = "Next Scan:";
+            // 
+            // labelTimeToNext
+            // 
+            this.labelTimeToNext.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelTimeToNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTimeToNext.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.labelTimeToNext.Location = new System.Drawing.Point(196, 32);
+            this.labelTimeToNext.Name = "labelTimeToNext";
+            this.labelTimeToNext.Size = new System.Drawing.Size(153, 31);
+            this.labelTimeToNext.TabIndex = 25;
+            this.labelTimeToNext.Text = "00:00:25.3";
+            this.labelTimeToNext.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // buttonClearData
             // 
             this.buttonClearData.BackColor = System.Drawing.Color.White;
+            this.buttonClearData.Enabled = false;
+            this.buttonClearData.ForeColor = System.Drawing.Color.DarkRed;
             this.buttonClearData.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonClearData.Location = new System.Drawing.Point(123, 77);
+            this.buttonClearData.Location = new System.Drawing.Point(125, 77);
             this.buttonClearData.Name = "buttonClearData";
             this.buttonClearData.Size = new System.Drawing.Size(106, 36);
             this.buttonClearData.TabIndex = 27;
@@ -1716,22 +1783,11 @@
             this.label21.TabIndex = 26;
             this.label21.Text = "Samples:";
             // 
-            // labelTimeToNext
-            // 
-            this.labelTimeToNext.AutoSize = true;
-            this.labelTimeToNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTimeToNext.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.labelTimeToNext.Location = new System.Drawing.Point(192, 18);
-            this.labelTimeToNext.Name = "labelTimeToNext";
-            this.labelTimeToNext.Size = new System.Drawing.Size(153, 31);
-            this.labelTimeToNext.TabIndex = 25;
-            this.labelTimeToNext.Text = "00:00:25.3";
-            // 
             // buttonStart
             // 
             this.buttonStart.BackColor = System.Drawing.Color.PaleGreen;
             this.buttonStart.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonStart.Location = new System.Drawing.Point(11, 77);
+            this.buttonStart.Location = new System.Drawing.Point(13, 77);
             this.buttonStart.Name = "buttonStart";
             this.buttonStart.Size = new System.Drawing.Size(106, 36);
             this.buttonStart.TabIndex = 0;
@@ -1782,7 +1838,7 @@
             this.groupBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox10.Location = new System.Drawing.Point(8, 508);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(380, 56);
+            this.groupBox10.Size = new System.Drawing.Size(355, 56);
             this.groupBox10.TabIndex = 2;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Logger Ambient";
@@ -1791,8 +1847,9 @@
             // 
             this.CH_A_Act.BackColor = System.Drawing.Color.White;
             this.CH_A_Act.Location = new System.Drawing.Point(170, 17);
+            this.CH_A_Act.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CH_A_Act.Name = "CH_A_Act";
-            this.CH_A_Act.Size = new System.Drawing.Size(46, 29);
+            this.CH_A_Act.Size = new System.Drawing.Size(42, 29);
             this.CH_A_Act.TabIndex = 36;
             this.CH_A_Act.Text = "Act";
             this.CH_A_Act.UseVisualStyleBackColor = false;
@@ -1813,9 +1870,10 @@
             // CH_A_Max
             // 
             this.CH_A_Max.BackColor = System.Drawing.Color.Gainsboro;
-            this.CH_A_Max.Location = new System.Drawing.Point(222, 17);
+            this.CH_A_Max.Location = new System.Drawing.Point(216, 17);
+            this.CH_A_Max.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CH_A_Max.Name = "CH_A_Max";
-            this.CH_A_Max.Size = new System.Drawing.Size(46, 29);
+            this.CH_A_Max.Size = new System.Drawing.Size(42, 29);
             this.CH_A_Max.TabIndex = 35;
             this.CH_A_Max.Text = "Max";
             this.CH_A_Max.UseVisualStyleBackColor = false;
@@ -1824,9 +1882,10 @@
             // CH_A_Avg
             // 
             this.CH_A_Avg.BackColor = System.Drawing.Color.Gainsboro;
-            this.CH_A_Avg.Location = new System.Drawing.Point(326, 17);
+            this.CH_A_Avg.Location = new System.Drawing.Point(308, 17);
+            this.CH_A_Avg.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CH_A_Avg.Name = "CH_A_Avg";
-            this.CH_A_Avg.Size = new System.Drawing.Size(46, 29);
+            this.CH_A_Avg.Size = new System.Drawing.Size(42, 29);
             this.CH_A_Avg.TabIndex = 33;
             this.CH_A_Avg.Text = "Avg";
             this.CH_A_Avg.UseVisualStyleBackColor = false;
@@ -1835,9 +1894,10 @@
             // CH_A_Min
             // 
             this.CH_A_Min.BackColor = System.Drawing.Color.Gainsboro;
-            this.CH_A_Min.Location = new System.Drawing.Point(274, 17);
+            this.CH_A_Min.Location = new System.Drawing.Point(262, 17);
+            this.CH_A_Min.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CH_A_Min.Name = "CH_A_Min";
-            this.CH_A_Min.Size = new System.Drawing.Size(46, 29);
+            this.CH_A_Min.Size = new System.Drawing.Size(42, 29);
             this.CH_A_Min.TabIndex = 34;
             this.CH_A_Min.Text = "Min";
             this.CH_A_Min.UseVisualStyleBackColor = false;
@@ -1854,7 +1914,7 @@
             this.groupBoxCH8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxCH8.Location = new System.Drawing.Point(8, 446);
             this.groupBoxCH8.Name = "groupBoxCH8";
-            this.groupBoxCH8.Size = new System.Drawing.Size(380, 56);
+            this.groupBoxCH8.Size = new System.Drawing.Size(355, 56);
             this.groupBoxCH8.TabIndex = 1;
             this.groupBoxCH8.TabStop = false;
             this.groupBoxCH8.Text = "CH8 - ";
@@ -1863,8 +1923,9 @@
             // 
             this.CH_8_Act.BackColor = System.Drawing.Color.White;
             this.CH_8_Act.Location = new System.Drawing.Point(170, 17);
+            this.CH_8_Act.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CH_8_Act.Name = "CH_8_Act";
-            this.CH_8_Act.Size = new System.Drawing.Size(46, 29);
+            this.CH_8_Act.Size = new System.Drawing.Size(42, 29);
             this.CH_8_Act.TabIndex = 32;
             this.CH_8_Act.Text = "Act";
             this.CH_8_Act.UseVisualStyleBackColor = false;
@@ -1875,7 +1936,7 @@
             this.CH8_Value.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.CH8_Value.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CH8_Value.ForeColor = System.Drawing.Color.MediumOrchid;
-            this.CH8_Value.Location = new System.Drawing.Point(-2, 17);
+            this.CH8_Value.Location = new System.Drawing.Point(-2, 18);
             this.CH8_Value.Name = "CH8_Value";
             this.CH8_Value.Size = new System.Drawing.Size(166, 31);
             this.CH8_Value.TabIndex = 7;
@@ -1885,9 +1946,10 @@
             // CH_8_Max
             // 
             this.CH_8_Max.BackColor = System.Drawing.Color.Gainsboro;
-            this.CH_8_Max.Location = new System.Drawing.Point(222, 17);
+            this.CH_8_Max.Location = new System.Drawing.Point(216, 17);
+            this.CH_8_Max.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CH_8_Max.Name = "CH_8_Max";
-            this.CH_8_Max.Size = new System.Drawing.Size(46, 29);
+            this.CH_8_Max.Size = new System.Drawing.Size(42, 29);
             this.CH_8_Max.TabIndex = 31;
             this.CH_8_Max.Text = "Max";
             this.CH_8_Max.UseVisualStyleBackColor = false;
@@ -1896,9 +1958,10 @@
             // CH_8_Avg
             // 
             this.CH_8_Avg.BackColor = System.Drawing.Color.Gainsboro;
-            this.CH_8_Avg.Location = new System.Drawing.Point(326, 17);
+            this.CH_8_Avg.Location = new System.Drawing.Point(308, 17);
+            this.CH_8_Avg.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CH_8_Avg.Name = "CH_8_Avg";
-            this.CH_8_Avg.Size = new System.Drawing.Size(46, 29);
+            this.CH_8_Avg.Size = new System.Drawing.Size(42, 29);
             this.CH_8_Avg.TabIndex = 29;
             this.CH_8_Avg.Text = "Avg";
             this.CH_8_Avg.UseVisualStyleBackColor = false;
@@ -1907,9 +1970,10 @@
             // CH_8_Min
             // 
             this.CH_8_Min.BackColor = System.Drawing.Color.Gainsboro;
-            this.CH_8_Min.Location = new System.Drawing.Point(274, 17);
+            this.CH_8_Min.Location = new System.Drawing.Point(262, 17);
+            this.CH_8_Min.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CH_8_Min.Name = "CH_8_Min";
-            this.CH_8_Min.Size = new System.Drawing.Size(46, 29);
+            this.CH_8_Min.Size = new System.Drawing.Size(42, 29);
             this.CH_8_Min.TabIndex = 30;
             this.CH_8_Min.Text = "Min";
             this.CH_8_Min.UseVisualStyleBackColor = false;
@@ -1925,7 +1989,7 @@
             this.groupBoxCH7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxCH7.Location = new System.Drawing.Point(8, 384);
             this.groupBoxCH7.Name = "groupBoxCH7";
-            this.groupBoxCH7.Size = new System.Drawing.Size(380, 56);
+            this.groupBoxCH7.Size = new System.Drawing.Size(355, 56);
             this.groupBoxCH7.TabIndex = 1;
             this.groupBoxCH7.TabStop = false;
             this.groupBoxCH7.Text = "CH7 - ";
@@ -1934,8 +1998,9 @@
             // 
             this.CH_7_Act.BackColor = System.Drawing.Color.White;
             this.CH_7_Act.Location = new System.Drawing.Point(170, 17);
+            this.CH_7_Act.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CH_7_Act.Name = "CH_7_Act";
-            this.CH_7_Act.Size = new System.Drawing.Size(46, 29);
+            this.CH_7_Act.Size = new System.Drawing.Size(42, 29);
             this.CH_7_Act.TabIndex = 28;
             this.CH_7_Act.Text = "Act";
             this.CH_7_Act.UseVisualStyleBackColor = false;
@@ -1946,7 +2011,7 @@
             this.CH7_Value.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.CH7_Value.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CH7_Value.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.CH7_Value.Location = new System.Drawing.Point(-2, 17);
+            this.CH7_Value.Location = new System.Drawing.Point(-1, 17);
             this.CH7_Value.Name = "CH7_Value";
             this.CH7_Value.Size = new System.Drawing.Size(166, 31);
             this.CH7_Value.TabIndex = 6;
@@ -1956,9 +2021,10 @@
             // CH_7_Max
             // 
             this.CH_7_Max.BackColor = System.Drawing.Color.Gainsboro;
-            this.CH_7_Max.Location = new System.Drawing.Point(222, 17);
+            this.CH_7_Max.Location = new System.Drawing.Point(216, 17);
+            this.CH_7_Max.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CH_7_Max.Name = "CH_7_Max";
-            this.CH_7_Max.Size = new System.Drawing.Size(46, 29);
+            this.CH_7_Max.Size = new System.Drawing.Size(42, 29);
             this.CH_7_Max.TabIndex = 27;
             this.CH_7_Max.Text = "Max";
             this.CH_7_Max.UseVisualStyleBackColor = false;
@@ -1967,9 +2033,10 @@
             // CH_7_Avg
             // 
             this.CH_7_Avg.BackColor = System.Drawing.Color.Gainsboro;
-            this.CH_7_Avg.Location = new System.Drawing.Point(326, 17);
+            this.CH_7_Avg.Location = new System.Drawing.Point(308, 17);
+            this.CH_7_Avg.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CH_7_Avg.Name = "CH_7_Avg";
-            this.CH_7_Avg.Size = new System.Drawing.Size(46, 29);
+            this.CH_7_Avg.Size = new System.Drawing.Size(42, 29);
             this.CH_7_Avg.TabIndex = 25;
             this.CH_7_Avg.Text = "Avg";
             this.CH_7_Avg.UseVisualStyleBackColor = false;
@@ -1978,9 +2045,10 @@
             // CH_7_Min
             // 
             this.CH_7_Min.BackColor = System.Drawing.Color.Gainsboro;
-            this.CH_7_Min.Location = new System.Drawing.Point(274, 17);
+            this.CH_7_Min.Location = new System.Drawing.Point(262, 17);
+            this.CH_7_Min.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CH_7_Min.Name = "CH_7_Min";
-            this.CH_7_Min.Size = new System.Drawing.Size(46, 29);
+            this.CH_7_Min.Size = new System.Drawing.Size(42, 29);
             this.CH_7_Min.TabIndex = 26;
             this.CH_7_Min.Text = "Min";
             this.CH_7_Min.UseVisualStyleBackColor = false;
@@ -1996,7 +2064,7 @@
             this.groupBoxCH6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxCH6.Location = new System.Drawing.Point(8, 322);
             this.groupBoxCH6.Name = "groupBoxCH6";
-            this.groupBoxCH6.Size = new System.Drawing.Size(380, 56);
+            this.groupBoxCH6.Size = new System.Drawing.Size(355, 56);
             this.groupBoxCH6.TabIndex = 1;
             this.groupBoxCH6.TabStop = false;
             this.groupBoxCH6.Text = "CH6 - ";
@@ -2005,8 +2073,9 @@
             // 
             this.CH_6_Act.BackColor = System.Drawing.Color.White;
             this.CH_6_Act.Location = new System.Drawing.Point(170, 17);
+            this.CH_6_Act.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CH_6_Act.Name = "CH_6_Act";
-            this.CH_6_Act.Size = new System.Drawing.Size(46, 29);
+            this.CH_6_Act.Size = new System.Drawing.Size(42, 29);
             this.CH_6_Act.TabIndex = 24;
             this.CH_6_Act.Text = "Act";
             this.CH_6_Act.UseVisualStyleBackColor = false;
@@ -2027,9 +2096,10 @@
             // CH_6_Max
             // 
             this.CH_6_Max.BackColor = System.Drawing.Color.Gainsboro;
-            this.CH_6_Max.Location = new System.Drawing.Point(222, 17);
+            this.CH_6_Max.Location = new System.Drawing.Point(216, 17);
+            this.CH_6_Max.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CH_6_Max.Name = "CH_6_Max";
-            this.CH_6_Max.Size = new System.Drawing.Size(46, 29);
+            this.CH_6_Max.Size = new System.Drawing.Size(42, 29);
             this.CH_6_Max.TabIndex = 23;
             this.CH_6_Max.Text = "Max";
             this.CH_6_Max.UseVisualStyleBackColor = false;
@@ -2038,9 +2108,10 @@
             // CH_6_Avg
             // 
             this.CH_6_Avg.BackColor = System.Drawing.Color.Gainsboro;
-            this.CH_6_Avg.Location = new System.Drawing.Point(326, 17);
+            this.CH_6_Avg.Location = new System.Drawing.Point(308, 17);
+            this.CH_6_Avg.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CH_6_Avg.Name = "CH_6_Avg";
-            this.CH_6_Avg.Size = new System.Drawing.Size(46, 29);
+            this.CH_6_Avg.Size = new System.Drawing.Size(42, 29);
             this.CH_6_Avg.TabIndex = 21;
             this.CH_6_Avg.Text = "Avg";
             this.CH_6_Avg.UseVisualStyleBackColor = false;
@@ -2049,9 +2120,10 @@
             // CH_6_Min
             // 
             this.CH_6_Min.BackColor = System.Drawing.Color.Gainsboro;
-            this.CH_6_Min.Location = new System.Drawing.Point(274, 17);
+            this.CH_6_Min.Location = new System.Drawing.Point(262, 17);
+            this.CH_6_Min.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CH_6_Min.Name = "CH_6_Min";
-            this.CH_6_Min.Size = new System.Drawing.Size(46, 29);
+            this.CH_6_Min.Size = new System.Drawing.Size(42, 29);
             this.CH_6_Min.TabIndex = 22;
             this.CH_6_Min.Text = "Min";
             this.CH_6_Min.UseVisualStyleBackColor = false;
@@ -2067,7 +2139,7 @@
             this.groupBoxCH5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxCH5.Location = new System.Drawing.Point(8, 260);
             this.groupBoxCH5.Name = "groupBoxCH5";
-            this.groupBoxCH5.Size = new System.Drawing.Size(380, 56);
+            this.groupBoxCH5.Size = new System.Drawing.Size(355, 56);
             this.groupBoxCH5.TabIndex = 1;
             this.groupBoxCH5.TabStop = false;
             this.groupBoxCH5.Text = "CH5 - ";
@@ -2076,8 +2148,9 @@
             // 
             this.CH_5_Act.BackColor = System.Drawing.Color.White;
             this.CH_5_Act.Location = new System.Drawing.Point(170, 17);
+            this.CH_5_Act.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CH_5_Act.Name = "CH_5_Act";
-            this.CH_5_Act.Size = new System.Drawing.Size(46, 29);
+            this.CH_5_Act.Size = new System.Drawing.Size(42, 29);
             this.CH_5_Act.TabIndex = 20;
             this.CH_5_Act.Text = "Act";
             this.CH_5_Act.UseVisualStyleBackColor = false;
@@ -2088,7 +2161,7 @@
             this.CH5_Value.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.CH5_Value.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CH5_Value.ForeColor = System.Drawing.Color.MediumSeaGreen;
-            this.CH5_Value.Location = new System.Drawing.Point(-2, 17);
+            this.CH5_Value.Location = new System.Drawing.Point(-2, 18);
             this.CH5_Value.Name = "CH5_Value";
             this.CH5_Value.Size = new System.Drawing.Size(166, 31);
             this.CH5_Value.TabIndex = 4;
@@ -2098,9 +2171,10 @@
             // CH_5_Max
             // 
             this.CH_5_Max.BackColor = System.Drawing.Color.Gainsboro;
-            this.CH_5_Max.Location = new System.Drawing.Point(222, 17);
+            this.CH_5_Max.Location = new System.Drawing.Point(216, 17);
+            this.CH_5_Max.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CH_5_Max.Name = "CH_5_Max";
-            this.CH_5_Max.Size = new System.Drawing.Size(46, 29);
+            this.CH_5_Max.Size = new System.Drawing.Size(42, 29);
             this.CH_5_Max.TabIndex = 19;
             this.CH_5_Max.Text = "Max";
             this.CH_5_Max.UseVisualStyleBackColor = false;
@@ -2109,9 +2183,10 @@
             // CH_5_Avg
             // 
             this.CH_5_Avg.BackColor = System.Drawing.Color.Gainsboro;
-            this.CH_5_Avg.Location = new System.Drawing.Point(326, 17);
+            this.CH_5_Avg.Location = new System.Drawing.Point(308, 17);
+            this.CH_5_Avg.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CH_5_Avg.Name = "CH_5_Avg";
-            this.CH_5_Avg.Size = new System.Drawing.Size(46, 29);
+            this.CH_5_Avg.Size = new System.Drawing.Size(42, 29);
             this.CH_5_Avg.TabIndex = 17;
             this.CH_5_Avg.Text = "Avg";
             this.CH_5_Avg.UseVisualStyleBackColor = false;
@@ -2120,9 +2195,10 @@
             // CH_5_Min
             // 
             this.CH_5_Min.BackColor = System.Drawing.Color.Gainsboro;
-            this.CH_5_Min.Location = new System.Drawing.Point(274, 17);
+            this.CH_5_Min.Location = new System.Drawing.Point(262, 17);
+            this.CH_5_Min.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CH_5_Min.Name = "CH_5_Min";
-            this.CH_5_Min.Size = new System.Drawing.Size(46, 29);
+            this.CH_5_Min.Size = new System.Drawing.Size(42, 29);
             this.CH_5_Min.TabIndex = 18;
             this.CH_5_Min.Text = "Min";
             this.CH_5_Min.UseVisualStyleBackColor = false;
@@ -2138,7 +2214,7 @@
             this.groupBoxCH4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxCH4.Location = new System.Drawing.Point(8, 198);
             this.groupBoxCH4.Name = "groupBoxCH4";
-            this.groupBoxCH4.Size = new System.Drawing.Size(380, 56);
+            this.groupBoxCH4.Size = new System.Drawing.Size(355, 56);
             this.groupBoxCH4.TabIndex = 1;
             this.groupBoxCH4.TabStop = false;
             this.groupBoxCH4.Text = "CH4 - ";
@@ -2147,8 +2223,9 @@
             // 
             this.CH_4_Act.BackColor = System.Drawing.Color.White;
             this.CH_4_Act.Location = new System.Drawing.Point(170, 17);
+            this.CH_4_Act.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CH_4_Act.Name = "CH_4_Act";
-            this.CH_4_Act.Size = new System.Drawing.Size(46, 29);
+            this.CH_4_Act.Size = new System.Drawing.Size(42, 29);
             this.CH_4_Act.TabIndex = 16;
             this.CH_4_Act.Text = "Act";
             this.CH_4_Act.UseVisualStyleBackColor = false;
@@ -2157,9 +2234,10 @@
             // CH_4_Max
             // 
             this.CH_4_Max.BackColor = System.Drawing.Color.Gainsboro;
-            this.CH_4_Max.Location = new System.Drawing.Point(222, 17);
+            this.CH_4_Max.Location = new System.Drawing.Point(216, 17);
+            this.CH_4_Max.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CH_4_Max.Name = "CH_4_Max";
-            this.CH_4_Max.Size = new System.Drawing.Size(46, 29);
+            this.CH_4_Max.Size = new System.Drawing.Size(42, 29);
             this.CH_4_Max.TabIndex = 15;
             this.CH_4_Max.Text = "Max";
             this.CH_4_Max.UseVisualStyleBackColor = false;
@@ -2168,9 +2246,10 @@
             // CH_4_Min
             // 
             this.CH_4_Min.BackColor = System.Drawing.Color.Gainsboro;
-            this.CH_4_Min.Location = new System.Drawing.Point(274, 17);
+            this.CH_4_Min.Location = new System.Drawing.Point(262, 17);
+            this.CH_4_Min.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CH_4_Min.Name = "CH_4_Min";
-            this.CH_4_Min.Size = new System.Drawing.Size(46, 29);
+            this.CH_4_Min.Size = new System.Drawing.Size(42, 29);
             this.CH_4_Min.TabIndex = 14;
             this.CH_4_Min.Text = "Min";
             this.CH_4_Min.UseVisualStyleBackColor = false;
@@ -2179,9 +2258,10 @@
             // CH_4_Avg
             // 
             this.CH_4_Avg.BackColor = System.Drawing.Color.Gainsboro;
-            this.CH_4_Avg.Location = new System.Drawing.Point(326, 17);
+            this.CH_4_Avg.Location = new System.Drawing.Point(308, 17);
+            this.CH_4_Avg.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CH_4_Avg.Name = "CH_4_Avg";
-            this.CH_4_Avg.Size = new System.Drawing.Size(46, 29);
+            this.CH_4_Avg.Size = new System.Drawing.Size(42, 29);
             this.CH_4_Avg.TabIndex = 13;
             this.CH_4_Avg.Text = "Avg";
             this.CH_4_Avg.UseVisualStyleBackColor = false;
@@ -2209,7 +2289,7 @@
             this.groupBoxCH3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxCH3.Location = new System.Drawing.Point(8, 136);
             this.groupBoxCH3.Name = "groupBoxCH3";
-            this.groupBoxCH3.Size = new System.Drawing.Size(380, 56);
+            this.groupBoxCH3.Size = new System.Drawing.Size(355, 56);
             this.groupBoxCH3.TabIndex = 1;
             this.groupBoxCH3.TabStop = false;
             this.groupBoxCH3.Text = "CH3 - ";
@@ -2218,8 +2298,9 @@
             // 
             this.CH_3_Act.BackColor = System.Drawing.Color.White;
             this.CH_3_Act.Location = new System.Drawing.Point(170, 17);
+            this.CH_3_Act.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CH_3_Act.Name = "CH_3_Act";
-            this.CH_3_Act.Size = new System.Drawing.Size(46, 29);
+            this.CH_3_Act.Size = new System.Drawing.Size(42, 29);
             this.CH_3_Act.TabIndex = 20;
             this.CH_3_Act.Text = "Act";
             this.CH_3_Act.UseVisualStyleBackColor = false;
@@ -2240,9 +2321,10 @@
             // CH_3_Max
             // 
             this.CH_3_Max.BackColor = System.Drawing.Color.Gainsboro;
-            this.CH_3_Max.Location = new System.Drawing.Point(222, 17);
+            this.CH_3_Max.Location = new System.Drawing.Point(216, 17);
+            this.CH_3_Max.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CH_3_Max.Name = "CH_3_Max";
-            this.CH_3_Max.Size = new System.Drawing.Size(46, 29);
+            this.CH_3_Max.Size = new System.Drawing.Size(42, 29);
             this.CH_3_Max.TabIndex = 19;
             this.CH_3_Max.Text = "Max";
             this.CH_3_Max.UseVisualStyleBackColor = false;
@@ -2251,9 +2333,10 @@
             // CH_3_Min
             // 
             this.CH_3_Min.BackColor = System.Drawing.Color.Gainsboro;
-            this.CH_3_Min.Location = new System.Drawing.Point(274, 17);
+            this.CH_3_Min.Location = new System.Drawing.Point(262, 17);
+            this.CH_3_Min.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CH_3_Min.Name = "CH_3_Min";
-            this.CH_3_Min.Size = new System.Drawing.Size(46, 29);
+            this.CH_3_Min.Size = new System.Drawing.Size(42, 29);
             this.CH_3_Min.TabIndex = 18;
             this.CH_3_Min.Text = "Min";
             this.CH_3_Min.UseVisualStyleBackColor = false;
@@ -2262,9 +2345,10 @@
             // CH_3_Avg
             // 
             this.CH_3_Avg.BackColor = System.Drawing.Color.Gainsboro;
-            this.CH_3_Avg.Location = new System.Drawing.Point(326, 17);
+            this.CH_3_Avg.Location = new System.Drawing.Point(308, 17);
+            this.CH_3_Avg.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CH_3_Avg.Name = "CH_3_Avg";
-            this.CH_3_Avg.Size = new System.Drawing.Size(46, 29);
+            this.CH_3_Avg.Size = new System.Drawing.Size(42, 29);
             this.CH_3_Avg.TabIndex = 17;
             this.CH_3_Avg.Text = "Avg";
             this.CH_3_Avg.UseVisualStyleBackColor = false;
@@ -2280,7 +2364,7 @@
             this.groupBoxCH2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxCH2.Location = new System.Drawing.Point(8, 74);
             this.groupBoxCH2.Name = "groupBoxCH2";
-            this.groupBoxCH2.Size = new System.Drawing.Size(380, 56);
+            this.groupBoxCH2.Size = new System.Drawing.Size(355, 56);
             this.groupBoxCH2.TabIndex = 1;
             this.groupBoxCH2.TabStop = false;
             this.groupBoxCH2.Text = "CH2 - ";
@@ -2289,8 +2373,9 @@
             // 
             this.CH_2_Act.BackColor = System.Drawing.Color.White;
             this.CH_2_Act.Location = new System.Drawing.Point(170, 17);
+            this.CH_2_Act.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CH_2_Act.Name = "CH_2_Act";
-            this.CH_2_Act.Size = new System.Drawing.Size(46, 29);
+            this.CH_2_Act.Size = new System.Drawing.Size(42, 29);
             this.CH_2_Act.TabIndex = 16;
             this.CH_2_Act.Text = "Act";
             this.CH_2_Act.UseVisualStyleBackColor = false;
@@ -2311,9 +2396,10 @@
             // CH_2_Max
             // 
             this.CH_2_Max.BackColor = System.Drawing.Color.Gainsboro;
-            this.CH_2_Max.Location = new System.Drawing.Point(222, 17);
+            this.CH_2_Max.Location = new System.Drawing.Point(216, 17);
+            this.CH_2_Max.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CH_2_Max.Name = "CH_2_Max";
-            this.CH_2_Max.Size = new System.Drawing.Size(46, 29);
+            this.CH_2_Max.Size = new System.Drawing.Size(42, 29);
             this.CH_2_Max.TabIndex = 15;
             this.CH_2_Max.Text = "Max";
             this.CH_2_Max.UseVisualStyleBackColor = false;
@@ -2322,9 +2408,10 @@
             // CH_2_Avg
             // 
             this.CH_2_Avg.BackColor = System.Drawing.Color.Gainsboro;
-            this.CH_2_Avg.Location = new System.Drawing.Point(326, 17);
+            this.CH_2_Avg.Location = new System.Drawing.Point(308, 17);
+            this.CH_2_Avg.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CH_2_Avg.Name = "CH_2_Avg";
-            this.CH_2_Avg.Size = new System.Drawing.Size(46, 29);
+            this.CH_2_Avg.Size = new System.Drawing.Size(42, 29);
             this.CH_2_Avg.TabIndex = 13;
             this.CH_2_Avg.Text = "Avg";
             this.CH_2_Avg.UseVisualStyleBackColor = false;
@@ -2333,9 +2420,10 @@
             // CH_2_Min
             // 
             this.CH_2_Min.BackColor = System.Drawing.Color.Gainsboro;
-            this.CH_2_Min.Location = new System.Drawing.Point(274, 17);
+            this.CH_2_Min.Location = new System.Drawing.Point(262, 17);
+            this.CH_2_Min.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CH_2_Min.Name = "CH_2_Min";
-            this.CH_2_Min.Size = new System.Drawing.Size(46, 29);
+            this.CH_2_Min.Size = new System.Drawing.Size(42, 29);
             this.CH_2_Min.TabIndex = 14;
             this.CH_2_Min.Text = "Min";
             this.CH_2_Min.UseVisualStyleBackColor = false;
@@ -2353,7 +2441,7 @@
             this.groupBoxCH1.ForeColor = System.Drawing.Color.Black;
             this.groupBoxCH1.Location = new System.Drawing.Point(8, 12);
             this.groupBoxCH1.Name = "groupBoxCH1";
-            this.groupBoxCH1.Size = new System.Drawing.Size(380, 56);
+            this.groupBoxCH1.Size = new System.Drawing.Size(355, 56);
             this.groupBoxCH1.TabIndex = 0;
             this.groupBoxCH1.TabStop = false;
             this.groupBoxCH1.Text = "CH1 - ";
@@ -2362,8 +2450,9 @@
             // 
             this.CH_1_Act.BackColor = System.Drawing.Color.White;
             this.CH_1_Act.Location = new System.Drawing.Point(170, 17);
+            this.CH_1_Act.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CH_1_Act.Name = "CH_1_Act";
-            this.CH_1_Act.Size = new System.Drawing.Size(46, 29);
+            this.CH_1_Act.Size = new System.Drawing.Size(42, 29);
             this.CH_1_Act.TabIndex = 12;
             this.CH_1_Act.Text = "Act";
             this.CH_1_Act.UseVisualStyleBackColor = false;
@@ -2372,9 +2461,10 @@
             // CH_1_Max
             // 
             this.CH_1_Max.BackColor = System.Drawing.Color.Gainsboro;
-            this.CH_1_Max.Location = new System.Drawing.Point(222, 17);
+            this.CH_1_Max.Location = new System.Drawing.Point(216, 17);
+            this.CH_1_Max.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CH_1_Max.Name = "CH_1_Max";
-            this.CH_1_Max.Size = new System.Drawing.Size(46, 29);
+            this.CH_1_Max.Size = new System.Drawing.Size(42, 29);
             this.CH_1_Max.TabIndex = 11;
             this.CH_1_Max.Text = "Max";
             this.CH_1_Max.UseVisualStyleBackColor = false;
@@ -2383,9 +2473,10 @@
             // CH_1_Min
             // 
             this.CH_1_Min.BackColor = System.Drawing.Color.Gainsboro;
-            this.CH_1_Min.Location = new System.Drawing.Point(274, 17);
+            this.CH_1_Min.Location = new System.Drawing.Point(262, 17);
+            this.CH_1_Min.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CH_1_Min.Name = "CH_1_Min";
-            this.CH_1_Min.Size = new System.Drawing.Size(46, 29);
+            this.CH_1_Min.Size = new System.Drawing.Size(42, 29);
             this.CH_1_Min.TabIndex = 10;
             this.CH_1_Min.Text = "Min";
             this.CH_1_Min.UseVisualStyleBackColor = false;
@@ -2394,9 +2485,10 @@
             // CH_1_Avg
             // 
             this.CH_1_Avg.BackColor = System.Drawing.Color.Gainsboro;
-            this.CH_1_Avg.Location = new System.Drawing.Point(326, 17);
+            this.CH_1_Avg.Location = new System.Drawing.Point(308, 17);
+            this.CH_1_Avg.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CH_1_Avg.Name = "CH_1_Avg";
-            this.CH_1_Avg.Size = new System.Drawing.Size(46, 29);
+            this.CH_1_Avg.Size = new System.Drawing.Size(42, 29);
             this.CH_1_Avg.TabIndex = 9;
             this.CH_1_Avg.Text = "Avg";
             this.CH_1_Avg.UseVisualStyleBackColor = false;
@@ -2407,7 +2499,7 @@
             this.CH1_Value.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.CH1_Value.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CH1_Value.ForeColor = System.Drawing.Color.DarkGoldenrod;
-            this.CH1_Value.Location = new System.Drawing.Point(-2, 17);
+            this.CH1_Value.Location = new System.Drawing.Point(-2, 18);
             this.CH1_Value.Name = "CH1_Value";
             this.CH1_Value.Size = new System.Drawing.Size(166, 31);
             this.CH1_Value.TabIndex = 0;
@@ -2422,14 +2514,23 @@
             this.tabControl1.Controls.Add(this.tabDebug);
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.ItemSize = new System.Drawing.Size(120, 25);
-            this.tabControl1.Location = new System.Drawing.Point(394, 19);
+            this.tabControl1.Location = new System.Drawing.Point(369, 19);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(781, 676);
+            this.tabControl1.Size = new System.Drawing.Size(817, 676);
             this.tabControl1.TabIndex = 0;
             // 
             // tabGraph
             // 
+            this.tabGraph.Controls.Add(this.checkBox1);
+            this.tabGraph.Controls.Add(this.button15);
+            this.tabGraph.Controls.Add(this.button14);
+            this.tabGraph.Controls.Add(this.button13);
+            this.tabGraph.Controls.Add(this.button12);
+            this.tabGraph.Controls.Add(this.button11);
+            this.tabGraph.Controls.Add(this.button10);
+            this.tabGraph.Controls.Add(this.button9);
+            this.tabGraph.Controls.Add(this.button8);
             this.tabGraph.Controls.Add(this.buttonAuto);
             this.tabGraph.Controls.Add(this.checkBoxPlotCH8);
             this.tabGraph.Controls.Add(this.checkBoxPlotCH7);
@@ -2444,18 +2545,107 @@
             this.tabGraph.Location = new System.Drawing.Point(4, 29);
             this.tabGraph.Name = "tabGraph";
             this.tabGraph.Padding = new System.Windows.Forms.Padding(3);
-            this.tabGraph.Size = new System.Drawing.Size(773, 643);
+            this.tabGraph.Size = new System.Drawing.Size(809, 643);
             this.tabGraph.TabIndex = 4;
             this.tabGraph.Text = "Graph";
             this.tabGraph.UseVisualStyleBackColor = true;
             // 
+            // button15
+            // 
+            this.button15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button15.Location = new System.Drawing.Point(738, 192);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(65, 20);
+            this.button15.TabIndex = 23;
+            this.button15.Text = "Fit";
+            this.button15.UseVisualStyleBackColor = true;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
+            // 
+            // button14
+            // 
+            this.button14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button14.Location = new System.Drawing.Point(738, 167);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(65, 20);
+            this.button14.TabIndex = 22;
+            this.button14.Text = "Fit";
+            this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
+            // 
+            // button13
+            // 
+            this.button13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button13.Location = new System.Drawing.Point(738, 140);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(65, 20);
+            this.button13.TabIndex = 21;
+            this.button13.Text = "Fit";
+            this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
+            // 
+            // button12
+            // 
+            this.button12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button12.Location = new System.Drawing.Point(738, 115);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(65, 20);
+            this.button12.TabIndex = 20;
+            this.button12.Text = "Fit";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
+            // button11
+            // 
+            this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button11.Location = new System.Drawing.Point(738, 88);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(65, 20);
+            this.button11.TabIndex = 19;
+            this.button11.Text = "Fit";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
+            // button10
+            // 
+            this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button10.Location = new System.Drawing.Point(738, 62);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(65, 20);
+            this.button10.TabIndex = 18;
+            this.button10.Text = "Fit";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
+            // button9
+            // 
+            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button9.Location = new System.Drawing.Point(738, 36);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(65, 20);
+            this.button9.TabIndex = 17;
+            this.button9.Text = "Fit";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // button8
+            // 
+            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button8.Location = new System.Drawing.Point(738, 10);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(65, 20);
+            this.button8.TabIndex = 16;
+            this.button8.Text = "Fit";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
             // buttonAuto
             // 
-            this.buttonAuto.Location = new System.Drawing.Point(681, 229);
+            this.buttonAuto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAuto.Location = new System.Drawing.Point(738, 229);
             this.buttonAuto.Name = "buttonAuto";
-            this.buttonAuto.Size = new System.Drawing.Size(75, 29);
+            this.buttonAuto.Size = new System.Drawing.Size(65, 20);
             this.buttonAuto.TabIndex = 15;
-            this.buttonAuto.Text = "Auto";
+            this.buttonAuto.Text = "Fit All";
             this.buttonAuto.UseVisualStyleBackColor = true;
             this.buttonAuto.Click += new System.EventHandler(this.buttonAuto_Click);
             // 
@@ -2464,7 +2654,7 @@
             this.checkBoxPlotCH8.AutoSize = true;
             this.checkBoxPlotCH8.Enabled = false;
             this.checkBoxPlotCH8.ForeColor = System.Drawing.Color.MediumOrchid;
-            this.checkBoxPlotCH8.Location = new System.Drawing.Point(703, 198);
+            this.checkBoxPlotCH8.Location = new System.Drawing.Point(684, 193);
             this.checkBoxPlotCH8.Name = "checkBoxPlotCH8";
             this.checkBoxPlotCH8.Size = new System.Drawing.Size(53, 20);
             this.checkBoxPlotCH8.TabIndex = 14;
@@ -2477,7 +2667,7 @@
             this.checkBoxPlotCH7.AutoSize = true;
             this.checkBoxPlotCH7.Enabled = false;
             this.checkBoxPlotCH7.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.checkBoxPlotCH7.Location = new System.Drawing.Point(703, 172);
+            this.checkBoxPlotCH7.Location = new System.Drawing.Point(684, 167);
             this.checkBoxPlotCH7.Name = "checkBoxPlotCH7";
             this.checkBoxPlotCH7.Size = new System.Drawing.Size(53, 20);
             this.checkBoxPlotCH7.TabIndex = 13;
@@ -2490,7 +2680,7 @@
             this.checkBoxPlotCH6.AutoSize = true;
             this.checkBoxPlotCH6.Enabled = false;
             this.checkBoxPlotCH6.ForeColor = System.Drawing.Color.DimGray;
-            this.checkBoxPlotCH6.Location = new System.Drawing.Point(703, 146);
+            this.checkBoxPlotCH6.Location = new System.Drawing.Point(684, 141);
             this.checkBoxPlotCH6.Name = "checkBoxPlotCH6";
             this.checkBoxPlotCH6.Size = new System.Drawing.Size(53, 20);
             this.checkBoxPlotCH6.TabIndex = 12;
@@ -2503,7 +2693,7 @@
             this.checkBoxPlotCH5.AutoSize = true;
             this.checkBoxPlotCH5.Enabled = false;
             this.checkBoxPlotCH5.ForeColor = System.Drawing.Color.MediumSeaGreen;
-            this.checkBoxPlotCH5.Location = new System.Drawing.Point(703, 120);
+            this.checkBoxPlotCH5.Location = new System.Drawing.Point(684, 115);
             this.checkBoxPlotCH5.Name = "checkBoxPlotCH5";
             this.checkBoxPlotCH5.Size = new System.Drawing.Size(53, 20);
             this.checkBoxPlotCH5.TabIndex = 11;
@@ -2516,7 +2706,7 @@
             this.checkBoxPlotCH4.AutoSize = true;
             this.checkBoxPlotCH4.Enabled = false;
             this.checkBoxPlotCH4.ForeColor = System.Drawing.Color.DarkMagenta;
-            this.checkBoxPlotCH4.Location = new System.Drawing.Point(703, 94);
+            this.checkBoxPlotCH4.Location = new System.Drawing.Point(684, 89);
             this.checkBoxPlotCH4.Name = "checkBoxPlotCH4";
             this.checkBoxPlotCH4.Size = new System.Drawing.Size(53, 20);
             this.checkBoxPlotCH4.TabIndex = 10;
@@ -2529,7 +2719,7 @@
             this.checkBoxPlotCH3.AutoSize = true;
             this.checkBoxPlotCH3.Enabled = false;
             this.checkBoxPlotCH3.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.checkBoxPlotCH3.Location = new System.Drawing.Point(703, 68);
+            this.checkBoxPlotCH3.Location = new System.Drawing.Point(684, 63);
             this.checkBoxPlotCH3.Name = "checkBoxPlotCH3";
             this.checkBoxPlotCH3.Size = new System.Drawing.Size(53, 20);
             this.checkBoxPlotCH3.TabIndex = 9;
@@ -2540,9 +2730,11 @@
             // checkBoxPlotCH2
             // 
             this.checkBoxPlotCH2.AutoSize = true;
+            this.checkBoxPlotCH2.Checked = true;
+            this.checkBoxPlotCH2.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxPlotCH2.Enabled = false;
             this.checkBoxPlotCH2.ForeColor = System.Drawing.Color.Firebrick;
-            this.checkBoxPlotCH2.Location = new System.Drawing.Point(703, 42);
+            this.checkBoxPlotCH2.Location = new System.Drawing.Point(684, 37);
             this.checkBoxPlotCH2.Name = "checkBoxPlotCH2";
             this.checkBoxPlotCH2.Size = new System.Drawing.Size(53, 20);
             this.checkBoxPlotCH2.TabIndex = 8;
@@ -2553,9 +2745,11 @@
             // checkBoxPlotCH1
             // 
             this.checkBoxPlotCH1.AutoSize = true;
+            this.checkBoxPlotCH1.Checked = true;
+            this.checkBoxPlotCH1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxPlotCH1.Enabled = false;
             this.checkBoxPlotCH1.ForeColor = System.Drawing.Color.DarkGoldenrod;
-            this.checkBoxPlotCH1.Location = new System.Drawing.Point(703, 16);
+            this.checkBoxPlotCH1.Location = new System.Drawing.Point(684, 11);
             this.checkBoxPlotCH1.Name = "checkBoxPlotCH1";
             this.checkBoxPlotCH1.Size = new System.Drawing.Size(53, 20);
             this.checkBoxPlotCH1.TabIndex = 7;
@@ -2566,7 +2760,7 @@
             // button6
             // 
             this.button6.BackColor = System.Drawing.Color.White;
-            this.button6.Location = new System.Drawing.Point(661, 601);
+            this.button6.Location = new System.Drawing.Point(697, 601);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(106, 36);
             this.button6.TabIndex = 6;
@@ -2580,11 +2774,11 @@
             chartArea1.Name = "ChartArea1";
             this.chart1.ChartAreas.Add(chartArea1);
             this.chart1.DataSource = this.sampleBindingSource1;
-            this.chart1.Location = new System.Drawing.Point(6, 6);
+            this.chart1.Location = new System.Drawing.Point(-34, -1);
             this.chart1.Name = "chart1";
             series1.BorderWidth = 3;
             series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
             series1.Color = System.Drawing.Color.DarkGoldenrod;
             series1.Name = "CH1";
             series1.XValueMember = "SampleNumber";
@@ -2641,13 +2835,43 @@
             this.chart1.Series.Add(series6);
             this.chart1.Series.Add(series7);
             this.chart1.Series.Add(series8);
-            this.chart1.Size = new System.Drawing.Size(691, 589);
+            this.chart1.Size = new System.Drawing.Size(732, 663);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
             // 
             // timer100ms
             // 
             this.timer100ms.Tick += new System.EventHandler(this.a);
+            // 
+            // labelCounter
+            // 
+            this.labelCounter.AutoSize = true;
+            this.labelCounter.Location = new System.Drawing.Point(338, 336);
+            this.labelCounter.Name = "labelCounter";
+            this.labelCounter.Size = new System.Drawing.Size(15, 16);
+            this.labelCounter.TabIndex = 71;
+            this.labelCounter.Text = "0";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(272, 336);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(60, 16);
+            this.label24.TabIndex = 73;
+            this.label24.Text = "Counter: ";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Enabled = false;
+            this.checkBox1.ForeColor = System.Drawing.Color.Black;
+            this.checkBox1.Location = new System.Drawing.Point(684, 229);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(42, 20);
+            this.checkBox1.TabIndex = 24;
+            this.checkBox1.Text = "All";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // sampleBindingSource1
             // 
@@ -2736,7 +2960,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1184, 704);
+            this.ClientSize = new System.Drawing.Size(1195, 704);
             this.Controls.Add(this.groupBox11);
             this.Controls.Add(this.labelConnectionStatus);
             this.Controls.Add(this.groupBox10);
@@ -2753,6 +2977,7 @@
             this.Name = "Form1";
             this.Text = "ThermoCoupler";
             this.tabDebug.ResumeLayout(false);
+            this.tabDebug.PerformLayout();
             this.groupBox12.ResumeLayout(false);
             this.groupBox12.PerformLayout();
             this.tabSettings.ResumeLayout(false);
@@ -2760,7 +2985,7 @@
             this.groupBox13.ResumeLayout(false);
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLimit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.periodmSec)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.periodSec)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.periodMin)).EndInit();
@@ -2905,7 +3130,6 @@
         private System.Windows.Forms.Label labelTimeLeft;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label labelSamples;
-        private System.Windows.Forms.Button buttonStart;
         private System.Windows.Forms.GroupBox groupBox10;
         private System.Windows.Forms.Button CH_A_Act;
         private System.Windows.Forms.Label CHA_Value;
@@ -2977,9 +3201,9 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.NumericUpDown numericUpDown4;
+        private System.Windows.Forms.NumericUpDown numericUpDownLimit;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBoxLimit;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
@@ -2995,10 +3219,9 @@
         private System.Windows.Forms.Button buttonConnect;
         private System.Windows.Forms.ComboBox comboBoxCOMs;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button buttonClearData;
-        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label labelVersion;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.CheckBox checkBoxPlotCH1;
         private System.Windows.Forms.DataGridViewTextBoxColumn sampleNumberDataGridViewTextBoxColumn;
@@ -3020,6 +3243,20 @@
         private System.Windows.Forms.CheckBox checkBoxPlotCH3;
         private System.Windows.Forms.CheckBox checkBoxPlotCH2;
         private System.Windows.Forms.Button buttonAuto;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button buttonScan;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label labelCounter;
+        public System.Windows.Forms.Button buttonStart;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 
