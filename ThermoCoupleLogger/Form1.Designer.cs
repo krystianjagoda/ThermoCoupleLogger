@@ -45,6 +45,8 @@
             this.timerRead = new System.Windows.Forms.Timer(this.components);
             this.timerRefresh = new System.Windows.Forms.Timer(this.components);
             this.tabDebug = new System.Windows.Forms.TabPage();
+            this.labeltryDataRead = new System.Windows.Forms.Label();
+            this.buttontryDataRead = new System.Windows.Forms.Button();
             this.label24 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.labelTicks = new System.Windows.Forms.Label();
@@ -122,9 +124,13 @@
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.button7 = new System.Windows.Forms.Button();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.buttonRefresh = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
             this.buttonConnect = new System.Windows.Forms.Button();
             this.comboBoxCOMs = new System.Windows.Forms.ComboBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.labelDebugge = new System.Windows.Forms.Label();
             this.labelSecondsTotal = new System.Windows.Forms.Label();
             this.labelDaysTotal = new System.Windows.Forms.Label();
             this.labelHoursTotal = new System.Windows.Forms.Label();
@@ -282,7 +288,6 @@
             this.channel6ValuesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.channel7ValuesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.channel8ValuesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.labelDebugge = new System.Windows.Forms.Label();
             this.tabDebug.SuspendLayout();
             this.groupBox12.SuspendLayout();
             this.tabSettings.SuspendLayout();
@@ -315,7 +320,7 @@
             // 
             this.labelConnectionStatus.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.labelConnectionStatus.ForeColor = System.Drawing.Color.Maroon;
-            this.labelConnectionStatus.Location = new System.Drawing.Point(1087, 3);
+            this.labelConnectionStatus.Location = new System.Drawing.Point(135, 100);
             this.labelConnectionStatus.Name = "labelConnectionStatus";
             this.labelConnectionStatus.Size = new System.Drawing.Size(99, 13);
             this.labelConnectionStatus.TabIndex = 1;
@@ -340,6 +345,8 @@
             // 
             // tabDebug
             // 
+            this.tabDebug.Controls.Add(this.labeltryDataRead);
+            this.tabDebug.Controls.Add(this.buttontryDataRead);
             this.tabDebug.Controls.Add(this.label24);
             this.tabDebug.Controls.Add(this.textBox2);
             this.tabDebug.Controls.Add(this.labelTicks);
@@ -357,6 +364,25 @@
             this.tabDebug.Text = "Debug";
             this.tabDebug.UseVisualStyleBackColor = true;
             this.tabDebug.Click += new System.EventHandler(this.tabPage4_Click);
+            // 
+            // labeltryDataRead
+            // 
+            this.labeltryDataRead.AutoSize = true;
+            this.labeltryDataRead.Location = new System.Drawing.Point(657, 401);
+            this.labeltryDataRead.Name = "labeltryDataRead";
+            this.labeltryDataRead.Size = new System.Drawing.Size(47, 16);
+            this.labeltryDataRead.TabIndex = 79;
+            this.labeltryDataRead.Text = "NONE";
+            // 
+            // buttontryDataRead
+            // 
+            this.buttontryDataRead.Location = new System.Drawing.Point(537, 398);
+            this.buttontryDataRead.Name = "buttontryDataRead";
+            this.buttontryDataRead.Size = new System.Drawing.Size(110, 23);
+            this.buttontryDataRead.TabIndex = 78;
+            this.buttontryDataRead.Text = "tryDataRead";
+            this.buttontryDataRead.UseVisualStyleBackColor = true;
+            this.buttontryDataRead.Click += new System.EventHandler(this.buttontryDataRead_Click);
             // 
             // label24
             // 
@@ -1054,30 +1080,65 @@
             // 
             // groupBox13
             // 
+            this.groupBox13.Controls.Add(this.label16);
+            this.groupBox13.Controls.Add(this.buttonRefresh);
+            this.groupBox13.Controls.Add(this.label15);
+            this.groupBox13.Controls.Add(this.labelConnectionStatus);
             this.groupBox13.Controls.Add(this.buttonConnect);
             this.groupBox13.Controls.Add(this.comboBoxCOMs);
             this.groupBox13.Location = new System.Drawing.Point(468, 360);
             this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(335, 235);
+            this.groupBox13.Size = new System.Drawing.Size(335, 127);
             this.groupBox13.TabIndex = 54;
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "Connection";
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(11, 24);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(35, 16);
+            this.label16.TabIndex = 6;
+            this.label16.Text = "Port:";
+            // 
+            // buttonRefresh
+            // 
+            this.buttonRefresh.Enabled = false;
+            this.buttonRefresh.Image = global::ThermoCoupleLogger.Properties.Resources.ref1;
+            this.buttonRefresh.Location = new System.Drawing.Point(171, 20);
+            this.buttonRefresh.Name = "buttonRefresh";
+            this.buttonRefresh.Size = new System.Drawing.Size(25, 25);
+            this.buttonRefresh.TabIndex = 5;
+            this.buttonRefresh.UseVisualStyleBackColor = true;
+            this.buttonRefresh.Click += new System.EventHandler(this.buttonRefresh_Click);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(11, 100);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(118, 16);
+            this.label15.TabIndex = 4;
+            this.label15.Text = "Connection Status:";
+            // 
             // buttonConnect
             // 
-            this.buttonConnect.Location = new System.Drawing.Point(200, 15);
+            this.buttonConnect.Location = new System.Drawing.Point(203, 20);
             this.buttonConnect.Name = "buttonConnect";
-            this.buttonConnect.Size = new System.Drawing.Size(129, 34);
+            this.buttonConnect.Size = new System.Drawing.Size(126, 25);
             this.buttonConnect.TabIndex = 3;
             this.buttonConnect.Text = "Connect";
             this.buttonConnect.UseVisualStyleBackColor = true;
+            this.buttonConnect.Click += new System.EventHandler(this.buttonConnect_Click_1);
             // 
             // comboBoxCOMs
             // 
+            this.comboBoxCOMs.Enabled = false;
             this.comboBoxCOMs.FormattingEnabled = true;
-            this.comboBoxCOMs.Location = new System.Drawing.Point(6, 21);
+            this.comboBoxCOMs.Location = new System.Drawing.Point(52, 21);
             this.comboBoxCOMs.Name = "comboBoxCOMs";
-            this.comboBoxCOMs.Size = new System.Drawing.Size(129, 24);
+            this.comboBoxCOMs.Size = new System.Drawing.Size(113, 24);
             this.comboBoxCOMs.TabIndex = 2;
             // 
             // groupBox9
@@ -1109,6 +1170,15 @@
             this.groupBox9.TabIndex = 3;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Acquisition Settings";
+            // 
+            // labelDebugge
+            // 
+            this.labelDebugge.AutoSize = true;
+            this.labelDebugge.Location = new System.Drawing.Point(87, 248);
+            this.labelDebugge.Name = "labelDebugge";
+            this.labelDebugge.Size = new System.Drawing.Size(52, 16);
+            this.labelDebugge.TabIndex = 26;
+            this.labelDebugge.Text = "label15";
             // 
             // labelSecondsTotal
             // 
@@ -2984,15 +3054,6 @@
             this.channel8ValuesDataGridViewTextBoxColumn.ReadOnly = true;
             this.channel8ValuesDataGridViewTextBoxColumn.Width = 60;
             // 
-            // labelDebugge
-            // 
-            this.labelDebugge.AutoSize = true;
-            this.labelDebugge.Location = new System.Drawing.Point(87, 248);
-            this.labelDebugge.Name = "labelDebugge";
-            this.labelDebugge.Size = new System.Drawing.Size(52, 16);
-            this.labelDebugge.TabIndex = 26;
-            this.labelDebugge.Text = "label15";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3000,7 +3061,6 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1195, 704);
             this.Controls.Add(this.groupBox11);
-            this.Controls.Add(this.labelConnectionStatus);
             this.Controls.Add(this.groupBox10);
             this.Controls.Add(this.groupBoxCH8);
             this.Controls.Add(this.tabControl1);
@@ -3021,6 +3081,7 @@
             this.tabSettings.ResumeLayout(false);
             this.tabSettings.PerformLayout();
             this.groupBox13.ResumeLayout(false);
+            this.groupBox13.PerformLayout();
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLimit)).EndInit();
@@ -3297,6 +3358,11 @@
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label labelDebugge;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Button buttonRefresh;
+        private System.Windows.Forms.Label labeltryDataRead;
+        private System.Windows.Forms.Button buttontryDataRead;
     }
 }
 

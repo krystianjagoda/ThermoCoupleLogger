@@ -18,17 +18,17 @@ namespace ThermoCoupleLogger
     public partial class Form1 : Form
     {
 
+        public string ReleaseInfo = "Version: 0.09   2016-12-13";
 
-        public string ReleaseInfo = "Version: 0.07   2016-12-11";
 
         public bool DebugMode = false;
         public uint ErrorFrames = 0;
 
-        public UInt32 ActualSampleNumber = 0;       // Actual Sample Number
         public List<Sample> Samples = new List<Sample>();
 
-
         Acquisition Acquisition = new Acquisition();
+        Connection Connection = new Connection();
+
         Channel_Data Channel1 = new Channel_Data();
         Channel_Data Channel2 = new Channel_Data();
         Channel_Data Channel3 = new Channel_Data();
@@ -42,38 +42,15 @@ namespace ThermoCoupleLogger
 
 
         public Form1()
-        {
+        {           
             InitializeComponent();
-            serialPort1.ReadTimeout = 2000; // Read Timeout = 2s
 
-            timerRefresh.Interval = 10;     // GUI Refresh period in ms
-            timerRefresh.Enabled = true;
-
-
-            foreach (System.Reflection.PropertyInfo prop in typeof(Color).GetProperties())
-                {
-                    if (prop.PropertyType.FullName == "System.Drawing.Color")
-                    comboBoxColorCH1.Items.Add(prop.Name);
-                    comboBoxColorCH2.Items.Add(prop.Name);
-                    comboBoxColorCH3.Items.Add(prop.Name);
-                    comboBoxColorCH4.Items.Add(prop.Name);
-                    comboBoxColorCH5.Items.Add(prop.Name);
-                    comboBoxColorCH6.Items.Add(prop.Name);
-                    comboBoxColorCH7.Items.Add(prop.Name);
-                    comboBoxColorCH8.Items.Add(prop.Name);
-                }
-
-            // Init Stuff
-            labelVersion.Text = ReleaseInfo.ToString();
-            DefaultColors();
+            // Quick Settings
+            serialPort1.ReadTimeout = 100; // Read Timeout = 100ms
+            timerRefresh.Interval = 50;     // GUI Refresh period in ms
 
 
-            Acquisition.CalculatedTime.mSec = periodmSec.Value;
-            Acquisition.CalculatedTime.Sec = periodSec.Value;
-            Acquisition.CalculatedTime.Min = periodMin.Value;
-            Acquisition.CalculatedTime.CalculatePeriod();
-
-            getAvailablePorts();
+            // Init Stuff   
             tryToConnect();
 
             InitialThings();
@@ -91,7 +68,7 @@ namespace ThermoCoupleLogger
                               Decimal CH5_Value, Decimal CH6_Value, Decimal CH7_Value, Decimal CH8_Value)
         {
             Samples.Add(new Sample()
-            { SampleNumber = ActualSampleNumber,
+            { SampleNumber = Acquisition.ActualSampleNumber,
                 SampleTime = DateTime.Now.ToString("h:mm:ss tt"),
                 Channel1Values = CH1_Value,
                 Channel2Values = CH2_Value,
@@ -111,28 +88,55 @@ namespace ThermoCoupleLogger
 
         void getAvailablePorts()
         {
-            String[] ports = SerialPort.GetPortNames();
-            comboBoxCOMs.Items.AddRange(ports);
+            comboBoxCOMs.Items.Clear();
+            Connection.ports = SerialPort.GetPortNames();
+            comboBoxCOMs.Items.AddRange(Connection.ports);
         }
 
         void tryToConnect()
         {
-            try
+            CheckDevice();
+            if(Connection.ActualPort == "NONE")
             {
-                serialPort1.PortName = "COM26";
-                serialPort1.BaudRate = 115200;
-                serialPort1.Open();
-                labelConnectionStatus.Text = "Connected";
-                labelConnectionStatus.ForeColor = System.Drawing.Color.Green;
-                buttonStart.Enabled = true;
-                timerRead.Enabled = true;
-            }
-            catch (UnauthorizedAccessException)
-            {
-                textBox2.Text = "Unauthorized Acess";
-                labelConnectionStatus.Text = "Disconnected";
+                Connection.ConnectionStatus = false;
+                labelConnectionStatus.Text = "Device not found";
                 labelConnectionStatus.ForeColor = System.Drawing.Color.Maroon;
-                timerRead.Enabled = false;
+                comboBoxCOMs.Enabled = true;
+                buttonRefresh.Enabled = true;
+            }
+            else
+            {
+                try
+                {
+                    serialPort1.Close();
+                    serialPort1.PortName = Connection.ActualPort;
+                    serialPort1.BaudRate = Connection.BaudRate;
+                    serialPort1.Open();
+
+                    comboBoxCOMs.Text = Connection.ActualPort;
+                    labelConnectionStatus.Text = "Connected";
+                    Connection.ConnectionStatus = true;
+                    labelConnectionStatus.ForeColor = System.Drawing.Color.Green;
+                    buttonStart.Enabled = true;
+                    timerRead.Enabled = true;
+                }
+                catch (System.IO.IOException)
+                {
+                    Connection.ConnectionStatus = false;
+                    textBox2.Text = "Unauthorized Acess";
+                    labelConnectionStatus.Text = "Disconnected";
+                    labelConnectionStatus.ForeColor = System.Drawing.Color.Maroon;
+                    timerRead.Enabled = false;
+                }
+
+                catch (UnauthorizedAccessException)
+                {
+                    Connection.ConnectionStatus = false;
+                    textBox2.Text = "Unauthorized Acess";
+                    labelConnectionStatus.Text = "Disconnected";
+                    labelConnectionStatus.ForeColor = System.Drawing.Color.Maroon;
+                    timerRead.Enabled = false;
+                }
             }
         }
 
@@ -141,25 +145,117 @@ namespace ThermoCoupleLogger
             NewSample(Channel1.Temperature, Channel2.Temperature, Channel3.Temperature, Channel4.Temperature,
             Channel5.Temperature, Channel6.Temperature, Channel7.Temperature, Channel8.Temperature);
 
-            ActualSampleNumber++;
+            Acquisition.ActualSampleNumber++;
 
         }
 
 
+
+        void CheckDevice()
+        {
+            string WorkingPort = "NONE";
+            serialPort1.Close();
+            getAvailablePorts();
+            // ports
+            foreach(string PORT in Connection.ports)
+            {
+                try
+                {
+                    serialPort1.Close();
+                    serialPort1.BaudRate = Connection.BaudRate;
+                    serialPort1.PortName = PORT;
+                    serialPort1.Open();
+                    if (tryDataRead())
+                    {
+                        WorkingPort = PORT;
+                    }
+                                   
+                }
+                catch (UnauthorizedAccessException)
+                {
+                }
+            }
+            labeltryDataRead.Text = WorkingPort;
+            Connection.ActualPort = WorkingPort;
+            comboBoxCOMs.Text = WorkingPort;   
+        }
+
+
+        bool tryDataRead()
+        {
+            int[] ReceivedFrame = new int[36];
+            Int32 Sum = 0; //Frame Sum for Checksum
+            Int32 CalculatedCheckSum = 0;
+
+            serialPort1.Write("#get_data\n");
+
+            try
+            {
+                for (Int16 i = 0; i < 36; i++)
+                {
+                    ReceivedFrame[i] = (int)serialPort1.ReadByte();
+                    if (i < 33) Sum = Sum + (Int32)ReceivedFrame[i];
+                }
+            }
+            catch (TimeoutException)
+            {
+                return false;
+            }
+
+            CalculatedCheckSum = Sum % 255;
+
+            if (CalculatedCheckSum == ReceivedFrame[33])
+            {
+                return true;
+            }
+            else return false;
+        }
+
+
+
+
+        void InitialMeasurement()
+        {
+            if (Connection.ConnectionStatus == true)
+            {
+                getData();
+                Channel1.setMaxMin();
+                Channel2.setMaxMin();
+                Channel3.setMaxMin();
+                Channel4.setMaxMin();
+                Channel5.setMaxMin();
+                Channel6.setMaxMin();
+                Channel7.setMaxMin();
+                Channel8.setMaxMin();
+                ChannelA.setMaxMin();
+            }
+        }
+
         void InitialThings()
         {
-            //  Make an initial measurement to get Max and Min
-            getData();
-            Channel1.setMaxMin();
-            Channel2.setMaxMin();
-            Channel3.setMaxMin();
-            Channel4.setMaxMin();
-            Channel5.setMaxMin();
-            Channel6.setMaxMin();
-            Channel7.setMaxMin();
-            Channel8.setMaxMin();
-            ChannelA.setMaxMin();
+            foreach (System.Reflection.PropertyInfo prop in typeof(Color).GetProperties())
+            {
+                if (prop.PropertyType.FullName == "System.Drawing.Color")
+                    comboBoxColorCH1.Items.Add(prop.Name);
+                comboBoxColorCH2.Items.Add(prop.Name);
+                comboBoxColorCH3.Items.Add(prop.Name);
+                comboBoxColorCH4.Items.Add(prop.Name);
+                comboBoxColorCH5.Items.Add(prop.Name);
+                comboBoxColorCH6.Items.Add(prop.Name);
+                comboBoxColorCH7.Items.Add(prop.Name);
+                comboBoxColorCH8.Items.Add(prop.Name);
+            }
 
+
+
+            labelVersion.Text = ReleaseInfo.ToString();
+            DefaultColors();
+
+            Acquisition.CalculatedTime.CalculatePeriod();
+
+            InitialMeasurement();
+
+            timerRefresh.Enabled = true;    // Start GUI Refresh Timer
         }
 
 
@@ -707,7 +803,11 @@ namespace ThermoCoupleLogger
 
         private void button1_Click(object sender, EventArgs e)
         {
-            getData();
+            if(Connection.ConnectionStatus == true)
+            {
+                getData();
+            }
+
         }
 
         private void tabPage4_Click(object sender, EventArgs e)
@@ -765,7 +865,10 @@ namespace ThermoCoupleLogger
 
         private void timer2_Tick(object sender, EventArgs e)
         {
-            getData();
+            if(Connection.ConnectionStatus == true)
+            {
+                getData();
+            }
         }
 
         private void buttonDebugMode_Click(object sender, EventArgs e)
@@ -872,6 +975,17 @@ namespace ThermoCoupleLogger
 
         private void timerRefresh_Tick(object sender, EventArgs e)
         {
+
+            if (Connection.ConnectionStatus == true)
+            {
+                buttonConnect.Text = "Disconnect";
+            }
+            else if (Connection.ConnectionStatus == false)
+            {
+                buttonConnect.Text = "Connect";
+            }
+
+
             Acquisition.TimeLeft.CalculatePeriod();
 
             labelTimeToNext.Text = Acquisition.TimeToNextSample();
@@ -882,7 +996,7 @@ namespace ThermoCoupleLogger
 
             if (Acquisition.LimitSet == true)
             {
-                labelSamples.Text = ActualSampleNumber.ToString() + " / " + Acquisition.CalculatedTime.SampleLimit.ToString();
+                labelSamples.Text = Acquisition.ActualSampleNumber.ToString() + " / " + Acquisition.CalculatedTime.SampleLimit.ToString();
 
                 if (Acquisition.Logging == true)
                 {
@@ -910,7 +1024,7 @@ namespace ThermoCoupleLogger
             }
             else
             {
-                labelSamples.Text = ActualSampleNumber.ToString();
+                labelSamples.Text = Acquisition.ActualSampleNumber.ToString();
                 labelTimeLeft.Text = "∞";
                 labelDaysTotal.Text = "-";
                 labelHoursTotal.Text = "-";
@@ -921,7 +1035,7 @@ namespace ThermoCoupleLogger
 
 
             // if (Acquisition.Logging)
-            if(ActualSampleNumber > 0)
+            if(Acquisition.ActualSampleNumber > 0)
             {
 
                 UpdateChart();
@@ -1539,7 +1653,7 @@ namespace ThermoCoupleLogger
 
             registerData();
 
-            if(ActualSampleNumber == Acquisition.CalculatedTime.SampleLimit)
+            if(Acquisition.ActualSampleNumber == Acquisition.CalculatedTime.SampleLimit)
             {
                 StopLogging();
             }
@@ -1563,7 +1677,11 @@ namespace ThermoCoupleLogger
 
         private void timerRead_Tick(object sender, EventArgs e)
         {
-            getData();
+            if(Connection.ConnectionStatus == true)
+            {
+                getData();
+            }
+
         }
 
         private void a(object sender, EventArgs e)
@@ -1632,15 +1750,17 @@ namespace ThermoCoupleLogger
 
             if (result1 == DialogResult.Yes)
             {
-                Samples.RemoveRange(0, (int)ActualSampleNumber);
-                ActualSampleNumber = 0;
+                Samples.RemoveRange(0, (int)Acquisition.ActualSampleNumber);
+                Acquisition.ActualSampleNumber = 0;
                 UpdateGridView();
+                InitialMeasurement();
             }
             else if (result1 == DialogResult.No)
             {
-                Samples.RemoveRange(0, (int)ActualSampleNumber);
-                ActualSampleNumber = 0;
+                Samples.RemoveRange(0, (int)Acquisition.ActualSampleNumber);
+                Acquisition.ActualSampleNumber = 0;
                 UpdateGridView();
+                InitialMeasurement();
             }
             else
             {
@@ -1746,14 +1866,78 @@ namespace ThermoCoupleLogger
 
         private void button4_Click(object sender, EventArgs e)
         {           
-            Samples.RemoveRange(0, (int)ActualSampleNumber);
-            ActualSampleNumber = 0;
+            Samples.RemoveRange(0, (int)Acquisition.ActualSampleNumber);
+            Acquisition.ActualSampleNumber = 0;
             UpdateGridView();
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             UpdateGridView();
+        }
+
+        private void buttonConnect_Click_1(object sender, EventArgs e)
+        {
+            if (Connection.ConnectionStatus == true)
+            {               
+                labelConnectionStatus.Text = "Disconnected";
+                labelConnectionStatus.ForeColor = System.Drawing.Color.Maroon;
+                timerRead.Enabled = false;
+                buttonConnect.Text = "Disconnect";
+                Connection.ConnectionStatus = false;
+                buttonRefresh.Enabled = true;
+                comboBoxCOMs.Enabled = true;
+            }
+            else if(Connection.ConnectionStatus == false)
+            {
+                try
+                {
+                    getAvailablePorts();
+                    serialPort1.Close();
+                    serialPort1.PortName = comboBoxCOMs.Text;
+                    serialPort1.BaudRate = Connection.BaudRate;
+                    serialPort1.Open();
+
+                    labelConnectionStatus.Text = "Connected";
+                    Connection.ConnectionStatus = true;
+                    labelConnectionStatus.ForeColor = System.Drawing.Color.Green;
+                    buttonStart.Enabled = true;
+                    timerRead.Enabled = true;
+                    InitialMeasurement();
+                    buttonRefresh.Enabled = false;
+                    comboBoxCOMs.Enabled = false;
+
+                }
+                catch (System.IO.IOException)
+                {
+                    Connection.ConnectionStatus = false;
+                    textBox2.Text = "Unauthorized Acess";
+                    labelConnectionStatus.Text = "Disconnected";
+                    labelConnectionStatus.ForeColor = System.Drawing.Color.Maroon;
+                    timerRead.Enabled = false;
+                }
+
+                catch (UnauthorizedAccessException)
+                {
+                    Connection.ConnectionStatus = false;
+                    textBox2.Text = "Unauthorized Acess";
+                    labelConnectionStatus.Text = "Disconnected";
+                    labelConnectionStatus.ForeColor = System.Drawing.Color.Maroon;
+                    timerRead.Enabled = false;
+                }
+            }
+
+        }
+
+        private void buttonRefresh_Click(object sender, EventArgs e)
+        {
+            comboBoxCOMs.Text = Connection.ports[0];
+            getAvailablePorts();
+        }
+
+        private void buttontryDataRead_Click(object sender, EventArgs e)
+        {
+            CheckDevice();
         }
     }
 }

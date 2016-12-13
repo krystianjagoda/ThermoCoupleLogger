@@ -15,9 +15,9 @@ namespace ThermoCoupleLogger
         public UInt32 TotalMinutes;
         public UInt32 TotalSeconds;
 
-        public decimal mSec;
-        public decimal Sec;
-        public decimal Min;
+        public decimal mSec = 0;    // Start up - default Value
+        public decimal Sec = 1;     // Start up - default Value
+        public decimal Min = 0;     // Start up - default Value
 
         public UInt32 Period;   // Period in ms
         public UInt32 SampleLimit = 50;
@@ -45,6 +45,8 @@ namespace ThermoCoupleLogger
 
     public class Acquisition
     {
+        public UInt32 ActualSampleNumber = 0;       // Actual Sample Number
+
         public TotalAcquisitionTime CalculatedTime = new TotalAcquisitionTime();    // Calculated Value for Labels etc.
         public TotalAcquisitionTime TimeLeft = new TotalAcquisitionTime();          // Actual Value for Timers etc.
 
