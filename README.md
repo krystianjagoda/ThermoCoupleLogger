@@ -12,5 +12,7 @@ Windows App for ThermoCoupler
 
 
 **Screenshots:**
+
+
 https://github.com/krystianjagoda/ThermoCoupleLogger/blob/master/ScreenShots/Screenshot_A.png
 https://github.com/krystianjagoda/ThermoCoupleLogger/blob/master/ScreenShots/Screenshot_B.png
